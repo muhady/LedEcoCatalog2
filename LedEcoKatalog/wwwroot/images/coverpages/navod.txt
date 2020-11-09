@@ -1,0 +1,6 @@
+cislovanie je nasledovne :
+predna0, predna1, predna2.....prednax
+obsah + vylistovanie produktov
+zadna0, zadna1, zadna2....zadna N
+
+cize predna0 a zadnaN su obalky vonkajsie VZDY. 

@@ -1,0 +1,166 @@
+﻿@model CatalogList
+
+@if (Model.Sec1.PictureImage != null)
+{
+  <div class="CatalogPage">
+    <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(Model.Sec1.PictureImage)}")" />
+  </div>
+}
+
+<div class="CatalogPage BodyMatter">
+
+  <div class="PageSection">
+
+    @if (Model.Sec1.BannerImage != null)
+    {
+      <img class="PageBanner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Sec1.BannerImage))" />
+    }
+
+    <div class="PageTitle section1category">@Model.Sec1.CategoryName</div>
+
+    <div class="PageText section1text">@Model.Sec1.KratkyPopisKategorie</div>
+
+    @if (Model.Sec1.StrText9 != null)
+    {
+      <div class="PageText section1text">@Model.Sec1.StrText9</div>
+    }
+    else
+    {
+      <div class="PageText section1text">@Model.Sec1.PopisProduktuParent</div>
+    }
+
+    @if (Model.Sec1.StrText10 != null)
+    {
+      <div class="PageText section1text">@Model.Sec1.StrText10</div>
+    }
+
+    @*
+      <div class="PageText section1text">@Model.Sec1.KratkyPopisKategorie</div>
+      @if (Model.Sec1.ParentCategoryName != null)
+      {
+        <div class="PageTitle section1textcategory">@Model.Sec1.ParentCategoryName</div>
+        <div class="PageText section1text">@Model.Sec1.PopisProduktuParent</div>
+      }
+    *@
+
+  </div>
+
+  @if (Model.Section4.Count() > 0)
+  {
+    <div class="PageSection PageLegend section421">
+      @foreach (var sec4 in Model.Section4.Where(sec4 => (!sec4.Val.Contains("::"))))
+      {
+        <div class="PART-Item">
+          <img class="Image" src="~/images/parameters/@sec4.StrExternalID" onError='ImgErrorVideo(this);' />
+          <span class="Text">@sec4.Val</span>
+        </div>
+      }
+    </div>
+  }
+
+  <div class="PageSection PageProducts section2">
+    <table class="PART-Table">
+      <tr>
+        <th class="PART-Cell-Code">@Model.CatalogLanguage.ProductCode</th>
+        <th class="PART-Cell-Name">@Model.CatalogLanguage.ProductName</th>
+        <th class="PART-Cell-Version">@Model.CatalogLanguage.ProductVersion</th>
+        @if (Model.PriceLevel != -1)
+        {
+          <th class="PART-Cell-Price">@Model.CatalogLanguage.ProductPrice</th>
+        }
+      </tr>
+      @foreach (var sec2 in Model.Sec2)
+      {
+        <tr>
+          <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + sec2.Kód + ">") target="_blank">@sec2.Kód</a></td>
+          <td class="PART-Cell-Name">@sec2.Názov</td>
+          <td class="PART-Cell-Version">@sec2.CctK</td>
+          @if (Model.PriceLevel != -1)
+          {
+            var price = sec2.NumValue;
+            <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
+          }
+        </tr>
+      }
+    </table>
+    <div class="multiparamocontainer">
+      @if (Model.Section4.Count() > 0)
+      {
+        foreach (var sec4 in Model.Section4.Where(sec4 => sec4.Val.Contains("::")))
+        {
+          <div class="mutiparamdisplay">
+            <span class="multiparamlabel">@sec4.StrPropertyNameForCust: &nbsp</span>
+            <span class="multiparam">@sec4.Val.Replace("::", ", ")</span>
+          </div>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="PageSection PageImages section3">
+    @foreach (var sec2p in Model.Section2Picts)
+    {
+      <div class="PageImage">
+        @if (sec2p.BlobData2 != null)
+        {
+          <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(sec2p.BlobData2)}")" />
+        }
+      </div>
+      <div class="PageImage">
+        @if (sec2p.Img != null)
+        {
+          <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(sec2p.Img)}")" />
+        }
+      </div>
+    }
+
+    @foreach (var sec2p3rd in Model.Section2Pic3Rdts)
+    {
+      <div class="PageImage">
+        @{
+          var base64 = sec2p3rd.Img == null ? "" : Convert.ToBase64String(sec2p3rd.Img);
+          var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        }
+        <img class="Image" src="@imgSrc" />
+      </div>
+    }
+  </div>
+
+  @if (Model.Section3.Count() > 0)
+  {
+    <div class="PageSection PageAccessories section4">
+      <div class="PART-Title section41Header">
+        @Model.CatalogLanguage?.AccessoriesSectionTitle
+      </div>
+
+      <table class="PART-Table">
+        @foreach (var sec3 in Model.Section3)
+        {
+          <tr>
+            <td rowspan="2" class="PART-Cell-Image">
+              @if (sec3.Img != null)
+              {
+                <img src="@($"data:image/gif;base64,{Convert.ToBase64String(sec3.Img)}")" />
+              }
+            </td>
+            <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + sec3.Kod + ">") target="_blank">@sec3.Kod</a></td>
+            <td class="PART-Cell-Name">@sec3.Nazov</td>
+            @if (Model.PriceLevel != -1)
+            {
+              var price = sec3.NumValue;
+              <td rowspan="2" class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
+            }
+          </tr>
+          <tr class="PART-Row-Description">
+            <td colspan="2" class="PART-Cell-Description">@sec3.Popis</td>
+          </tr>
+        }
+      </table>
+    </div>
+  }
+
+  <span class="PageNumber">
+    <span>@Model.Sec1.Page</span>
+  </span>
+
+</div>

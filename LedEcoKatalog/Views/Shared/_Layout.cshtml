@@ -1,0 +1,51 @@
+﻿@{
+  var title = ViewData["Title"] as string;
+  title = "LEDeco Katalóg" + (string.IsNullOrWhiteSpace(title) ? null : $" - {title}");
+}
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@title</title>
+  <environment include="Development">
+    <link rel="stylesheet" href="~/css/application.css" asp-append-version="true" />
+  </environment>
+  <environment exclude="Development">
+    <link rel="stylesheet" href="~/css/application.min.css" asp-append-version="true" />
+  </environment>
+  @RenderSection("Styles", required: false)
+</head>
+<body>
+
+  <div class="Application">
+
+    <header class="AppHeader">
+      <div class="AppHeaderContent">
+        <a class="AppLogo" asp-controller="@HomeController.Name" asp-action="@nameof(HomeController.Index)">LEDeco Katalóg</a>
+      </div>
+    </header>
+
+    <main class="AppBody">
+      @RenderBody()
+    </main>
+
+    <footer class="AppFooter">
+      <div class="AppFooterContent">
+        <div class="AppCopy">&copy; 2020 LEDeco solution, s.r.o.</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <environment include="Development">
+    <script src="~/lib/tslib/tslib.js" asp-append-version="true"></script>
+    <script src="~/js/Application.js" asp-append-version="true"></script>
+  </environment>
+  <environment exclude="Development">
+    <script src="~/lib/tslib/tslib.min.js" asp-append-version="true"></script>
+    <script src="~/js/Application.min.js" asp-append-version="true"></script>
+  </environment>
+  @RenderSection("Scripts", required: false)
+</body>
+</html>

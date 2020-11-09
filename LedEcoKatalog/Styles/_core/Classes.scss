@@ -1,0 +1,159 @@
+﻿// ----------------------------------------------------------------------------
+// Classes
+// ----------------------------------------------------------------------------
+
+@import 'variables';
+
+// --- Fonts ------------------------------------------------------------------
+
+/*
+.font-h1
+{
+  font: $h1-font;
+}
+
+.font-label
+{
+  font: $Label-font;
+}
+*/
+
+.i
+{
+  font-style: italic;
+}
+
+// --- Layout -----------------------------------------------------------------
+
+.flex
+{
+  display: flex;
+}
+
+.Flex
+{
+  display: flex !important;
+}
+
+.flex-column
+{
+  flex-direction: column;
+}
+
+.flex-wrap
+{
+  flex-wrap: wrap;
+}
+
+.flex-center-items
+{
+  align-items: center;
+}
+
+.flex-right
+{
+  margin-left: auto;
+}
+
+.flex-grow-1
+{
+  flex-grow: 1;
+}
+
+.flex-grow-2
+{
+  flex-grow: 2;
+}
+
+.flex-grow-3
+{
+  flex-grow: 3;
+}
+
+.flex-grow-4
+{
+  flex-grow: 4;
+}
+
+.Fill
+{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.Fill-X
+{
+  width: 100% !important;
+}
+
+.Fill-Y
+{
+  height: 100% !important;
+}
+
+.Clip
+{
+  overflow: hidden !important;
+}
+
+.Clip-X
+{
+  overflow-x: hidden !important;
+}
+
+.Clip-Y
+{
+  overflow: hidden !important;
+}
+
+.Scroll
+{
+  overflow: auto !important;
+}
+
+.Scroll-X
+{
+  overflow-x: auto !important;
+}
+
+.Scroll-Y
+{
+  overflow: auto !important;
+}
+
+.No-Wrap
+{
+  white-space: nowrap !important;
+}
+
+.Padding-M
+{
+  padding: $Theme-Spacing-M;
+}
+
+// --- Appearance -------------------------------------------------------------
+
+.Border-none
+{
+  border: none !important;
+}
+
+// --- Media ------------------------------------------------------------------
+
+@media only screen
+{
+  .Media-Print
+  {
+    display: none !important;
+  }
+}
+
+@media only print
+{
+  .Media-Screen
+  {
+    display: none !important;
+  }
+}
+
+// ----------------------------------------------------------------------------

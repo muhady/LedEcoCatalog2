@@ -1,0 +1,101 @@
+﻿// ----------------------------------------------------------------------------
+// Layout
+// ----------------------------------------------------------------------------
+
+@import 'Variables';
+
+html
+{
+  font-size: $Theme-Font-Size-MediumPlus;
+}
+
+html,
+body,
+.Application
+{
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+body
+{
+  color: #212529;
+}
+
+.Application
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.AppHeader,
+.AppFooter
+{
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.AppHeader
+{
+  border-bottom: 1px solid $Theme-Color-NeutralQuaternaryAlt;
+  height: 50px;
+}
+
+.AppHeaderContent
+{
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  max-width: $AppPageWidth;
+}
+
+.AppLogo
+{
+  color: $Theme-Color-Black;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.AppBody
+{
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.AppFooter
+{
+  border-top: 1px solid $Theme-Color-NeutralQuaternaryAlt;
+  height: 40px;
+}
+
+.AppFooterContent
+{
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  max-width: $AppPageWidth;
+}
+
+.AppView
+{
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  max-width: $AppPageWidth;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 30px 0;
+}
+
+.Centered
+{
+  margin: 0 auto;
+  max-width: $AppPageWidth;
+}
+
+// ----------------------------------------------------------------------------

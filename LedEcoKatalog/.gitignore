@@ -1,0 +1,4 @@
+/wwwroot/css/**
+/wwwroot/js/**
+/Logs/**
+!.keep

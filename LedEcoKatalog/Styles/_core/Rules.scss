@@ -1,0 +1,17 @@
+﻿// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+@import 'Variables';
+@import '_mixins/';
+
+// --- Fonts ------------------------------------------------------------------
+
+@include font-faces($Theme-font-family, $Theme-Font-Weights, $Theme-Font-Styles, $Theme-Font-Path, $Theme-Font-Name-Format, $Theme-Font-Extensions);
+
+@if $Theme-Icons-Font-Family
+{
+  @include font-faces($Theme-Icons-Font-Family, normal, normal, $Theme-Icons-Font-Path, $Theme-Icons-Font-Name-Format, $Theme-Icons-Font-Extensions);
+}
+
+// ----------------------------------------------------------------------------

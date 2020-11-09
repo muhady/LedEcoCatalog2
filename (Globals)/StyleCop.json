@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings":
+  {
+    "documentationRules":
+    {
+      "companyName": "Binaware",
+      "copyrightText": "Copyright (c) Binaware s.r.o. All rights reserved."
+      /*,
+      "documentExposedElements": false,
+      "documentInterfaces": false,
+      "documentInternalElements": false,
+      "documentPrivateElements": false,
+      "documentPrivateFields": false
+      */
+    }
+  }
+}

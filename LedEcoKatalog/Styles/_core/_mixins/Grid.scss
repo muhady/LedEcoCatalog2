@@ -1,0 +1,158 @@
+﻿// ----------------------------------------------------------------------------
+// Grid
+// ----------------------------------------------------------------------------
+
+@import '../variables';
+// @import 'Fixes';
+
+//@import '../_themes/Variables';
+
+@mixin grid-container($gutter-width: $Theme-Grid-Gutter-Width)
+{
+  width: 100%;
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin grid-row($gutter-width: $Theme-Grid-Gutter-Width)
+{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: $gutter-width / -2;
+  margin-left: $gutter-width / -2;
+}
+
+@mixin grid-columns($gutter-width: $Theme-Grid-Gutter-Width)
+{
+  .col, .col-auto, [class^="col-span-"], [class*=" col-span-"]
+  {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: $gutter-width / 2;
+    padding-left: $gutter-width / 2;
+  }
+}
+
+@function concat-col-units($old, $new)
+{
+  $new: '.col-span-' + $new;
+  @return if($old == '', $new, $old + ',' + $new);
+}
+
+@function get-col-unit($i, $count)
+{
+  $r: '';
+
+  @if $i % $count == 0
+  {
+    $r: concat-col-units($r, 'f');
+  }
+  @else
+  {
+    @if $i % ($count / 2) == 0
+    {
+      $r: concat-col-units($r, 'h');
+    }
+    @else
+    {
+      @if $i % ($count / 3) == 0
+      {
+        $r: concat-col-units($r, $i / ($count / 3) + 't');
+      }
+
+      @if $i % ($count / 4) == 0
+      {
+        $r: concat-col-units($r, $i / ($count / 4) + 'q');
+      }
+
+      @if $i % ($count / 6) == 0
+      {
+        $r: concat-col-units($r, $i / ($count / 6) + 's');
+      }
+    }
+  }
+
+  @if $i % ($count / 12) == 0
+  {
+    $r: concat-col-units($r, $i / ($count / 12) + 'u');
+  }
+
+  @return $r;
+}
+
+
+@mixin grid-column-spans($column-count: $Theme-Grid-Column-Count)
+{
+  @for $i from 1 through $column-count
+  {
+    $p: $i / $column-count;
+    $u: get-col-unit($i, $column-count);
+
+    @if ($u == '')
+    {
+      .col-span-#{$i}
+      {
+        // -ms-flex: 0 0 percentage($p);
+        flex: 0 0 percentage($p);
+        max-width: percentage($p);
+      }
+    }
+    @else
+    {
+      .col-span-#{$i},
+      #{$u}
+      {
+        // -ms-flex: 0 0 percentage($p);
+        flex: 0 0 percentage($p);
+        max-width: percentage($p);
+      }
+    }
+  }
+}
+
+@mixin grid($column-count: $Theme-Grid-Column-Count, $gutter-width: $Theme-Grid-Gutter-Width, $media-break: $Theme-Grid-Media-Break)
+{
+  @if ($column-count > 0)
+  {
+    .grid
+    {
+      @include grid-container($gutter-width);
+    }
+
+    .row
+    {
+      @include grid-row($gutter-width);
+    }
+
+    @include grid-columns($gutter-width);
+
+    .col
+    {
+      // -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+      // -ms-flex-positive: 1;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+
+    .col-auto
+    {
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      width: auto;
+      max-width: none; // Reset earlier grid tiers
+    }
+
+    @media (min-width: $media-break)
+    {
+      @include grid-column-spans($column-count);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------

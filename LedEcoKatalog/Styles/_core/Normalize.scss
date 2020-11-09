@@ -1,0 +1,449 @@
+﻿// ----------------------------------------------------------------------------
+// Normalize
+// ----------------------------------------------------------------------------
+
+@import 'variables';
+
+// ----------------------------------------------------------------------------
+// normalize.css 8.0.1
+// ----------------------------------------------------------------------------
+
+// --- Document ---------------------------------------------------------------
+
+// Norm:
+// 1. Correct the line height in all browsers.
+// 2. Prevent adjustments of font size after orientation changes in iOS.
+
+html
+{
+  line-height: 1.15; // 1
+  -webkit-text-size-adjust: 100%; // 2
+}
+
+// --- Sections ---------------------------------------------------------------
+
+// Norm:
+// 1. Remove the margin in all browsers.
+// Bina:
+// 2. Remove the padding in all browsers.
+// 2. Ensure correct dispplay in all browsers. ???
+
+body
+{
+  display: block; // 3
+  margin: 0; // 1
+  padding: 0; // 2
+}
+
+// Norm: Render the `main` element consistently in IE.
+
+main
+{
+  display: block;
+}
+
+// Norm: Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari.
+
+h1
+{
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+// --- Grouping content -------------------------------------------------------
+
+// Norm:
+// 1. Add the correct box sizing in Firefox.
+// 2. Show the overflow in Edge and IE.
+
+hr
+{
+  box-sizing: content-box; // 1
+  height: 0; // 1
+  overflow: visible; // 2
+}
+
+// Norm:
+// 1. Correct the inheritance and scaling of font size in all browsers.
+// 2. Correct the odd `em` font sizing in all browsers.
+
+pre
+{
+  font-family: monospace, monospace; // 1
+  font-size: 1em; // 2
+}
+
+// --- Text-level semantics ---------------------------------------------------
+
+// Norm: Remove the gray background on active links in IE 10.
+
+a
+{
+  background-color: transparent;
+}
+
+// Norm:
+// 1. Remove the bottom border in Chrome 57-
+// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+
+abbr[title]
+{
+  border-bottom: none; // 1
+  text-decoration: underline; // 2
+  text-decoration: underline dotted; // 2
+}
+
+// Norm: Add the correct font weight in Chrome, Edge, and Safari.
+
+b,
+strong
+{
+  font-weight: bolder;
+}
+
+// Norm:
+// 1. Correct the inheritance and scaling of font size in all browsers.
+// 2. Correct the odd `em` font sizing in all browsers.
+
+code,
+kbd,
+samp
+{
+  font-family: monospace, monospace; // 1
+  font-size: 1em; // 2
+}
+
+// Norm: Add the correct font size in all browsers.
+
+small
+{
+  font-size: 80%;
+}
+
+// Norm: Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+
+sub,
+sup
+{
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub
+{
+  bottom: -0.25em;
+}
+
+sup
+{
+  top: -0.5em;
+}
+
+// --- Embedded content -------------------------------------------------------
+
+// Norm: Remove the border on images inside links in IE 10.
+
+img
+{
+  border-style: none;
+}
+
+// --- Forms ------------------------------------------------------------------
+
+// Norm:
+// 1. Change the font styles in all browsers.
+// 2. Remove the margin in Firefox and Safari.
+
+button,
+input,
+optgroup,
+select,
+textarea
+{
+  font-family: inherit; // 1
+  font-size: 100%; // 1
+  line-height: 1.15; // 1
+  margin: 0; // 2
+}
+
+// Norm: Show the overflow in IE.
+// 1. Show the overflow in Edge.
+
+button,
+input // 1
+{
+  overflow: visible;
+}
+
+// Norm: Remove the inheritance of text transform in Edge, Firefox, and IE.
+// 1. Remove the inheritance of text transform in Firefox.
+
+button,
+select // 1
+{
+  text-transform: none;
+}
+
+// Norm: Correct the inability to style clickable types in iOS and Safari.
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"]
+{
+  -webkit-appearance: button;
+}
+
+  // Norm: Remove the inner border and padding in Firefox.
+
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner
+  {
+    border-style: none;
+    padding: 0;
+  }
+
+  // Norm: Restore the focus styles unset by the previous rule.
+
+  button:-moz-focusring,
+  [type="button"]:-moz-focusring,
+  [type="reset"]:-moz-focusring,
+  [type="submit"]:-moz-focusring
+  {
+    outline: 1px dotted ButtonText;
+  }
+
+// Norm: Correct the padding in Firefox.
+
+fieldset
+{
+  padding: 0.35em 0.75em 0.625em;
+}
+
+
+// Norm:
+// 1. Correct the text wrapping in Edge and IE.
+// 2. Correct the color inheritance from `fieldset` elements in IE.
+// 3. Remove the padding so developers are not caught out when they zero out `fieldset` elements in all browsers.
+
+legend
+{
+  box-sizing: border-box; // 1
+  color: inherit; // 2
+  display: table; // 1
+  max-width: 100%; // 1
+  padding: 0; // 3
+  white-space: normal; // 1
+}
+
+// Norm: Add the correct vertical alignment in Chrome, Firefox, and Opera.
+
+progress
+{
+  vertical-align: baseline;
+}
+
+// Norm:
+// 1. Remove the default vertical scrollbar in IE 10+.
+// Bina:
+// 2. Allow only vertical resize in all browsers.
+
+textarea
+{
+  overflow: auto; // 1
+  resize: vertical; // 2
+}
+
+// Norm:
+// 1. Add the correct box sizing in IE 10.
+// 2. Remove the padding in IE 10.
+
+[type="checkbox"],
+[type="radio"]
+{
+  box-sizing: border-box; // 1
+  padding: 0; // 2
+}
+
+// Norm: Correct the cursor style of increment and decrement buttons in Chrome.
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button
+{
+  height: auto;
+}
+
+// Norm:
+// 1. Correct the odd appearance in Chrome and Safari.
+// 2. Correct the outline style in Safari.
+
+[type="search"]
+{
+  -webkit-appearance: textfield; // 1
+  outline-offset: -2px; // 2
+}
+
+  // Norm: Remove the inner padding in Chrome and Safari on macOS.
+
+  [type="search"]::-webkit-search-decoration
+  {
+    -webkit-appearance: none;
+  }
+
+// Norm:
+// 1. Correct the inability to style clickable types in iOS and Safari.
+// 2. Change font properties to `inherit` in Safari.
+
+::-webkit-file-upload-button
+{
+  -webkit-appearance: button; // 1
+  font: inherit; // 2
+}
+
+// --- Interactive ------------------------------------------------------------
+
+// Norm: Add the correct display in Edge, IE 10+, and Firefox.
+
+details
+{
+  display: block;
+}
+
+// Norm: Add the correct display in all browsers.
+
+summary
+{
+  display: list-item;
+}
+
+// --- Misc -------------------------------------------------------------------
+
+// Norm: Add the correct display in IE 10+.
+
+template
+{
+  display: none;
+}
+
+// Norm: Add the correct display in IE 10.
+
+[hidden]
+{
+  display: none;
+}
+
+// ----------------------------------------------------------------------------
+// binaweb 3.1
+// ----------------------------------------------------------------------------
+
+html
+{
+  box-sizing: border-box; // Boot: border-box -- Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+  outline-color: $Theme-Color-ThemePrimary; // ?
+  // outline-style: auto; // ?
+  outline-width: 1px; // ?
+  font-family: $Theme-font-family; // Boot: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  font-size: $Theme-Font-Size-Medium; // Boot: 1rem
+  font-weight: $Theme-Font-Weight-Regular; // Boot: 400
+  background-color: $Theme-Color-BackgroundColor;
+  color: $Theme-Color-ForegroundColor;
+  line-height: $Theme-line-height;
+}
+
+// body
+// {
+//   display: block; // 3
+//   margin: 0; // 1
+//   padding: 0; // 2
+// }
+
+*,
+*::before,
+*::after
+{
+  box-sizing: inherit;
+  // outline-color: inherit; // ?
+  // outline-style: inherit; // ?
+  // outline-width: inherit; // ?
+}
+
+div,
+button:not(.BinaButton),
+// .BinaButton,
+.BinaItemsControl > .PART-Items,
+.BinaFormControl .PART-Display, .PART-Input
+{
+  outline: none;
+}
+
+// a:not(.BinaButton),
+.a
+{
+  background-color: transparent;
+  border: none;
+  color: $Theme-a-color;
+  cursor: pointer;
+  // outline: none;
+  // outline-offset: 2px;
+  text-decoration: none;
+
+  &:focus
+  {
+    // outline: 1px solid $a-color;
+    text-decoration: none;
+  }
+
+  &:hover
+  {
+    color: $Theme-a-color--hover;
+    text-decoration: underline;
+  }
+
+  &:active
+  {
+    // outline: none;
+    text-decoration: underline;
+  }
+}
+
+h1
+{
+  font-size: $Theme-font-size-h1;
+  font-style: $Theme-font-style-h1;
+  font-weight: $Theme-font-weight-h1;
+}
+
+h2
+{
+  font-size: $Theme-font-size-h2;
+  font-style: $Theme-font-style-h2;
+  font-weight: $Theme-font-weight-h2;
+}
+
+h3
+{
+  font-size: $Theme-font-size-h3;
+  font-style: $Theme-font-style-h3;
+  font-weight: $Theme-font-weight-h3;
+}
+
+::selection
+{
+  background-color: $Theme-Color-ThemePrimary;
+  color: $Theme-Color-White;
+}
+
+::placeholder
+{
+  color: $Theme--placeholder-color;
+  font-size: $Theme--placeholder-font-size;
+  font-style: $Theme--placeholder-font-style;
+  font-weight: $Theme--placeholder-font-weight;
+  opacity: $Theme--placeholder-opacity;
+}
+
+// ----------------------------------------------------------------------------

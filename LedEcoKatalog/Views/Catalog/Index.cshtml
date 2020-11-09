@@ -1,0 +1,97 @@
+﻿@model CatalogModel
+@{
+  ViewData["Title"] = Model.CatalogName;
+}
+
+<div class="Catalog Cat@(Model.Layout)">
+
+  @for (int i = 0; i < Model.InitialPages; i++)
+  {
+    var className = i == 0 ? "FrontCover" : "FrontMatter";
+    <div class="CatalogPage @className">
+      <img class="CoverImage" src="~/images/coverpages/frontpage/@Html.DisplayFor(modelItem => Model.Layout)/@Html.DisplayFor(modelItem => Model.Language)-@Html.DisplayFor(modelItem => Model.Layout)-predna-obalka-@(i).png" />
+      @if (i == 0)
+      {
+        <div class="CoverName">@Model.CatalogName</div>
+        <div class="CoverYear">@(DateTime.Today.Year + 1)</div>
+        <div class="CoverPrice">@Model.PriceLevelText</div>
+      }
+    </div>
+  }
+
+  <div class="CatalogPage FrontMatter IS-Content">
+    <div class="Content">
+      <div class="ContentTitle">@Model.CatalogLanguage?.ContentTitle</div>
+      <table class="ContentTable">
+        @foreach (var content in Model.Content)
+        {
+          <tr>
+            <td class="ContentName">@Html.DisplayFor(modelItem => content.Name01)</td>
+            <td class="ContentPage">@Html.DisplayFor(modelItem => content.Page)</td>
+          </tr>
+        }
+      </table>
+    </div>
+  </div>
+
+  <div class="CatalogPage FrontMatter IS-Legend">
+    <div class="Legend">
+      <div class="LegendHeader">
+        <div class="LegendTitle">@Model.CatalogLanguage?.LegendTitle</div>
+        <div class="LegendDescription">@Model.CatalogLanguage?.LegendDescription</div>
+      </div>
+      <div class="LegendItems">
+        @foreach (var legend in Model.Section4.Where(o => !o.Val.Contains("::")).GroupBy(o => new { o.StrPropertyNameForCust, o.StrExternalID }).Select(o => o.FirstOrDefault()))
+        {
+
+          <div class="LegendItem">
+            <div class="LegendIcon">
+              <img class="Image" src="~/images/parameters/@legend.StrExternalID" onError='ImgErrorVideo(this);' />
+            </div>
+            <div class="LegendText">
+              <div class="Caption">@legend.StrName</div>
+              @legend.StrDescription
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="LegendContent">
+      @Html.Raw(Model.LegendContent)
+    </div>
+  </div>
+
+  @foreach (var sec1 in Model.Sec1)
+  {
+    CatalogList l = new CatalogList();
+    l.Sec1 = sec1;
+    l.Sec2 = Model.Sec2.Where(sec2tabl => sec2tabl.Page == sec1.Page).OrderBy(sec2tabl => sec2tabl.Poradie).ToList();
+    l.Section2Picts = Model.Section2Picts.Where(sec2tablpic => sec2tablpic.Page == sec1.Page).ToList();
+    l.Section2Pic3Rdts = Model.Section2Pic3Rdts.Where(sec2tablpic3rd => sec2tablpic3rd.Page == sec1.Page).ToList();
+    l.Section3 = Model.Section3.Where(sec3a => sec3a.Page == sec1.Page).ToList();
+    l.Section4 = Model.Section4.Where(sec4a => sec4a.Page == sec1.Page).ToList();
+
+    l.Language = Model.Language;
+    l.PriceLevel = Model.PriceLevel;
+    l.CatalogLanguage = Model.CatalogLanguage;
+
+    var partialName = Model.FosaliLevels.Contains(sec1.Level.ToString()) ? "Fosali" : "Ledeco";
+
+    <partial name="Sections/@partialName" model="l" />
+  }
+
+  @for (int i = 0; i < Model.EndPages; i++)
+  {
+    var className = i == Model.EndPages - 1 ? "BackCover" : "BackMatter";
+    if (i == Model.EndPages - 1 && Model.PriceLevel != -1)
+    {
+      <div class="CatalogPage BackMatter IS-Disclaimer">
+        @Html.Raw(@Model.DisclaimerContent)
+      </div>
+    }
+    <div class="CatalogPage @className">
+      <img class="CoverImage" src="~/images/coverpages/lastpage/@Html.DisplayFor(modelItem => Model.Layout)/@Html.DisplayFor(modelItem => Model.Language)-@Html.DisplayFor(modelItem => Model.Layout)-zadna-obalka-@(i).png" />
+    </div>
+  }
+
+</div>

@@ -1,0 +1,385 @@
+﻿// ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+// Colors
+
+// $Theme-Color-R: 0 !default;
+// $Theme-Color-G: 120 !default;
+// $Theme-Color-B: 212 !default; // 215 !default;
+
+// $Theme-Color: rgb($Theme-Color-R, $Theme-Color-G, $Theme-Color-B) !default; // #0078d4 !default; // #0078d7 !default;
+
+// $Theme-Color-Black: #000 !default;
+// $Theme-Color-White: #fff !default;
+
+// $Theme-Color-Neutral-R: 80 !default;
+// $Theme-Color-Neutral-G: 80 !default;
+// $Theme-Color-Neutral-B: 80 !default;
+
+// $Theme-Color-Neutral-Darkest: #212121 !default;
+// $Theme-Color-Neutral-Darker: #333 !default;
+// $Theme-Color-Neutral-Dark: #666 !default;
+// $Theme-Color-Neutral: #808080 !default;
+// $Theme-Color-Neutral-Light: #a6a6a6 !default;
+// $Theme-Color-Neutral-Lighter: #e0e0e0 !default;
+// $Theme-Color-Neutral-Lightest: #f8f8f8 !default; // #f4f4f4 !default;
+
+$Theme-Color-PrimaryColor: #0078d4 !default;
+$Theme-Color-BackgroundColor: #ffffff !default;
+$Theme-Color-ForegroundColor: #323130 !default;
+
+$Theme-Color-ThemeDarker: #004578 !default;
+$Theme-Color-ThemeDark: #005a9e !default;
+$Theme-Color-ThemeDarkAlt: #106ebe !default;
+$Theme-Color-ThemePrimary: $Theme-Color-PrimaryColor !default;
+$Theme-Color-ThemeSecondary: #2b88d8 !default;
+$Theme-Color-ThemeTertiary: #71afe5 !default;
+$Theme-Color-ThemeLight: #c7e0f4 !default;
+$Theme-Color-ThemeLighter: #deecf9 !default;
+$Theme-Color-ThemeLighterAlt: #eff6fc !default;
+$Theme-Color-Black: #000000 !default;
+$Theme-Color-BlackTranslucent40: rgba(0,0,0,.4) !default;
+$Theme-Color-NeutralDark: #201f1e !default;
+$Theme-Color-NeutralPrimary: $Theme-Color-ForegroundColor !default;
+$Theme-Color-NeutralPrimaryAlt: #3b3a39 !default;
+$Theme-Color-NeutralSecondary: #605e5c !default;
+$Theme-Color-NeutralSecondaryAlt: #8a8886 !default;
+$Theme-Color-NeutralTertiary: #a19f9d !default;
+$Theme-Color-NeutralTertiaryAlt: #c8c6c4 !default;
+$Theme-Color-NeutralQuaternary: #d2d0ce !default;
+$Theme-Color-NeutralQuaternaryAlt: #e1dfdd !default;
+$Theme-Color-NeutralLight: #edebe9 !default;
+$Theme-Color-NeutralLighter: #f3f2f1 !default;
+$Theme-Color-NeutralLighterAlt: #faf9f8 !default;
+$Theme-Color-Accent: $Theme-Color-PrimaryColor !default;
+$Theme-Color-White: #ffffff !default;
+$Theme-Color-WhiteTranslucent40: rgba(255,255,255,.4) !default;
+$Theme-Color-YellowDark: #d29200 !default;
+$Theme-Color-Yellow: #ffb900 !default;
+$Theme-Color-YellowLight: #fff100 !default;
+$Theme-Color-Orange: #d83b01 !default;
+$Theme-Color-OrangeLight: #ea4300 !default;
+$Theme-Color-OrangeLighter: #ff8c00 !default;
+$Theme-Color-RedDark: #a4262c !default;
+$Theme-Color-Red: #e81123 !default;
+$Theme-Color-MagentaDark: #5c005c !default;
+$Theme-Color-Magenta: #b4009e !default;
+$Theme-Color-MagentaLight: #e3008c !default;
+$Theme-Color-PurpleDark: #32145a !default;
+$Theme-Color-Purple: #5c2d91 !default;
+$Theme-Color-PurpleLight: #b4a0ff !default;
+$Theme-Color-BlueDark: #002050 !default;
+$Theme-Color-BlueMid: #00188f !default;
+$Theme-Color-Blue: #0078d4 !default;
+$Theme-Color-BlueLight: #00bcf2 !default;
+$Theme-Color-TealDark: #004b50 !default;
+$Theme-Color-Teal: #008272 !default;
+$Theme-Color-TealLight: #00b294 !default;
+$Theme-Color-GreenDark: #004b1c !default;
+$Theme-Color-Green: #107c10 !default;
+$Theme-Color-GreenLight: #bad80a !default;
+
+$Theme-Colors-UpdatePrimaries: false !default;
+$Theme-Colors-UpdatePrimaryColors: false !default;
+$Theme-Colors-UpdateAccent: false !default;
+
+$Theme-Colors-UpdateNeutrals: false !default;
+$Theme-Colors-UpdateBackgroundColors: false !default;
+$Theme-Colors-UpdateForegroundColors: false !default;
+$Theme-Colors-UpdateBlack: false !default;
+$Theme-Colors-UpdateWhite: false !default;
+
+// $Theme-Color-Error: #d50000 !default;
+
+$Theme-Color-Info: #17a2b8 !default;
+$Theme-Color-Warning: #ffc107 !default;
+$Theme-Color-Error: #dc3545 !default;
+$Theme-Color-Success: #28a745 !default;
+
+// Fonts
+
+$Theme-font-family: "Open Sans" !default;
+$Theme-font-family-fallbacks: Helvetica, Arial, sans-serif !default;
+
+$Theme-Font-Size: 16px !default;
+
+
+// $Theme-font-size-xx-small: $Theme-Font-Size / 2 !default;
+// $Theme-font-size-x-small: round($Theme-Font-Size * 0.67) !default;
+// $Theme-font-size-small: round($Theme-Font-Size * 0.83) !default;
+// $Theme-font-size-medium: $Theme-Font-Size !default;
+// $Theme-font-size-large: round($Theme-Font-Size * 1.17) !default;
+// $Theme-font-size-x-large: round($Theme-Font-Size * 1.5) !default;
+// $Theme-font-size-xx-large: $Theme-Font-Size * 2 !default;
+
+// $Theme-Font-Size-Mini: 10px;
+// $Theme-Font-Size-xSmall: 10px;
+// $Theme-Font-Size-small: 12px;
+// $Theme-Font-Size-smallPlus: 12px;
+// $Theme-Font-Size-medium: 14px;
+// $Theme-Font-Size-mediumPlus: 16px;
+// $Theme-Font-Size-icon: 16px;
+// $Theme-Font-Size-large: 18px;
+// $Theme-Font-Size-xLarge: 20px;
+// $Theme-Font-Size-xLargePlus: 24px;
+// $Theme-Font-Size-xxLarge: 28px;
+// $Theme-Font-Size-xxLargePlus: 32px;
+// $Theme-Font-Size-superLarge: 42px;
+// $Theme-Font-Size-mega: 68px;
+
+// export const mini: string = '10px';
+// export const xSmall: string = '11px';
+// export const small: string = '12px';
+// export const smallPlus: string = '13px';
+// export const medium: string = '14px';
+// export const mediumPlus: string = '15px';
+// export const icon: string = '16px';
+// export const large: string = '17px';
+// export const xLarge: string = '21px';
+// export const xLargePlus: string = '21px';
+// export const xxLarge: string = '28px';
+// export const xxLargePlus: string = '28px';
+// export const superLarge: string = '42px';
+// export const mega: string = '72px';
+
+$Theme-Font-Size-Mini: 10px !default;
+$Theme-Font-Size-XSmall: 10px !default;
+$Theme-Font-Size-Small: 12px !default;
+$Theme-Font-Size-SmallPlus: 12px !default;
+$Theme-Font-Size-Medium: 14px !default;
+$Theme-Font-Size-MediumPlus: 16px !default;
+$Theme-Font-Size-Icon: 16px !default;
+$Theme-Font-Size-Large: 18px !default;
+$Theme-Font-Size-XLarge: 20px !default;
+$Theme-Font-Size-XLargePlus: 24px !default;
+$Theme-Font-Size-XxLarge: 28px !default;
+$Theme-Font-Size-XxLargePlus: 32px !default;
+$Theme-Font-Size-SuperLarge: 42px !default;
+$Theme-Font-Size-Mega: 68px !default;
+
+$Theme-Font-Style-Normal: normal !default;
+$Theme-Font-Style-Italic: italic !default;
+
+$Theme-Font-Styles: $Theme-Font-Style-Normal $Theme-Font-Style-Italic !default;
+
+// $Theme-font-weight-thin: 100 !default;
+// $Theme-font-weight-extra-light: 200 !default;
+// $Theme-font-weight-light: 300 !default;
+// $Theme-font-weight-regular: 400 !default;
+// $Theme-font-weight-medium: 500 !default;
+// $Theme-font-weight-semi-bold: 600 !default;
+// $Theme-font-weight-bold: 700 !default;
+// $Theme-font-weight-extra-bold: 800 !default;
+// $Theme-font-weight-black: 900 !default;
+
+// $Theme-Font-Weight-Light: 100;
+$Theme-Font-Weight-Semilight: 300;
+$Theme-Font-Weight-Regular: 400;
+$Theme-Font-Weight-Semibold: 600;
+$Theme-Font-Weight-Bold: 700;
+
+
+// $Theme-font-weight-lighter: $Theme-font-weight-light !default;
+// $Theme-font-weight-bolder: $Theme-Font-Weight-Semibold !default;
+
+$Theme-Font-Weights: $Theme-Font-Weight-Semilight $Theme-Font-Weight-Regular $Theme-Font-Weight-Semibold $Theme-Font-Weight-Bold !default;
+
+$Theme-Font-Path: '/_content/Binaware.AspNetCore.Web.App/fonts/' !default; // '/fonts/' !default;
+$Theme-Font-Name-Format: '{family}_{weight}{style}' !default;
+$Theme-Font-Extensions: eot woff2 woff ttf svg !default;
+
+$Theme-Fonts-UpdateAll: false !default;
+$Theme-Fonts-UpdateSizes: false !default;
+
+$Theme-line-height: 1.4 !default; // 1.35714/ *2857142857* / !$Card-background-colordefault; // 1.15 !default;
+$Theme-line-height-absolute: round($Theme-Font-Size-Medium * 1.15) !default;
+
+// Spacing
+
+$Theme-Spacing: 30px !default;
+$Theme-Spacing-XXXS: $Theme-Spacing / 10 !default;
+$Theme-Spacing-XXS: $Theme-Spacing / 6 !default;
+$Theme-Spacing-XS: $Theme-Spacing / 3 !default;
+$Theme-Spacing-S: $Theme-Spacing / 2 !default;
+$Theme-Spacing-M: $Theme-Spacing !default;
+$Theme-Spacing-L: $Theme-Spacing * 1.5 !default;
+$Theme-Spacing-XL: $Theme-Spacing * 2 !default;
+$Theme-Spacing-XXL: $Theme-Spacing * 2.5 !default;
+$Theme-Spacing-XXXL: $Theme-Spacing * 3 !default;
+
+// Icons
+
+// $Bina-Icons-Font-Family: Binaware-Web-Icons !default;
+// $Bina-Icons-Font-Path: $Theme-Font-Path !default;
+// $Bina-Icons-Font-Name-Format: null !default;
+// $Bina-Icons-Font-Extensions: $Theme-Font-Extensions !default;
+
+$Theme-Icons-Font-Family: null !default;
+$Theme-Icons-Font-Path: $Theme-Font-Path !default;
+$Theme-Icons-Font-Name-Format: null !default;
+$Theme-Icons-Font-Extensions: $Theme-Font-Extensions !default;
+
+$Theme-Icon-Font-Size-XSmall: 10px;
+$Theme-Icon-Font-Size-Small: 12px;
+$Theme-Icon-Font-Size-Medium: 16px;
+$Theme-Icon-Font-Size-Large: 20px;
+
+// ----------------------------------------------------------------------------
+
+// --- Control ----------------------------------------------------------------
+
+$Theme-background-color--hover: lighten($Theme-Color-ThemePrimary, 44) !default;
+$Theme-background-color--selected: lighten($Theme-Color-ThemePrimary, 36) !default;
+$Theme-background-color--selected--inactive: $Theme-Color-NeutralLighterAlt !default;
+
+$Theme-border-color--selected: $Theme-background-color--selected !default;
+$Theme-border-color--selected--inactive: $Theme-background-color--selected--inactive !default;
+$Theme-border-color--focused: lighten($Theme-Color-ThemePrimary, 24) !default;
+$Theme-border-color--focused--inactive: $Theme-Color-NeutralLighterAlt !default;
+
+$Theme-color--hover: $Theme-Color-NeutralPrimary !default;
+$Theme-color--selected: $Theme-Color-NeutralPrimary !default;
+$Theme-color--selected--inactive: $Theme-Color-NeutralPrimary !default;
+
+// --- Control ----------------------------------------------------------------
+
+$Theme-Control-background-color: $Theme-Color-White !default;
+$Theme-Control-background: $Theme-Control-background-color none !default;
+
+$Theme-Control-border-color: $Theme-Color-NeutralQuaternaryAlt !default;
+$Theme-Control-border-style: solid !default;
+$Theme-Control-border-width: 1px !default;
+$Theme-Control-border: $Theme-Control-border-width $Theme-Control-border-style $Theme-Control-border-color !default;
+
+$Theme-Control-color: $Theme-Color-NeutralPrimary !default;
+
+// --- Outline ----------------------------------------------------------------
+
+$Theme-outline-style: solid !default;
+$Theme-outline-width: 1px !default;
+$Theme-outline-color: $Theme-Color-NeutralSecondary !default;
+
+// --- Layers -----------------------------------------------------------------
+
+$Theme-Layer-Base-z-index: 1000 !default;
+$Theme-Layer-Panel-z-index: $Theme-Layer-Base-z-index + 100 !default;
+$Theme-Layer-Window-z-index: $Theme-Layer-Base-z-index + 200 !default;
+$Theme-Layer-Popup-z-index: $Theme-Layer-Base-z-index + 300 !default;
+$Theme-Layer-Toast-z-index: $Theme-Layer-Base-z-index + 400 !default;
+$Theme-Layer-Tooltip-z-index: $Theme-Layer-Base-z-index + 500 !default;
+
+// --- Media ------------------------------------------------------------------
+
+$Theme-Media-Small-min-width: 320px !default;
+$Theme-Media-Medium-min-width: 480px !default;
+$Theme-Media-Large-min-width: 640px !default;
+$Theme-Media-XLarge-min-width: 1024px !default;
+$Theme-Media-XXLarge-min-width: 1366px !default;
+$Theme-Media-XXXLarge-min-width: 1920px !default;
+
+$Theme-Media-Larger-min-width: 768px !default;
+
+// --- Grid -------------------------------------------------------------------
+
+$Theme-Grid-Column-Count: 12 !default;
+$Theme-Grid-Gutter-Width: $Theme-Spacing !default;
+$Theme-Grid-Media-Break: $Theme-Media-Medium-min-width !default;
+
+// --- body -------------------------------------------------------------------
+
+// --- h? ---------------------------------------------------------------------
+
+$Theme-font-size-h1: 2em !default;
+$Theme-font-size-h2: 1.5em !default;
+$Theme-font-size-h3: 1.17em !default;
+$Theme-font-size-h4: 1em !default;
+$Theme-font-size-h5: 0.83em !default;
+$Theme-font-size-h6: 0.67em !default;
+
+$Theme-font-style-h1: $Theme-Font-Style-Normal !default;
+$Theme-font-style-h2: $Theme-Font-Style-Normal !default;
+$Theme-font-style-h3: $Theme-Font-Style-Normal !default;
+$Theme-font-style-h4: $Theme-Font-Style-Normal !default;
+$Theme-font-style-h5: $Theme-Font-Style-Normal !default;
+$Theme-font-style-h6: $Theme-Font-Style-Normal !default;
+
+$Theme-font-weight-h1: $Theme-Font-Weight-Regular !default;
+$Theme-font-weight-h2: $Theme-Font-Weight-Regular !default;
+$Theme-font-weight-h3: $Theme-Font-Weight-Semibold !default;
+$Theme-font-weight-h4: $Theme-Font-Weight-Semibold !default;
+$Theme-font-weight-h5: $Theme-Font-Weight-Regular !default;
+$Theme-font-weight-h6: $Theme-Font-Weight-Regular !default;
+
+// --- a ----------------------------------------------------------------------
+
+$Theme-a-color: $Theme-Color-ThemePrimary !default;
+$Theme-a-color--hover: darken($Theme-a-color, 10) !default;
+
+// --- button -----------------------------------------------------------------
+
+$Theme-button-background-color: $Theme-Color-White;
+$Theme-button-background-color--checked: $Theme-Color-NeutralTertiaryAlt;
+$Theme-button-background-color--hover: $Theme-Color-NeutralLighter; // rgba($Theme-Color-NeutralPrimary, 0.064);
+$Theme-button-background-color--checked--hover: $Theme-Color-NeutralLight;
+$Theme-button-background-color--active: $Theme-Color-NeutralLight;
+$Theme-button-background-color--disabled: $Theme-Color-NeutralLighter;
+
+$Theme-button-border-color: $Theme-Color-NeutralSecondaryAlt;
+$Theme-button-border-color--disabled: $Theme-Color-NeutralLighter;
+$Theme-button-border-radius: 0 !default;
+$Theme-button-border-style: solid !default;
+$Theme-button-border-width: 1px !default;
+
+$Theme-button-color: $Theme-Color-NeutralPrimary;
+$Theme-button-color--checked: $Theme-Color-NeutralDark;
+$Theme-button-color--hover: $Theme-Color-NeutralDark;
+$Theme-button-color--checked--hover: $Theme-Color-Black;
+$Theme-button-color--active: $Theme-Color-NeutralDark;
+$Theme-button-color--disabled: $Theme-Color-NeutralTertiary;
+
+
+$Theme-button-font-size: $Theme-Font-Size-Medium !default;
+$Theme-button-font-style: $Theme-Font-Style-Normal !default;
+$Theme-button-font-weight: $Theme-Font-Weight-Regular !default;
+
+// --- input ------------------------------------------------------------------
+
+$Theme-Input-background-color: $Theme-Color-White !default;
+$Theme-Input-background-color--hover: $Theme-Input-background-color !default;
+$Theme-Input-background-color--active: $Theme-Input-background-color !default;
+$Theme-Input-background-color--focus: $Theme-Input-background-color !default;
+$Theme-Input-background-color--disabled: darken($Theme-Input-background-color, 2.5) !default;
+$Theme-Input-background: $Theme-Input-background-color none !default;
+
+$Theme-Input-border-color: $Theme-Color-NeutralQuaternaryAlt !default;
+$Theme-Input-border-color--hover: $Theme-Color-NeutralTertiary !default;
+$Theme-Input-border-color--active: $Theme-Color-ThemePrimary !default;
+$Theme-Input-border-color--focus: $Theme-Color-ThemePrimary !default;
+$Theme-Input-border-color--disabled: lighten($Theme-Input-border-color, 2.5) !default;
+$Theme-Input-border-style: solid !default;
+$Theme-Input-border-width: 1px !default;
+$Theme-Input-border: $Theme-Input-border-width $Theme-Input-border-style $Theme-Input-border-color !default;
+
+$Theme-Input-color: $Theme-Color-NeutralPrimary !default;
+$Theme-Input-color--disabled: $Theme-Color-NeutralSecondaryAlt !default;
+
+$Theme-Input-min-height: 32px !default;
+
+// --- label ------------------------------------------------------------------
+
+// $Theme-label-font-family: $Theme-font-family !default;
+$Theme-label-font-size: $Theme-Font-Size-Medium - 1 !default;
+$Theme-label-font-style: $Theme-Font-Style-Normal !default;
+$Theme-label-font-weight: $Theme-Font-Weight-Regular !default;
+// $Theme-label-font: $Theme-label-font-style $Theme-label-font-weight $Theme-label-font-size $Theme-label-font-family !default;
+
+// --- ::placeholder ----------------------------------------------------------
+
+$Theme--placeholder-color: $Theme-Color-ForegroundColor !default;
+$Theme--placeholder-font-size: $Theme-Font-Size-Medium - 1 !default;
+$Theme--placeholder-font-style: $Theme-Font-Style-Italic !default;
+$Theme--placeholder-font-weight: $Theme-Font-Weight-Regular !default;
+$Theme--placeholder-opacity: 0.5 !default;
+
+// ----------------------------------------------------------------------------

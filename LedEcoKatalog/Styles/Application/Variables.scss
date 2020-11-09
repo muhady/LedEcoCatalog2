@@ -1,0 +1,21 @@
+﻿// ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+@import '../_core/Variables';
+
+$Theme-font-family: "Champ";
+
+$Theme-Font-Weights: $Theme-Font-Weight-Regular $Theme-Font-Weight-Bold;
+
+$Theme-Font-Size: 16px;
+
+$Theme-Font-Path: '/fonts/';
+// $Theme-Font-Name-Format: '{family}_{weight}{style}' !default;
+$Theme-Font-Extensions: ttf;
+
+// ----------------------------------------------------------------------------
+
+$AppPageWidth: 800px;
+
+// ----------------------------------------------------------------------------

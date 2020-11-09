@@ -1,0 +1,76 @@
+﻿// ----------------------------------------------------------------------------
+// Fonts
+// ----------------------------------------------------------------------------
+
+@import '../_functions/strings';
+
+@mixin font-face($family, $weight: null, $style: null, $path: null, $extensions: eot woff2 woff ttf svg)
+{
+  $src: null;
+  $iesrc: null;
+
+  @each $extension in $extensions
+  {
+    $suffix: '';
+    $format: $extension;
+
+    @if $extension == 'eot'
+    {
+      $iesrc: url(quote($path + '.' + $extension + $suffix));
+      $format: embedded-opentype;
+      $suffix: '?iefix'
+    }
+    @elseif $extension == 'svg'
+    {
+      $suffix: '#' + str-replace($family, ' ', '')
+    }
+    @elseif $extension == 'ttf'
+    {
+      $format: 'truetype';
+    }
+    @elseif $extension == 'otf'
+    {
+      $format: 'opentype';
+    }
+
+    $src: append($src, url(quote($path + '.' + $extension + $suffix)) format(quote($format)), comma);
+  }
+
+  @font-face
+  {
+    font-family: quote($family);
+    font-style: $style;
+    font-weight: $weight;
+
+    @if $iesrc
+    {
+      src: $iesrc;
+    }
+
+    src: $src;
+  }
+}
+
+@mixin font-faces($family, $weights: null, $styles: null, $path: null, $name-format: null, $extensions: eot woff2 woff ttf svg)
+{
+  $path: if($path, $path, $family);
+
+  $f: str-replace($family, ' ', '_');
+  $n: $f;
+
+  @each $weight in $weights
+  {
+    @each $style in $styles
+    {
+      @if $name-format
+      {
+        $s: if($style == 'italic', 'i', if($style == 'oblique', 'o', ''));
+        $n: str-replace(str-replace(str-replace($name-format, '{family}', $f), '{weight}', $weight), '{style}', $s);
+      }
+
+      @include font-face($family, $weight, $style, $path + $n, $extensions);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------

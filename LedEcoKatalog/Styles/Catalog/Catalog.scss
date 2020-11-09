@@ -1,0 +1,387 @@
+﻿// ----------------------------------------------------------------------------
+// Layout
+// ----------------------------------------------------------------------------
+
+@import 'Variables';
+
+// --- Catalog ----------------------------------------------------------------
+
+.Catalog
+{
+  margin: 0 auto;
+  width: $Page-width;
+}
+
+// --- Page -------------------------------------------------------------------
+
+.CatalogPage
+{
+  background-color: #fff;
+  box-shadow: $Page-box-shadow;
+  min-height: $Page-heigth;
+  overflow: hidden;
+  margin: $Theme-Grid-Gutter-Width 0;
+  page-break-before: always;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: $Page-padding;
+}
+
+.CoverImage
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-height: $Page-heigth;
+}
+
+// --- Cover ------------------------------------------------------------------
+
+.CoverName
+{
+  font-size: 50pt;
+  position: absolute;
+  right: 1.5cm;
+  top: 50%;
+}
+
+.CoverYear
+{
+  font-size: 70pt;
+  position: absolute;
+  right: 1.5cm;
+  bottom: 1cm;
+}
+
+.CoverPrice
+{
+  font-size: 8pt;
+  position: absolute;
+  left: 1.5cm;
+  bottom: 1cm;
+}
+
+.CatFosali.FrontCover
+{
+  color: white;
+}
+
+// --- Content ------------------------------------------------------------------
+
+.Content
+{
+  padding: $Page-padding;
+}
+
+.ContentTitle
+{
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: .5rem;
+  // margin-top: 0;
+}
+
+.ContentTable
+{
+  font-size: 12pt;
+  font-weight: bold;
+  margin-top: 2cm;
+  width: 100%;
+}
+
+.ContentName
+{
+  width: 95%;
+}
+
+.ContentPage
+{
+  text-align: right;
+  width: 5%;
+}
+
+// --- Legend -----------------------------------------------------------------
+
+.Legend
+{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: $Page-padding;
+}
+
+.LegendHeader
+{
+  align-items: baseline;
+  display: flex;
+}
+
+.LegendTitle
+{
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: .5rem;
+  // margin-bottom: 0;
+  // margin-top: 0;
+}
+
+.LegendDescription
+{
+  padding-left: $Page-padding-left;
+}
+
+.LegendItems
+{
+  // margin-top: 0;
+  // margin-left: $left-margin;
+  // margin-right: $right-margin;
+  // border: $border;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.LegendItem
+{
+  width: 50%;
+  display: flex;
+  // border: $border;
+  margin-top: 3px;
+}
+
+.LegendIcon
+{
+  width: 12%;
+  //border: $border;
+  .Image
+  {
+    object-fit: scale-down;
+    max-width: 100%;
+    border: 1px solid #666666;
+    border-radius: 5px;
+  }
+}
+
+.LegendText
+{
+  width: 88%;
+  //border: $border;
+  display: flex;
+  align-items: baseline;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 8pt;
+
+  .Caption
+  {
+    font-weight: bold;
+    display: contents;
+  }
+}
+
+.LegendContent
+{
+  margin-top: auto;
+}
+
+// --- Page -------------------------------------------------------------------
+
+.PageBanner
+{
+  margin-bottom: 3px;
+  margin-top: -$Page-padding-top;
+  margin-left: -$Page-padding-left;
+  // width: 100%;
+  width: $Page-width;
+}
+
+.PageTitle
+{
+  border-bottom: 3px solid #666666;
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+.PageText
+{
+  font-size: 8pt;
+  margin-top: 2mm;
+}
+
+.PageLegend
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5mm;
+
+  .PART-Item
+  {
+    width: 51px;
+    height: 31px;
+    position: relative;
+    text-align: center;
+    margin: 2px;
+
+    .Image
+    {
+      max-width: 100%;
+      object-fit: scale-down;
+      border: 1px solid #666666;
+      border-radius: 5px;
+    }
+
+    .Text
+    {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      font-size: 8pt;
+      font-weight: bold;
+      white-space: nowrap;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.PageProducts
+{
+  margin-top: 5mm;
+
+  .PART-Table
+  {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    line-height: 1.5em;
+    text-align: left;
+    white-space: nowrap;
+
+    tr
+    {
+      line-height: 1.5em;
+    }
+
+    th
+    {
+      border-bottom: 3px solid silver;
+      font-weight: bold;
+    }
+
+    .PART-Cell-Code
+    {
+      width: 22%;
+    }
+
+    .PART-Cell-Name
+    {
+      width: 35%;
+    }
+
+    .PART-Cell-Version
+    {
+      width: 25%;
+    }
+
+    .PART-Cell-Price
+    {
+      text-align: right;
+      width: 10%;
+    }
+  }
+}
+
+.PageImages
+{
+  display: flex;
+  height: 5cm;
+  margin-top: 10mm;
+
+  .PageImage
+  {
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .Image
+    {
+      max-width: 100%;
+      max-height: 100%
+    }
+  }
+}
+
+.PageAccessories
+{
+  font-size: 8pt;
+  margin-top: auto;
+
+  .PART-Title
+  {
+    border-bottom: 2px solid #666666;
+    font-weight: bold;
+    margin-bottom: 2mm;
+  }
+
+  .PART-Table
+  {
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+
+    .PART-Cell-Image
+    {
+      width: 10%;
+    }
+
+    .PART-Cell-Code
+    {
+      width: 25%;
+    }
+
+    .PART-Cell-Name
+    {
+      width: 55%;
+    }
+
+    .PART-Cell-Price
+    {
+      text-align: right;
+      width: 10%;
+    }
+
+    .PART-Cell-Image,
+    .PART-Cell-Description,
+    .PART-Cell-Price
+    {
+      border-bottom: 1px solid silver;
+    }
+  }
+}
+
+.PageNumber
+{
+  font-size: 8pt;
+  position: absolute;
+  bottom: 5mm;
+  right: $Page-padding-right;
+}
+
+// ----------------------------------------------------------------------------
+
+@media print
+{
+  .CatalogPage
+  {
+    box-shadow: 0;
+    margin: 0;
+  }
+}
+
+// ----------------------------------------------------------------------------

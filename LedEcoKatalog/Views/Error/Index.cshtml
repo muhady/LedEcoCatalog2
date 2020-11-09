@@ -1,0 +1,45 @@
+﻿@model ErrorModel
+@{
+  var title = Model.Title ?? "Chyba";
+  ViewData["Title"] = title;
+}
+<div class="AppView ErrorView">
+
+  <div class="PART-Title">@title</div>
+
+  <br />
+
+  <div class="PART-Message">@Model.Message</div>
+
+  <br />
+
+  @if (!string.IsNullOrEmpty(Model.RequestId))
+  {
+    <div>ID požiadavky: @Model.RequestId</div>
+  }
+
+  @if (!string.IsNullOrEmpty(Model.Path))
+  {
+    <div>Cesta: @Model.Path</div>
+  }
+
+  <div>Stavový kód: @Model.StatusCode</div>
+
+  <br />
+
+  @if (!string.IsNullOrEmpty(Model.Details))
+  {
+    <div class="PART-Details">
+
+      <div class="PART-Title">
+        Výnimka
+      </div>
+
+      <div class="PART-Content">
+        @Model.Details
+      </div>
+
+    </div>
+  }
+
+</div>

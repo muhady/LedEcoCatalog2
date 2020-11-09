@@ -1,0 +1,44 @@
+﻿// ----------------------------------------------------------------------------
+// Controls
+// ----------------------------------------------------------------------------
+
+@import 'variables';
+
+.FormLabel .Required
+{
+  color: $Theme-Color-Error;
+}
+
+.FormControl
+{
+  background: $Theme-Input-background;
+  border: $Theme-Input-border;
+  color: $Theme-Input-color;
+  // line-height: $Theme-Input-min-height;
+  min-height: $Theme-Input-min-height;
+  padding: 0 8px;
+}
+
+[class^="col-span-"],
+[class*=" col-span-"]
+{
+  .FormControl
+  {
+    margin-bottom: $Theme-Grid-Gutter-Width / 2;
+    width: 100%;
+
+    + .field-validation-error
+    {
+      display: block;
+      margin-top: $Theme-Grid-Gutter-Width / -2;
+      margin-bottom: $Theme-Grid-Gutter-Width / 2;
+    }
+  }
+}
+
+.field-validation-error
+{
+  color: $Theme-Color-Error;
+}
+
+// ----------------------------------------------------------------------------

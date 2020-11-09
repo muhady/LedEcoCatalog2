@@ -1,0 +1,47 @@
+﻿
+---
+
+** Common parameters
+**
+** -Context <String>		The DbContext class to use. Class name only or fully qualified with namespaces. If this parameter is omitted, EF Core finds the context class. If there are multiple context classes, this parameter is required.
+** -Project <String>		The target project. If this parameter is omitted, the Default project for Package Manager Console is used as the target project.
+** -StartupProject <String>	The startup project. If this parameter is omitted, the Startup project in Solution properties is used as the target project.
+** -Verbose					Show verbose output.
+
+---
+
+** Scaffold-DbContext [-Connection] <String> [-Provider] <String> [-OutputDir <String>] [-ContextDir <String>] [-Context <String>] [-Schemas <String[]>] [-Tables <String[]>] [-DataAnnotations] [-UseDatabaseNames] [-Force] [-Project <String>] [-StartupProject <String>] [<CommonParameters>]
+**
+** -Connection <String>		The connection string to the database. For ASP.NET Core 2.x projects, the value can be name=<name of connection string>. In that case the name comes from the configuration sources that are set up for the project. This is a positional parameter and is required.
+** -Provider <String>		The provider to use. Typically this is the name of the NuGet package, for example: Microsoft.EntityFrameworkCore.SqlServer. This is a positional parameter and is required.
+** -OutputDir <String>		The directory to put files in. Paths are relative to the project directory.
+** -ContextDir <String>		The directory to put the DbContext file in. Paths are relative to the project directory.
+** -Context <String>		The name of the DbContext class to generate.
+** -Schemas <String[]>		The schemas of tables to generate entity types for. If this parameter is omitted, all schemas are included.
+** -Tables <String[]>		The tables to generate entity types for. If this parameter is omitted, all tables are included.
+** -DataAnnotations			Use attributes to configure the model (where possible). If this parameter is omitted, only the fluent API is used.
+** -UseDatabaseNames		Use table and column names exactly as they appear in the database. If this parameter is omitted, database names are changed to more closely conform to C# name style conventions.
+** -Force					Overwrite existing files.
+
+** Scaffold-DbContext -Connection "name=ServiceDbConnectionString" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Data\Scaffold\Entities" -ContextDir "Data\Scaffold\Context" -Context ServiceDbContext -DataAnnotations -Force -Project ProData.xConto.Data.Service
+Scaffold-DbContext -Connection "name=KatalogDbConnectionString" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Data\Scaffold\Entities" -ContextDir "Data\Scaffold\Context" -Context KatalogDbContext -DataAnnotations -Force
+Scaffold-DbContext -Connection "Server=.;Database=LEDeco_Katalog;Trusted_Connection=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Data\Scaffold\Entities" -ContextDir "Data\Scaffold\Context" -Context KatalogDbContext -DataAnnotations -Force
+
+---
+
+** Add-Migration [-Name] <String> [-OutputDir <String>] [-Context <String>] [-Project <String>] [-StartupProject <String>] [<CommonParameters>]
+**
+** -Name <String>			The name of the migration. This is a positional parameter and is required.
+** -OutputDir <String>		The directory (and sub-namespace) to use. Paths are relative to the target project directory. Defaults to "Migrations".
+
+Add-Migration -Name CreateSchema -OutputDir "Scaffold\Migrations" -Context ServiceDbContext -Project Project ProData.xConto.Data.Service
+
+---
+
+** Update-Database [[-Migration] <String>] [-Context <String>] [-Project <String>] [-StartupProject <String>] [<CommonParameters>]
+**
+** -Migration <String>		The target migration. Migrations may be identified by name or by ID. The number 0 is a special case that means before the first migration and causes all migrations to be reverted. If no migration is specified, the command defaults to the last migration.
+
+Update-Database -Migration CreateSchema -Project Project ProData.xConto.Data.Service
+
+---

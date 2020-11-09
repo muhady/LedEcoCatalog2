@@ -1,0 +1,30 @@
+{
+  "compileOnSave": true,
+  "compilerOptions":
+  {
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noEmitHelpers": true,
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "outDir": "./wwwroot/js",
+    // "outFile": "./wwwroot/js/app.js",
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "es2015"
+  },
+  "exclude":
+  [
+    "node_modules",
+    "wwwroot",
+    ".samples"
+  ],
+  "include":
+  [
+    "../(Binaware)/Binaware ASP.NET Core/Binaware.AspNetCore.Web.App/Scripts/binaweb",
+    // "../(Binaware)/Binaware ASP.NET Core/Binaware.AspNetCore.Web.App/Scripts/binaweb.signalr",
+    "./Scripts"
+  ]
+}

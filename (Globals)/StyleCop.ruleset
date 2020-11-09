@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="StyleCop Rule Set" Description="Custom StyleCop Rule Set" ToolsVersion="16.0">
+  <!--
+  <Include Path="..\(Binaware)\(Globals)\StyleCop.ruleset" Action="Default" />
+  -->
+
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.CSharp.SpecialRules">
+    <!-- SA0001:XmlCommentAnalysisDisabled : There is no need to generate an XML documentation for this assembly. -->
+    <Rule Id="SA0001" Action="None" />
+  </Rules>
+
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.CSharp.ReadabilityRules">
+    <!-- SA1101:PrefixLocalCallsWithThis : Unnecessary use of this makes the code less readable. -->
+    <Rule Id="SA1101" Action="None" />
+    <!-- SA1124:DoNotUseRegions : Moderate use of regions makes the code more readable. -->
+    <Rule Id="SA1124" Action="None" />
+  </Rules>
+
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.CSharp.DocumentationRules">
+    <!-- SA1600:ElementsMustBeDocumented : There is no need to document this assembly. -->
+    <Rule Id="SA1600" Action="None" />
+    <!-- SA1601:PartialElementsMustBeDocumented : There is no need to document this assembly. -->
+    <Rule Id="SA1601" Action="None" />
+    <!-- SA1602:EnumerationItemsMustBeDocumented : There is no need to document this assembly.
+    <Rule Id="SA1602" Action="None" /> -->
+  </Rules>
+</RuleSet>

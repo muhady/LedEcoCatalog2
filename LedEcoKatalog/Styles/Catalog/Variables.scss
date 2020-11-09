@@ -1,0 +1,28 @@
+﻿// ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+@import '../_core/Variables';
+
+$Theme-font-family: "Champ";
+
+$Theme-Font-Weights: $Theme-Font-Weight-Regular $Theme-Font-Weight-Bold;
+
+$Theme-Font-Path: '/fonts/';
+// $Theme-Font-Name-Format: '{family}_{weight}{style}' !default;
+$Theme-Font-Extensions: ttf;
+
+// ----------------------------------------------------------------------------
+
+$Page-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.45);
+$Page-heigth: 297mm;
+$Page-width: 210mm;
+
+$Page-padding-left: 8mm;
+$Page-padding-right: 8mm;
+$Page-padding-top: 10mm;
+$Page-padding-bottom: 10mm;
+
+$Page-padding: $Page-padding-top $Page-padding-right $Page-padding-bottom $Page-padding-left;
+
+// ----------------------------------------------------------------------------

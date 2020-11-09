@@ -1,0 +1,32 @@
+[
+  {
+    "outputFileName": "wwwroot/js/Application.min.js",
+    "inputFiles":
+    [
+      "wwwroot/js/©.js",
+      "wwwroot/js/Application.js"
+    ],
+    "minify":
+    {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "includeInProject": false,
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/Catalog.min.js",
+    "inputFiles":
+    [
+      "wwwroot/js/©.js",
+      "wwwroot/js/Catalog.js"
+    ],
+    "minify":
+    {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "includeInProject": false,
+    "sourceMap": false
+  }
+]
