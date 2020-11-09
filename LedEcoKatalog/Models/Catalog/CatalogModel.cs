@@ -89,26 +89,17 @@ namespace LedEcoKatalog.Models
       var visual = Layout;
       var nameOfCatalog = NameOfCatalog;
 
-      /*
-      InitialPages = int.Parse(_configuration[visual + ":InitialPages"]);
-      EndPages = int.Parse(_configuration[visual + ":FinalPages"]);
-      */
       if (Settings.CatalogSettings.TryGetValue(visual, out CatalogSettings catalogSettings))
       {
         InitialPages = catalogSettings.InitialPages;
         EndPages = catalogSettings.FinalPages;
       }
 
-      // LegendContent = System.IO.File.ReadAllText(@"wwwroot\legend\" + visual + @"\" + language + @"\legend.html");
       LegendContent = ResourceHelper.GetLegend(visual, language);
 
-      // DisclaimerContent = System.IO.File.ReadAllText(@"wwwroot\disclaimer\" + visual + @"\" + language + @"\disclaimer.html");
       DisclaimerContent = ResourceHelper.GetDisclaimer(visual, language);
 
-      // FosaliLevels = _configuration.GetSection("Layout_Fosali").Get<string[]>();
       FosaliLevels = Settings.FosaliLayouts.Select(i => i.ToString()).ToArray();
-
-      //// string priceleveltext;
 
       if (priceLevel == -1)
       {
@@ -123,11 +114,9 @@ namespace LedEcoKatalog.Models
           .FromSqlRaw($"catalogcontent {scope}, {language}")
           .ToListAsync();
 
-      // var catalogname = "";
       if (nameOfCatalog == null)
       {
         CatalogName = Content.OrderBy(e => e.Page).First().CategoryName;
-        //// catalogname = DataContext.Hierarchy.First(e => e.Idlevel == int.Parse(scope)).Názov;
       }
       else
       {
@@ -173,10 +162,6 @@ namespace LedEcoKatalog.Models
         language = Settings.DefaultCatalogLanguage;
       }
 
-      // var catalogLanguage = Settings.GetCatalogLanguage(language);
-      // ContentTitle = catalogLanguage?.ContentTitle;
-      // LegendTitle = catalogLanguage?.LegendTitle;
-      // LegendDescription = catalogLanguage?.LegendDescription;
       CatalogLanguage = Settings.GetCatalogLanguage(language);
     }
 

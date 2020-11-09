@@ -9,7 +9,7 @@
   {
     var className = i == 0 ? "FrontCover" : "FrontMatter";
     <div class="CatalogPage @className">
-      <img class="CoverImage" src="~/images/coverpages/frontpage/@Html.DisplayFor(modelItem => Model.Layout)/@Html.DisplayFor(modelItem => Model.Language)-@Html.DisplayFor(modelItem => Model.Layout)-predna-obalka-@(i).png" />
+      <img class="CoverImage" src="~/images/coverpages/frontpage/@Html.DisplayFor(modelItem => Model.Layout)/@Html.DisplayFor(modelItem => Model.Language)-@Html.DisplayFor(modelItem => Model.Layout)-predna-obalka-@(i).jpg" />
       @if (i == 0)
       {
         <div class="CoverName">@Model.CatalogName</div>
@@ -26,8 +26,8 @@
         @foreach (var content in Model.Content)
         {
           <tr>
-            <td class="ContentName">@Html.DisplayFor(modelItem => content.Name01)</td>
-            <td class="ContentPage">@Html.DisplayFor(modelItem => content.Page)</td>
+            <td class="ContentName">@content.Name01</td>
+            <td class="ContentPage">@content.Page</td>
           </tr>
         }
       </table>
@@ -90,7 +90,7 @@
       </div>
     }
     <div class="CatalogPage @className">
-      <img class="CoverImage" src="~/images/coverpages/lastpage/@Html.DisplayFor(modelItem => Model.Layout)/@Html.DisplayFor(modelItem => Model.Language)-@Html.DisplayFor(modelItem => Model.Layout)-zadna-obalka-@(i).png" />
+      <img class="CoverImage" src="~/images/coverpages/lastpage/@Model.Layout/@Model.Language-@Model.Layout-zadna-obalka-@(i).jpg" />
     </div>
   }
 

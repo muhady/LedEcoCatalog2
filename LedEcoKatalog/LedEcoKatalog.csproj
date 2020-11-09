@@ -1,67 +1,73 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <!-- Assembly -->
+	<!-- Assembly -->
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\(Globals)\LedEcoKatalog.snk</AssemblyOriginatorKeyFile>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\(Globals)\LedEcoKatalog.snk</AssemblyOriginatorKeyFile>
+		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+	</PropertyGroup>
 
-  <!-- References -->
+	<!-- References -->
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
-    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+		<PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
+	</ItemGroup>
 
-  <!-- Files -->
+	<!-- Files -->
 
-  <ItemGroup>
-    <Compile Remove="Data\Scaffold\**" />
-    <None Include="Data\Scaffold\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Data\Scaffold\**" />
+		<None Include="Data\Scaffold\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\css\application.css" />
-    <Content Remove="bundleconfig.json" />
-    <None Include="bundleconfig.json" />
-    <Content Remove="compilerconfig.json" />
-    <None Include="compilerconfig.json" />
-    <Content Remove="tsconfig.json" />
-    <None Include="tsconfig.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<_ContentIncludedByDefault Remove="wwwroot\css\application.css" />
+		<Content Remove="bundleconfig.json" />
+		<None Include="bundleconfig.json" />
+		<Content Remove="compilerconfig.json" />
+		<None Include="compilerconfig.json" />
+		<!--
+		<Content Remove="tsconfig.json" />
+		-->
+		<None Include="tsconfig.json" />
+	</ItemGroup>
 
-  <!-- StyleCop -->
+	<!-- StyleCop -->
 
-  <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <!--
+	<ItemGroup>
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<!--
     <AdditionalFiles Include="..\..\(Globals)\StyleCop.json" Link="Properties\(Binaware)\(Globals)\StyleCop.json" />
     <None Include="..\..\(Globals)\StyleCop.ruleset" Link="Properties\(Binaware)\(Globals)\StyleCop.ruleset" />
     -->
-    <AdditionalFiles Include="..\(Globals)\StyleCop.json" Link="Properties\(Globals)\StyleCop.json" />
-    <!--
+		<AdditionalFiles Include="..\(Globals)\StyleCop.json" Link="Properties\(Globals)\StyleCop.json" />
+		<!--
     -->
-    <None Include="..\(Globals)\StyleCop.ruleset" Link="Properties\(Globals)\StyleCop.ruleset" />
-  </ItemGroup>
+		<None Include="..\(Globals)\StyleCop.ruleset" Link="Properties\(Globals)\StyleCop.ruleset" />
+	</ItemGroup>
 
-  <PropertyGroup>
-    <CodeAnalysisRuleSet>..\(Globals)\StyleCop.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+	<ItemGroup>
+		<None Include="Resources\**" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
 
-  <!-- End -->
+	<PropertyGroup>
+		<CodeAnalysisRuleSet>..\(Globals)\StyleCop.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+
+	<!-- End -->
 
 </Project>
