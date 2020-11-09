@@ -1,37 +1,30 @@
 ﻿@model CatalogList
 
-@if (Model.Sec1.PictureImage != null)
-{
-  <div class="CatalogPage">
-    <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(Model.Sec1.PictureImage)}")" />
-  </div>
-}
-
 <div class="CatalogPage BodyMatter">
 
-  <div class="PageSection">
+  <div class="PageSection PageHeader">
 
     @if (Model.Sec1.BannerImage != null)
     {
-      <img class="PageBanner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Sec1.BannerImage))" />
+      <img class="PART-Banner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Sec1.BannerImage))" />
     }
 
-    <div class="PageTitle section1category">@Model.Sec1.CategoryName</div>
+    <div class="PART-Title section1category">@Model.Sec1.CategoryName</div>
 
-    <div class="PageText section1text">@Model.Sec1.KratkyPopisKategorie</div>
+    <div class="PART-Text section1text">@Model.Sec1.KratkyPopisKategorie</div>
 
     @if (Model.Sec1.StrText9 != null)
     {
-      <div class="PageText section1text">@Model.Sec1.StrText9</div>
+      <div class="PART-Text section1text">@Model.Sec1.StrText9</div>
     }
     else
     {
-      <div class="PageText section1text">@Model.Sec1.PopisProduktuParent</div>
+      <div class="PART-Text section1text">@Model.Sec1.PopisProduktuParent</div>
     }
 
     @if (Model.Sec1.StrText10 != null)
     {
-      <div class="PageText section1text">@Model.Sec1.StrText10</div>
+      <div class="PART-Text section1text">@Model.Sec1.StrText10</div>
     }
 
     @*
@@ -45,10 +38,10 @@
 
   </div>
 
-  @if (Model.Section4.Count() > 0)
+  @if (Model.Legends.Count() > 0)
   {
     <div class="PageSection PageLegend section421">
-      @foreach (var sec4 in Model.Section4.Where(sec4 => (!sec4.Val.Contains("::"))))
+      @foreach (var sec4 in Model.Legends.Where(sec4 => (!sec4.Val.Contains("::"))))
       {
         <div class="PART-Item">
           <img class="Image" src="~/images/parameters/@sec4.StrExternalID" onError='ImgErrorVideo(this);' />
@@ -59,7 +52,7 @@
   }
 
   <div class="PageSection PageProducts section2">
-    <table class="PART-Table">
+    <table class="PART-Table">                            ``
       <tr>
         <th class="PART-Cell-Code">@Model.CatalogLanguage.ProductCode</th>
         <th class="PART-Cell-Name">@Model.CatalogLanguage.ProductName</th>
@@ -69,32 +62,32 @@
           <th class="PART-Cell-Price">@Model.CatalogLanguage.ProductPrice</th>
         }
       </tr>
-      @foreach (var sec2 in Model.Sec2)
+      @foreach (var product in Model.Products)
       {
         <tr>
-          <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + sec2.Kód + ">") target="_blank">@sec2.Kód</a></td>
-          <td class="PART-Cell-Name">@sec2.Názov</td>
-          <td class="PART-Cell-Version">@sec2.CctK</td>
+          <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + product.Kód + ">") target="_blank">@product.Kód</a></td>
+          <td class="PART-Cell-Name">@product.Názov</td>
+          <td class="PART-Cell-Version">@product.CctK</td>
           @if (Model.PriceLevel != -1)
           {
-            var price = sec2.NumValue;
+            var price = product.NumValue;
             <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
           }
         </tr>
       }
     </table>
-    <div class="multiparamocontainer">
-      @if (Model.Section4.Count() > 0)
-      {
-        foreach (var sec4 in Model.Section4.Where(sec4 => sec4.Val.Contains("::")))
+    @if (Model.Legends.Count() > 0)
+    {
+      <div class="PART-Parameters">
+        @foreach (var sec4 in Model.Legends.Where(sec4 => sec4.Val.Contains("::")))
         {
-          <div class="mutiparamdisplay">
-            <span class="multiparamlabel">@sec4.StrPropertyNameForCust: &nbsp</span>
-            <span class="multiparam">@sec4.Val.Replace("::", ", ")</span>
+          <div class="PART-Item">
+            <span class="PART-Label">@sec4.StrPropertyNameForCust: &nbsp</span>
+            <span>@sec4.Val.Replace("::", ", ")</span>
           </div>
         }
-      }
-    </div>
+      </div>
+    }
   </div>
 
   <div class="PageSection PageImages section3">
@@ -126,7 +119,7 @@
     }
   </div>
 
-  @if (Model.Section3.Count() > 0)
+  @if (Model.Accessories.Count() > 0)
   {
     <div class="PageSection PageAccessories section4">
       <div class="PART-Title section41Header">
@@ -134,13 +127,13 @@
       </div>
 
       <table class="PART-Table">
-        @foreach (var sec3 in Model.Section3)
+        @foreach (var sec3 in Model.Accessories)
         {
           <tr>
             <td rowspan="2" class="PART-Cell-Image">
               @if (sec3.Img != null)
               {
-                <img src="@($"data:image/gif;base64,{Convert.ToBase64String(sec3.Img)}")" />
+                <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(sec3.Img)}")" />
               }
             </td>
             <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + sec3.Kod + ">") target="_blank">@sec3.Kod</a></td>
