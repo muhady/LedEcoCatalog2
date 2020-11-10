@@ -14,7 +14,11 @@ namespace LedEcoKatalog.Models
   {
     #region Public Properties
 
-    public PageInfo PageInfo { get; set; }
+    public CatalogLanguage CatalogLanguage { get; set; }
+
+    public Page Page { get; set; }
+
+    public List<LegendItem> LegendItems { get; set; }
 
     public List<Product> Products { get; set; }
 
@@ -24,15 +28,9 @@ namespace LedEcoKatalog.Models
 
     public List<Accessory> Accessories { get; set; }
 
-    public List<LegendItem> LegendItems { get; set; }
-
-    public string Language { get; set; }
-
-    public int PriceLevel { get; set; }
-
-    public CatalogLanguage CatalogLanguage { get; set; }
-
     public string Style { get; set; }
+
+    public bool HasPrices { get; set; }
 
     #endregion
   }

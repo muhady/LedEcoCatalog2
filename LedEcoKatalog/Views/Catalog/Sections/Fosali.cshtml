@@ -5,28 +5,28 @@
   <div class="PageSection PageHeader">
 
     <div style="position: relative">
-      @if (Model.PageInfo.BannerImage != null)
+      @if (Model.Page.BannerImage != null)
       {
-        <img class="PART-Banner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.PageInfo.BannerImage))" />
+        <img class="PART-Banner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Page.BannerImage))" />
       }
 
-      <div class="PART-Title section1categoryFosali">@Model.PageInfo.CategoryName</div>
+      <div class="PART-Title section1categoryFosali">@Model.Page.CategoryName</div>
     </div>
 
-    <div class="PART-Text section1textFosali">@Model.PageInfo.KratkyPopisKategorie</div>
+    <div class="PART-Text section1textFosali">@Model.Page.KratkyPopisKategorie</div>
 
-    @if (Model.PageInfo.StrText9 != null)
+    @if (Model.Page.StrText9 != null)
     {
-      <div class="PART-Text section1textFosali">@Model.PageInfo.StrText9</div>
+      <div class="PART-Text section1textFosali">@Model.Page.StrText9</div>
     }
     else
     {
-      <div class="PART-Text section1textFosali">@Model.PageInfo.PopisProduktuParent</div>
+      <div class="PART-Text section1textFosali">@Model.Page.PopisProduktuParent</div>
     }
 
-    @if (Model.PageInfo.StrText10 != null)
+    @if (Model.Page.StrText10 != null)
     {
-      <div class="PART-Text section1textFosali">@Model.PageInfo.StrText10</div>
+      <div class="PART-Text section1textFosali">@Model.Page.StrText10</div>
     }
 
   </div>
@@ -80,7 +80,7 @@
             <th class="PART-Cell-Dimension">@Model.CatalogLanguage.ProductWidth</th>
             <th class="PART-Cell-Dimension">@Model.CatalogLanguage.ProductHeight</th>
             <th class="PART-Cell-Dimension">@Model.CatalogLanguage.ProductDiameter</th>
-            @if (Model.PriceLevel != -1)
+            @if (Model.HasPrices)
             {
               <th class="PART-Cell-Version" style="width: 10%;">@Model.CatalogLanguage.ProductPrice</th>
             }
@@ -88,13 +88,13 @@
           @foreach (var product in Model.Products)
           {
             <tr>
-              <td class="PART-Cell-Name"><a href=@("https://www.fosali.com/_/search?query=" + Model.PageInfo.CategoryName + "&scope=site&showTabs=false") target="_blank">@product.Názov</a></td>
+              <td class="PART-Cell-Name"><a href=@("https://www.fosali.com/_/search?query=" + Model.Page.CategoryName + "&scope=site&showTabs=false") target="_blank">@product.Názov</a></td>
               <td class="PART-Cell-Version">@Html.DisplayFor(modelItem => product.CctK)</td>
               <td class="PART-Cell-Dimension">@product.Dĺžka</td>
               <td class="PART-Cell-Dimension">@product.Šírka</td>
               <td class="PART-Cell-Dimension">@product.Výška</td>
               <td class="PART-Cell-Dimension">@product.StrText1</td>
-              @if (Model.PriceLevel != -1)
+              @if (Model.HasPrices)
               {
                 var price = product.NumValue;
                 <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
@@ -143,7 +143,7 @@
   </div>
 
   <span class="PageNumber">
-    <span>@Model.PageInfo.Number</span>
+    <span>@Model.Page.Number</span>
   </span>
 
 </div>

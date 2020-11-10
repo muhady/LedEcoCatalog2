@@ -53,7 +53,7 @@ namespace LedEcoKatalog.Data
 
     public virtual DbSet<LegendItem> LegendItems { get; set; }
 
-    public virtual DbSet<PageInfo> PageInfos { get; set; }
+    public virtual DbSet<Page> Pages { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
@@ -65,7 +65,7 @@ namespace LedEcoKatalog.Data
 
     #endregion
 
-    #region Public Methods
+    #region Public Methods (Stored Procedures)
 
     public IQueryable<ContentItem> GetContentItems(int scope, string language)
     {
@@ -77,9 +77,9 @@ namespace LedEcoKatalog.Data
       return LegendItems.FromSqlRaw($"catalogsection4 {scope}, {language}, {(isFosali ? 1 : 0)}");
     }
 
-    public IQueryable<PageInfo> GetPageInfos(int scope, string language)
+    public IQueryable<Page> GetPages(int scope, string language)
     {
-      return PageInfos.FromSqlRaw($"catalogsection1 {scope}, {language}");
+      return Pages.FromSqlRaw($"catalogsection1 {scope}, {language}");
     }
 
     public IQueryable<Product> GetProducts(int scope, string language, int priceLevel)
@@ -209,7 +209,12 @@ namespace LedEcoKatalog.Data
         entity.Property(e => e.Ordr).HasColumnType("numeric(38, 0)");
       });
 
-      modelBuilder.Entity<PageInfo>(entity =>
+      modelBuilder.Entity<LegendItem>(entity =>
+      {
+        entity.HasNoKey();
+      });
+
+      modelBuilder.Entity<Page>(entity =>
       {
         entity.HasNoKey();
         entity.Property(e => e.PathToCategory).IsUnicode(false);
@@ -237,11 +242,6 @@ namespace LedEcoKatalog.Data
       {
         entity.HasNoKey();
         entity.Property(e => e.Img).HasColumnType("image");
-      });
-
-      modelBuilder.Entity<LegendItem>(entity =>
-      {
-        entity.HasNoKey();
       });
     }
 

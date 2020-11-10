@@ -63,10 +63,10 @@
 
   @foreach (var page in Model.Pages)
   {
-    @if (page.PageInfo.PictureImage != null)
+    @if (page.Page.PictureImage != null)
     {
       <div class="CatalogPage">
-        <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(page.PageInfo.PictureImage)}")" />
+        <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(page.Page.PictureImage)}")" />
       </div>
     }
 

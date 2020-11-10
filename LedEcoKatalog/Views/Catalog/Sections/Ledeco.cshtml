@@ -4,27 +4,27 @@
 
   <div class="PageSection PageHeader">
 
-    @if (Model.PageInfo.BannerImage != null)
+    @if (Model.Page.BannerImage != null)
     {
-      <img class="PART-Banner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.PageInfo.BannerImage))" />
+      <img class="PART-Banner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Page.BannerImage))" />
     }
 
-    <div class="PART-Title section1category">@Model.PageInfo.CategoryName</div>
+    <div class="PART-Title section1category">@Model.Page.CategoryName</div>
 
-    <div class="PART-Text section1text">@Model.PageInfo.KratkyPopisKategorie</div>
+    <div class="PART-Text section1text">@Model.Page.KratkyPopisKategorie</div>
 
-    @if (Model.PageInfo.StrText9 != null)
+    @if (Model.Page.StrText9 != null)
     {
-      <div class="PART-Text section1text">@Model.PageInfo.StrText9</div>
+      <div class="PART-Text section1text">@Model.Page.StrText9</div>
     }
     else
     {
-      <div class="PART-Text section1text">@Model.PageInfo.PopisProduktuParent</div>
+      <div class="PART-Text section1text">@Model.Page.PopisProduktuParent</div>
     }
 
-    @if (Model.PageInfo.StrText10 != null)
+    @if (Model.Page.StrText10 != null)
     {
-      <div class="PART-Text section1text">@Model.PageInfo.StrText10</div>
+      <div class="PART-Text section1text">@Model.Page.StrText10</div>
     }
 
     @*
@@ -57,7 +57,7 @@
         <th class="PART-Cell-Code">@Model.CatalogLanguage.ProductCode</th>
         <th class="PART-Cell-Name">@Model.CatalogLanguage.ProductName</th>
         <th class="PART-Cell-Version">@Model.CatalogLanguage.ProductVersion</th>
-        @if (Model.PriceLevel != -1)
+        @if (Model.HasPrices)
         {
           <th class="PART-Cell-Price">@Model.CatalogLanguage.ProductPrice</th>
         }
@@ -68,7 +68,7 @@
           <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + product.Kód + ">") target="_blank">@product.Kód</a></td>
           <td class="PART-Cell-Name">@product.Názov</td>
           <td class="PART-Cell-Version">@product.CctK</td>
-          @if (Model.PriceLevel != -1)
+          @if (Model.HasPrices)
           {
             var price = product.NumValue;
             <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
@@ -138,7 +138,7 @@
             </td>
             <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + accessory.Kod + ">") target="_blank">@accessory.Kod</a></td>
             <td class="PART-Cell-Name">@accessory.Nazov</td>
-            @if (Model.PriceLevel != -1)
+            @if (Model.HasPrices)
             {
               var price = accessory.NumValue;
               <td rowspan="2" class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
@@ -153,7 +153,7 @@
   }
 
   <span class="PageNumber">
-    <span>@Model.PageInfo.Number</span>
+    <span>@Model.Page.Number</span>
   </span>
 
 </div>
