@@ -2,7 +2,7 @@
 
 <div class="CatalogPage BodyPage LedecoPage">
 
-  <div class="PageSection PageHeader">
+  <div class="PageSection HeaderSection">
 
     @if (Model.Page.BannerImage != null)
     {
@@ -11,7 +11,7 @@
 
   </div>
 
-  <div class="PageContent">
+  <div class="PageSection ContentSection">
 
     <div class="PageTitle">@Model.Page.CategoryName</div>
 
@@ -37,7 +37,7 @@
 
     @if (Model.LegendItems.Count > 0)
     {
-      <div class="PageSection PageLegend">
+      <div class="PageSection LegendSection">
         @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::"))))
         {
           <div class="PageLegendItem">
@@ -156,7 +156,7 @@
 
   </div>
 
-  <div class="PageFooter">
+  <div class="PageSection FooterSection">
     <span class="PageNumber">@Model.Page.Number</span>
   </div>
 

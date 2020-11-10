@@ -31,13 +31,18 @@ $Table-Cell-border-bottom: 1px solid silver;
   // padding: $Page-padding;
 }
 
-.PageHeader
+.PageSection
+{
+  position: relative;
+}
+
+.HeaderSection
 {
   flex-shrink: 0;
   min-height: $Page-padding-top;
 }
 
-.PageContent
+.ContentSection
 {
   display: flex;
   flex-direction: column;
@@ -45,18 +50,13 @@ $Table-Cell-border-bottom: 1px solid silver;
   padding: 0 $Page-padding-right 0 $Page-padding-left;
 }
 
-.PageFooter
+.FooterSection
 {
   align-items: center;
   display: flex;
   flex-shrink: 0;
   min-height: $Page-padding-bottom;
   padding: 0 $Page-padding-right 0 $Page-padding-left;
-}
-
-.PageSection
-{
-  position: relative;
 }
 
 .CoverImage
@@ -245,7 +245,7 @@ $Table-Cell-border-bottom: 1px solid silver;
   margin-top: 2mm;
 }
 
-.PageLegend
+.LegendSection
 {
   display: flex;
   flex-wrap: wrap;
@@ -384,7 +384,7 @@ $Table-Cell-border-bottom: 1px solid silver;
     border-bottom: 3px solid #666666;
   }
 
-  .PageLegend
+  .LegendSection
   {
     justify-content: center;
     margin-top: 5mm;
@@ -489,9 +489,24 @@ $Table-Cell-border-bottom: 1px solid silver;
     bottom: 8mm;
   }
 
-  .PageLegend
+  .LegendSection
   {
     margin-bottom: 5mm;
+  }
+
+  .ColumnsSection
+  {
+    display: flex;
+
+    .SectionColumn:first-child
+    {
+      width: 30%;
+    }
+
+    .SectionColumn:last-child
+    {
+      width: 70%;
+    }
   }
 
   .ImagesSection

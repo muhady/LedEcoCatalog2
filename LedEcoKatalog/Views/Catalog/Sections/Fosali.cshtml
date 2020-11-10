@@ -2,7 +2,7 @@
 
 <div class="CatalogPage BodyPage FosaliPage">
 
-  <div class="PageSection PageHeader">
+  <div class="PageSection HeaderSection">
 
     @if (Model.Page.BannerImage != null)
     {
@@ -13,7 +13,7 @@
 
   </div>
 
-  <div class="PageSection PageContent">
+  <div class="PageSection ContentSection">
 
     <div class="PageSection TextSection">
 
@@ -37,7 +37,7 @@
 
     @if (Model.LegendItems.Count > 0)
     {
-      <div class="PageSection PageLegend">
+      <div class="PageSection LegendSection">
         @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::") && (l.StrExternalID != "ID104.png"))))
         {
           <div class="PageLegendItem">
@@ -48,9 +48,9 @@
       </div>
     }
 
-    <div style="display:flex">
+    <div class="PageSection ColumnsSection">
 
-      <div style="width: 30%">
+      <div class="SectionColumn">
 
         <div class="PageSection ImagesSection">
           @foreach (var productPicture in Model.ProductPictures)
@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      <div style="width: 70%">
+      <div class="SectionColumn">
 
         <div class="PageSection ProductSection">
 
@@ -107,20 +107,6 @@
             }
           </table>
 
-          @*
-            @if (Model.Section4.Count > 0)
-            {
-              <div class="PART-Parameters">
-                @foreach (var sec4 in Model.Section4.Where(sec4 => sec4.Val.Contains("::")))
-                {
-                  <div class="PART-Item">
-                    <span class="PART-Label">@sec4.StrPropertyNameForCust: &nbsp</span>
-                    <span>@sec4.Val.Replace("::", ", ")</span>
-                  </div>
-                }
-              </div>
-            }
-          *@
         </div>
 
         @if (Model.Accessories.Count > 0)
@@ -150,7 +136,7 @@
 
   </div>
 
-  <div class="PageSection PageFooter">
+  <div class="PageSection FooterSection">
     <span class="PageNumber">@Model.Page.Number</span>
   </div>
 
