@@ -42,15 +42,11 @@ namespace LedEcoKatalog.Models
 
     public string LegendContent { get; set; }
 
+    public List<PageModel> Pages { get; set; }
+
     public int BackPageCount { get; set; }
 
-    public string DisclaimerContent { get; set; }
-
-    #endregion
-
-    #region Public Properties
-
-    public List<PageModel> Pages { get; set; }
+    public string Disclaimer { get; set; }
 
     public CatalogLanguage CatalogLanguage { get; set; }
 
@@ -72,17 +68,13 @@ namespace LedEcoKatalog.Models
         BackPageCount = catalogSettings.BackPageCount;
       }
 
-      LegendContent = ResourceHelper.GetLegend(layout, language);
-
-      DisclaimerContent = ResourceHelper.GetDisclaimer(layout, language);
-
       if (priceLevel == -1)
       {
         PriceLevelText = "Bez cien";
       }
       else
       {
-        PriceLevelText = DataContext.PriceLevel.First(e => e.IntIdpriceList == priceLevel).StrTextId.ToString();
+        PriceLevelText = DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevel)?.StrTextId?.ToString();
       }
 
       ContentItems = await DataContext.ContentItems
@@ -93,6 +85,22 @@ namespace LedEcoKatalog.Models
       {
         Name = ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName;
       }
+
+      var fosaliENproperties = 0;
+      if (layout == "Fosali")
+      {
+        fosaliENproperties = 1;
+      }
+      else
+      {
+        fosaliENproperties = 0;
+      }
+
+      LegendItems = await DataContext.LegendItem
+        .FromSqlRaw($"catalogsection4 {scope}, {language}, {fosaliENproperties}")
+        .ToListAsync();
+
+      LegendContent = ResourceHelper.GetLegend(layout, language);
 
       var pages = await DataContext.PageInfos
           .FromSqlRaw($"catalogsection1 {scope}, {language}")
@@ -112,20 +120,6 @@ namespace LedEcoKatalog.Models
 
       var accessories = await DataContext.Accessories
         .FromSqlRaw($"catalogsection3 {scope}, {language}, {priceLevel}")
-        .ToListAsync();
-
-      var fosaliENproperties = 0;
-      if (layout == "Fosali")
-      {
-        fosaliENproperties = 1;
-      }
-      else
-      {
-        fosaliENproperties = 0;
-      }
-
-      LegendItems = await DataContext.LegendItem
-        .FromSqlRaw($"catalogsection4 {scope}, {language},{fosaliENproperties} ")
         .ToListAsync();
 
       if (layout == "Fosali")
@@ -152,6 +146,8 @@ namespace LedEcoKatalog.Models
         Style = fosaliLevels.Contains(page.Level.ToString()) ? "Fosali" : "Ledeco",
       })
         .ToList();
+
+      Disclaimer = ResourceHelper.GetDisclaimer(layout, language);
     }
 
     #endregion
