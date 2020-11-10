@@ -68,9 +68,12 @@
   bottom: 1cm;
 }
 
-.CatFosali .FrontCover
+.FosaliCatalog
 {
-  color: white;
+  .FrontCover
+  {
+    color: white;
+  }
 }
 
 // --- Content ------------------------------------------------------------------
@@ -415,7 +418,7 @@
 
 // --- Fosali -----------------------------------------------------------------
 
-.PageFosali
+.FosaliPage
 {
   .PageHeader
   {

@@ -1,6 +1,6 @@
 ﻿@model PageModel
 
-<div class="CatalogPage BodyMatter">
+<div class="CatalogPage BodyPage FosaliPage">
 
   <div class="PageSection PageHeader">
 
@@ -74,15 +74,15 @@
 
         <table class="PART-Table">
           <tr>
-            <th class="PART-Cell-Name" style="width: 28%">@Model.CatalogLanguage.ProductName</th>
-            <th class="PART-Cell-Version" style="width: 38%">@Model.CatalogLanguage.ProductVersion</th>
-            <th class="PART-Cell-Dimension">@Model.CatalogLanguage.ProductLength</th>
-            <th class="PART-Cell-Dimension">@Model.CatalogLanguage.ProductWidth</th>
-            <th class="PART-Cell-Dimension">@Model.CatalogLanguage.ProductHeight</th>
-            <th class="PART-Cell-Dimension">@Model.CatalogLanguage.ProductDiameter</th>
+            <th class="PART-Cell-Name" style="width: 28%">@Model.Language.ProductName</th>
+            <th class="PART-Cell-Version" style="width: 38%">@Model.Language.ProductVersion</th>
+            <th class="PART-Cell-Dimension">@Model.Language.ProductLength</th>
+            <th class="PART-Cell-Dimension">@Model.Language.ProductWidth</th>
+            <th class="PART-Cell-Dimension">@Model.Language.ProductHeight</th>
+            <th class="PART-Cell-Dimension">@Model.Language.ProductDiameter</th>
             @if (Model.HasPrices)
             {
-              <th class="PART-Cell-Version" style="width: 10%;">@Model.CatalogLanguage.ProductPrice</th>
+              <th class="PART-Cell-Version" style="width: 10%;">@Model.Language.ProductPrice</th>
             }
           </tr>
           @foreach (var product in Model.Products)
@@ -97,7 +97,7 @@
               @if (Model.HasPrices)
               {
                 var price = product.NumValue;
-                <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
+                <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.Language.ProductPriceInfo)</td>
               }
             </tr>
           }
@@ -123,7 +123,7 @@
       {
         <div class="PageSection PageAccessories">
           <div class="PART-Title">
-            @Model.CatalogLanguage?.AccessoriesSectionTitle
+            @Model.Language?.AccessoriesSectionTitle
           </div>
 
           <table class="PART-Table">

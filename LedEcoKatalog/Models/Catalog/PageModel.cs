@@ -14,7 +14,9 @@ namespace LedEcoKatalog.Models
   {
     #region Public Properties
 
-    public CatalogLanguage CatalogLanguage { get; set; }
+    public CatalogLayout Layout { get; set; }
+
+    public CatalogLanguage Language { get; set; }
 
     public Page Page { get; set; }
 
@@ -28,7 +30,7 @@ namespace LedEcoKatalog.Models
 
     public List<Accessory> Accessories { get; set; }
 
-    public string Style { get; set; }
+    public bool IsFosali { get; set; }
 
     public bool HasPrices { get; set; }
 

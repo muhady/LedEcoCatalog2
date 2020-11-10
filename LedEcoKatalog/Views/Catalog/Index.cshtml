@@ -3,7 +3,7 @@
   ViewData["Title"] = Model.Name;
 }
 
-<div class="Catalog Cat@(Model.LayoutCode)">
+<div class="Catalog @(Model.LayoutCode)Catalog">
 
   @for (int i = 0; i < Model.Layout.FrontPageCount; i++)
   {
@@ -65,22 +65,20 @@
   {
     @if (page.Page.PictureImage != null)
     {
-      <div class="CatalogPage">
+      <div class="CatalogPage BodyPage">
         <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(page.Page.PictureImage)}")" />
       </div>
     }
 
-    <div class="Page@(page.Style)">
-      <partial name="Sections/@(page.Style)" model="page" />
-    </div>
+    <partial name="Sections/@(page.IsFosali ? "Fosali" : "Ledeco")" model="page" />
   }
 
   @for (int i = 0; i < Model.Layout.BackPageCount; i++)
   {
-    var className = i == Model.Layout.BackPageCount - 1 ? "BackCover" : "BackMatter";
+    var className = i == Model.Layout.BackPageCount - 1 ? "BackCover" : "BackPage";
     if (i == Model.Layout.BackPageCount - 1 && Model.PriceLevelId != -1)
     {
-      <div class="CatalogPage BackMatter IS-Disclaimer">
+      <div class="CatalogPage BackPage IS-Disclaimer">
         @Html.Raw(@Model.Disclaimer)
       </div>
     }

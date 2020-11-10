@@ -1,6 +1,6 @@
 ﻿@model PageModel
 
-<div class="CatalogPage BodyMatter">
+<div class="CatalogPage BodyPage LedecoPage">
 
   <div class="PageSection PageHeader">
 
@@ -54,12 +54,12 @@
   <div class="PageSection PageProducts">
     <table class="PART-Table">                            ``
       <tr>
-        <th class="PART-Cell-Code">@Model.CatalogLanguage.ProductCode</th>
-        <th class="PART-Cell-Name">@Model.CatalogLanguage.ProductName</th>
-        <th class="PART-Cell-Version">@Model.CatalogLanguage.ProductVersion</th>
+        <th class="PART-Cell-Code">@Model.Language.ProductCode</th>
+        <th class="PART-Cell-Name">@Model.Language.ProductName</th>
+        <th class="PART-Cell-Version">@Model.Language.ProductVersion</th>
         @if (Model.HasPrices)
         {
-          <th class="PART-Cell-Price">@Model.CatalogLanguage.ProductPrice</th>
+          <th class="PART-Cell-Price">@Model.Language.ProductPrice</th>
         }
       </tr>
       @foreach (var product in Model.Products)
@@ -71,7 +71,7 @@
           @if (Model.HasPrices)
           {
             var price = product.NumValue;
-            <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
+            <td class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.Language.ProductPriceInfo)</td>
           }
         </tr>
       }
@@ -123,7 +123,7 @@
   {
     <div class="PageSection PageAccessories">
       <div class="PART-Title">
-        @Model.CatalogLanguage?.AccessoriesSectionTitle
+        @Model.Language.AccessoriesSectionTitle
       </div>
 
       <table class="PART-Table">
@@ -141,7 +141,7 @@
             @if (Model.HasPrices)
             {
               var price = accessory.NumValue;
-              <td rowspan="2" class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.CatalogLanguage.ProductPriceInfo)</td>
+              <td rowspan="2" class="PART-Cell-Price">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.Language.ProductPriceInfo)</td>
             }
           </tr>
           <tr class="PART-Row-Description">

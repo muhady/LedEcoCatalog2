@@ -85,7 +85,8 @@ namespace LedEcoKatalog.Models
 
       Pages = pages.Select(page => new PageModel
       {
-        CatalogLanguage = Language,
+        Layout = Layout,
+        Language = Language,
 
         Page = page,
         Products = products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
@@ -94,7 +95,7 @@ namespace LedEcoKatalog.Models
         Accessories = accessories.Where(e => e.Page == page.Number).ToList(),
         LegendItems = LegendItems.Where(e => e.Page == page.Number).ToList(),
 
-        Style = Settings.FosaliLayouts.Contains(page.Level) ? "Fosali" : "Ledeco",
+        IsFosali = Settings.FosaliLayouts.Contains(page.Level),
         HasPrices = PriceLevelId != -1,
       })
         .ToList();
