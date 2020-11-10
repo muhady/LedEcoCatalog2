@@ -1,32 +1,32 @@
-﻿@model CatalogList
+﻿@model PageModel
 
 <div class="CatalogPage BodyMatter">
 
   <div class="PageSection PageHeader">
 
     <div style="position: relative">
-      @if (Model.Sec1.BannerImage != null)
+      @if (Model.PageInfo.BannerImage != null)
       {
-        <img class="PART-Banner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Sec1.BannerImage))" />
+        <img class="PART-Banner" src="@string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.PageInfo.BannerImage))" />
       }
 
-      <div class="PART-Title section1categoryFosali">@Model.Sec1.CategoryName</div>
+      <div class="PART-Title section1categoryFosali">@Model.PageInfo.CategoryName</div>
     </div>
 
-    <div class="PART-Text section1textFosali">@Model.Sec1.KratkyPopisKategorie</div>
+    <div class="PART-Text section1textFosali">@Model.PageInfo.KratkyPopisKategorie</div>
 
-    @if (Model.Sec1.StrText9 != null)
+    @if (Model.PageInfo.StrText9 != null)
     {
-      <div class="PART-Text section1textFosali">@Model.Sec1.StrText9</div>
+      <div class="PART-Text section1textFosali">@Model.PageInfo.StrText9</div>
     }
     else
     {
-      <div class="PART-Text section1textFosali">@Model.Sec1.PopisProduktuParent</div>
+      <div class="PART-Text section1textFosali">@Model.PageInfo.PopisProduktuParent</div>
     }
 
-    @if (Model.Sec1.StrText10 != null)
+    @if (Model.PageInfo.StrText10 != null)
     {
-      <div class="PART-Text section1textFosali">@Model.Sec1.StrText10</div>
+      <div class="PART-Text section1textFosali">@Model.PageInfo.StrText10</div>
     }
 
   </div>
@@ -88,7 +88,7 @@
           @foreach (var product in Model.Products)
           {
             <tr>
-              <td class="PART-Cell-Name"><a href=@("https://www.fosali.com/_/search?query=" + Model.Sec1.CategoryName + "&scope=site&showTabs=false") target="_blank">@product.Názov</a></td>
+              <td class="PART-Cell-Name"><a href=@("https://www.fosali.com/_/search?query=" + Model.PageInfo.CategoryName + "&scope=site&showTabs=false") target="_blank">@product.Názov</a></td>
               <td class="PART-Cell-Version">@Html.DisplayFor(modelItem => product.CctK)</td>
               <td class="PART-Cell-Dimension">@product.Dĺžka</td>
               <td class="PART-Cell-Dimension">@product.Šírka</td>
@@ -143,7 +143,7 @@
   </div>
 
   <span class="PageNumber">
-    <span>@Model.Sec1.Page</span>
+    <span>@Model.PageInfo.Number</span>
   </span>
 
 </div>

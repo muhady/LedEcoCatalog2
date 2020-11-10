@@ -44,7 +44,7 @@ namespace LedEcoKatalog.Models
 
     public string LegendContent { get; set; }
 
-    public List<CatalogSection1t> Sec1 { get; set; }
+    public List<PageInfo> PageInfos { get; set; }
 
     public List<Product> Products { get; set; }
 
@@ -112,7 +112,7 @@ namespace LedEcoKatalog.Models
         CatalogName = nameOfCatalog;
       }
 
-      Sec1 = await DataContext.CatalogSection1t
+      PageInfos = await DataContext.PageInfos
           .FromSqlRaw($"catalogsection1 {scope}, {language}")
           .ToListAsync();
 

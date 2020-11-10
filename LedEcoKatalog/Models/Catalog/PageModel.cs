@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-// <copyright file="CatalogList.cs" company="Binaware">
+// <copyright file="PageModel.cs" company="Binaware">
 //   Copyright (c) Binaware s.r.o. All rights reserved.
 // </copyright>
 //----------------------------------------------------------------------------
@@ -10,11 +10,11 @@ namespace LedEcoKatalog.Models
 
   using LedEcoKatalog.Data;
 
-  public class CatalogList
+  public class PageModel
   {
     #region Public Properties
 
-    public CatalogSection1t Sec1 { get; set; }
+    public PageInfo PageInfo { get; set; }
 
     public List<Product> Products { get; set; }
 

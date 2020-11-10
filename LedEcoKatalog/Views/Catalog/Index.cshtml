@@ -61,26 +61,26 @@
     </div>
   </div>
 
-  @foreach (var sec1 in Model.Sec1)
+  @foreach (var page in Model.PageInfos)
   {
-    CatalogList l = new CatalogList();
-    l.Sec1 = sec1;
-    l.Products = Model.Products.Where(sec2tabl => sec2tabl.Page == sec1.Page).OrderBy(sec2tabl => sec2tabl.Poradie).ToList();
-    l.ProductPictures = Model.ProductPictures.Where(sec2tablpic => sec2tablpic.Page == sec1.Page).ToList();
-    l.Section2Pic3Rdts = Model.Section2Pic3Rdts.Where(sec2tablpic3rd => sec2tablpic3rd.Page == sec1.Page).ToList();
-    l.Accessories = Model.Accessories.Where(sec3a => sec3a.Page == sec1.Page).ToList();
-    l.LegendItems = Model.LegendItems.Where(sec4a => sec4a.Page == sec1.Page).ToList();
+    PageModel l = new PageModel();
+    l.PageInfo = page;
+    l.Products = Model.Products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList();
+    l.ProductPictures = Model.ProductPictures.Where(e => e.Page == page.Number).ToList();
+    l.Section2Pic3Rdts = Model.Section2Pic3Rdts.Where(e => e.Page == page.Number).ToList();
+    l.Accessories = Model.Accessories.Where(e => e.Page == page.Number).ToList();
+    l.LegendItems = Model.LegendItems.Where(e => e.Page == page.Number).ToList();
 
     l.Language = Model.Language;
     l.PriceLevel = Model.PriceLevel;
     l.CatalogLanguage = Model.CatalogLanguage;
 
-    var partialName = Model.FosaliLevels.Contains(sec1.Level.ToString()) ? "Fosali" : "Ledeco";
+    var partialName = Model.FosaliLevels.Contains(page.Level.ToString()) ? "Fosali" : "Ledeco";
 
-    @if (sec1.PictureImage != null)
+    @if (page.PictureImage != null)
     {
       <div class="CatalogPage">
-        <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(sec1.PictureImage)}")" />
+        <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(page.PictureImage)}")" />
       </div>
     }
 

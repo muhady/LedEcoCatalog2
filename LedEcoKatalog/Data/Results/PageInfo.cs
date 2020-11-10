@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-// <copyright file="CatalogSection1t.cs" company="Binaware">
+// <copyright file="PageInfo.cs" company="Binaware">
 //   Copyright (c) Binaware s.r.o. All rights reserved.
 // </copyright>
 //----------------------------------------------------------------------------
@@ -11,7 +11,7 @@ namespace LedEcoKatalog.Data
   using System.ComponentModel.DataAnnotations;
   using System.ComponentModel.DataAnnotations.Schema;
 
-  public partial class CatalogSection1t
+  public partial class PageInfo
   {
     #region Public Properties
 
@@ -35,7 +35,7 @@ namespace LedEcoKatalog.Data
     public string Kategória { get; set; }
 
     [Column("Page")]
-    public long? Page { get; set; }
+    public long? Number { get; set; }
 
     [Column("Kratky popis kategorie")]
     public string KratkyPopisKategorie { get; set; }

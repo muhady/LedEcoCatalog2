@@ -49,7 +49,7 @@ namespace LedEcoKatalog.Data
 
     public virtual DbSet<ContentItem> ContentItems { get; set; }
 
-    public virtual DbSet<CatalogSection1t> CatalogSection1t { get; set; }
+    public virtual DbSet<PageInfo> PageInfos { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
@@ -168,7 +168,7 @@ namespace LedEcoKatalog.Data
         entity.Property(e => e.Ordr).HasColumnType("numeric(38, 0)");
       });
 
-      modelBuilder.Entity<CatalogSection1t>(entity =>
+      modelBuilder.Entity<PageInfo>(entity =>
       {
         entity.HasNoKey();
         entity.Property(e => e.PathToCategory).IsUnicode(false);
