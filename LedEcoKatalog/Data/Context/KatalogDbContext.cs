@@ -6,6 +6,8 @@
 
 namespace LedEcoKatalog.Data
 {
+  using System.Linq;
+
   using Microsoft.EntityFrameworkCore;
 
   public partial class KatalogDbContext : DbContext
@@ -23,7 +25,7 @@ namespace LedEcoKatalog.Data
 
     #endregion
 
-    #region Public Properties
+    #region Public Properties (Views)
 
     public virtual DbSet<Hierarchy> Hierarchy { get; set; }
 
@@ -49,6 +51,8 @@ namespace LedEcoKatalog.Data
 
     public virtual DbSet<ContentItem> ContentItems { get; set; }
 
+    public virtual DbSet<LegendItem> LegendItems { get; set; }
+
     public virtual DbSet<PageInfo> PageInfos { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
@@ -59,7 +63,44 @@ namespace LedEcoKatalog.Data
 
     public virtual DbSet<Accessory> Accessories { get; set; }
 
-    public virtual DbSet<LegendItem> LegendItem { get; set; }
+    #endregion
+
+    #region Public Methods
+
+    public IQueryable<ContentItem> GetContentItems(int scope, string language)
+    {
+      return ContentItems.FromSqlRaw($"catalogcontent {scope}, {language}");
+    }
+
+    public IQueryable<LegendItem> GetLegendItems(int scope, string language, bool isFosali)
+    {
+      return LegendItems.FromSqlRaw($"catalogsection4 {scope}, {language}, {(isFosali ? 1 : 0)}");
+    }
+
+    public IQueryable<PageInfo> GetPageInfos(int scope, string language)
+    {
+      return PageInfos.FromSqlRaw($"catalogsection1 {scope}, {language}");
+    }
+
+    public IQueryable<Product> GetProducts(int scope, string language, int priceLevel)
+    {
+      return Products.FromSqlRaw($"catalogsection2 {scope}, {language}, {priceLevel}");
+    }
+
+    public IQueryable<ProductPicture> GetProductPictures(int scope, string language)
+    {
+      return ProductPictures.FromSqlRaw($"catalogsection2pic {scope}, {language}");
+    }
+
+    public IQueryable<CatalogSection2pic3rdt> GetProductPictures2(int scope, string language)
+    {
+      return CatalogSection2pic3rdt.FromSqlRaw($"catalogsection2pic3rd {scope}, {language}");
+    }
+
+    public IQueryable<Accessory> GetAccessories(int scope, string language, int priceLevel)
+    {
+      return Accessories.FromSqlRaw($"catalogsection3 {scope}, {language}, {priceLevel}");
+    }
 
     #endregion
 

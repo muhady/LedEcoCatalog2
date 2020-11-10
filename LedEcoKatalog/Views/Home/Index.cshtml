@@ -8,7 +8,7 @@
 
       <div class="col-span-f">
         <label class="FormLabel" asp-for="Scope">Rozsah generovaného katalogu <span class="Required">*</span></label>
-        <select class="FormControl" asp-for="Scope" asp-items="Model.Hierarchy" data-val-required="Toto pole je povinné">
+        <select class="FormControl" asp-for="Scope" asp-items="Model.Scopes" data-val-required="Toto pole je povinné">
           <option value="">- vyber rozsah katalógu -</option>
         </select>
         <span asp-validation-for="Scope"></span>

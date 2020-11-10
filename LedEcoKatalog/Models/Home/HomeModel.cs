@@ -6,7 +6,6 @@
 
 namespace LedEcoKatalog.Models
 {
-  using System;
   using System.Collections.Generic;
   using System.ComponentModel.DataAnnotations;
   using System.Linq;
@@ -30,7 +29,7 @@ namespace LedEcoKatalog.Models
 
     public string Name { get; set; }
 
-    public List<SelectListItem> Hierarchy { get; set; }
+    public List<SelectListItem> Scopes { get; set; }
 
     public List<SelectListItem> PriceLevels { get; set; }
 
@@ -50,7 +49,7 @@ namespace LedEcoKatalog.Models
 
     public override async Task OnCreatingViewResultAsync()
     {
-      Hierarchy = await DataContext.Hierarchy.OrderBy(e => e.Path).Select(e => new SelectListItem
+      Scopes = await DataContext.Hierarchy.OrderBy(e => e.Path).Select(e => new SelectListItem
       {
         Text = e.Path,
         Value = e.Idlevel.ToString(),
@@ -63,7 +62,7 @@ namespace LedEcoKatalog.Models
         Selected = e.IntIdpriceList == 1,
       }).ToListAsync();
 
-      PriceLevels.Add(new SelectListItem("Bez ceny", "-1"));
+      PriceLevels.Add(new SelectListItem(Settings.GetCatalogLanguage(Settings.AppLanguageCode)?.NoPrices ?? string.Empty, "-1"));
 
       Languages = Settings.CatalogLanguages.Values.Select(i => new SelectListItem
       {

@@ -6,6 +6,7 @@
 
 namespace LedEcoKatalog.Models
 {
+  using System;
   using System.Collections.Generic;
   using System.Linq;
   using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace LedEcoKatalog.Models
 
     #region Public Properties
 
+    public CatalogLanguage CatalogLanguage { get; set; }
+
     public int FrontPageCount { get; set; }
 
     public string PriceLevelText { get; set; }
@@ -48,8 +51,6 @@ namespace LedEcoKatalog.Models
 
     public string Disclaimer { get; set; }
 
-    public CatalogLanguage CatalogLanguage { get; set; }
-
     #endregion
 
     #region Public Methods
@@ -60,7 +61,10 @@ namespace LedEcoKatalog.Models
       var priceLevel = PriceLevel;
       var language = Language;
       var layout = Layout;
-      var nameOfCatalog = Name;
+
+      var isFosali = string.Equals(layout, "Fosali", StringComparison.OrdinalIgnoreCase);
+
+      CatalogLanguage = Settings.GetCatalogLanguage(isFosali ? Settings.FosaliLanguageCode : language);
 
       if (Settings.CatalogSettings.TryGetValue(layout, out CatalogSettings catalogSettings))
       {
@@ -68,68 +72,23 @@ namespace LedEcoKatalog.Models
         BackPageCount = catalogSettings.BackPageCount;
       }
 
-      if (priceLevel == -1)
-      {
-        PriceLevelText = "Bez cien";
-      }
-      else
-      {
-        PriceLevelText = DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevel)?.StrTextId?.ToString();
-      }
-
-      ContentItems = await DataContext.ContentItems
-          .FromSqlRaw($"catalogcontent {scope}, {language}")
-          .ToListAsync();
+      ContentItems = await DataContext.GetContentItems(scope, language).ToListAsync();
 
       if (string.IsNullOrEmpty(Name))
       {
         Name = ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName;
       }
 
-      var fosaliENproperties = 0;
-      if (layout == "Fosali")
-      {
-        fosaliENproperties = 1;
-      }
-      else
-      {
-        fosaliENproperties = 0;
-      }
+      PriceLevelText = priceLevel == -1 ? CatalogLanguage?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevel)?.StrTextId?.ToString();
 
-      LegendItems = await DataContext.LegendItem
-        .FromSqlRaw($"catalogsection4 {scope}, {language}, {fosaliENproperties}")
-        .ToListAsync();
-
+      LegendItems = await DataContext.GetLegendItems(scope, language, isFosali).ToListAsync();
       LegendContent = ResourceHelper.GetLegend(layout, language);
 
-      var pages = await DataContext.PageInfos
-          .FromSqlRaw($"catalogsection1 {scope}, {language}")
-          .ToListAsync();
-
-      var products = await DataContext.Products
-        .FromSqlRaw($"catalogsection2 {scope}, {language}, {priceLevel}")
-        .ToListAsync();
-
-      var productPictures = await DataContext.ProductPictures
-        .FromSqlRaw($"catalogsection2pic {scope}, {language}")
-        .ToListAsync();
-
-      var section2Pic3Rdts = await DataContext.CatalogSection2pic3rdt
-        .FromSqlRaw($"catalogsection2pic3rd {scope}, {language}")
-        .ToListAsync();
-
-      var accessories = await DataContext.Accessories
-        .FromSqlRaw($"catalogsection3 {scope}, {language}, {priceLevel}")
-        .ToListAsync();
-
-      if (layout == "Fosali")
-      {
-        language = Settings.DefaultCatalogLanguage;
-      }
-
-      var fosaliLevels = Settings.FosaliLayouts.Select(i => i.ToString()).ToArray();
-
-      CatalogLanguage = Settings.GetCatalogLanguage(language);
+      var pages = await DataContext.GetPageInfos(scope, language).ToListAsync();
+      var products = await DataContext.GetProducts(scope, language, priceLevel).ToListAsync();
+      var productPictures = await DataContext.GetProductPictures(scope, language).ToListAsync();
+      var section2Pic3Rdts = await DataContext.GetProductPictures2(scope, language).ToListAsync();
+      var accessories = await DataContext.GetAccessories(scope, language, priceLevel).ToListAsync();
 
       Pages = pages.Select(page => new PageModel
       {
@@ -143,7 +102,7 @@ namespace LedEcoKatalog.Models
         Language = Language,
         PriceLevel = PriceLevel,
         CatalogLanguage = CatalogLanguage,
-        Style = fosaliLevels.Contains(page.Level.ToString()) ? "Fosali" : "Ledeco",
+        Style = Settings.FosaliLayouts.Contains(page.Level) ? "Fosali" : "Ledeco",
       })
         .ToList();
 

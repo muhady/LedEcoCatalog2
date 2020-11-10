@@ -14,6 +14,8 @@ namespace LedEcoKatalog
 
     public string Name { get; set; }
 
+    public string NoPrices { get; set; }
+
     public string ContentTitle { get; set; }
 
     public string LegendTitle { get; set; }

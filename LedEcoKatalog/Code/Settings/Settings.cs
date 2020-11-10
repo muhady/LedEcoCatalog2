@@ -23,7 +23,9 @@ namespace LedEcoKatalog
 
     public static Dictionary<string, CatalogLanguage> CatalogLanguages { get; private set; }
 
-    public static string DefaultCatalogLanguage { get; private set; }
+    public static string AppLanguageCode { get; private set; }
+
+    public static string FosaliLanguageCode { get; private set; }
 
     public static List<int> FosaliLayouts { get; private set; }
 
@@ -55,25 +57,22 @@ namespace LedEcoKatalog
 
       CatalogLanguages = GetList<CatalogLanguage>(nameof(CatalogLanguages), true).ToDictionary(s => s.Name);
 
-      DefaultCatalogLanguage = GetValue(nameof(DefaultCatalogLanguage), string.Empty);
+      AppLanguageCode = GetValue(nameof(AppLanguageCode), "SK");
+
+      FosaliLanguageCode = GetValue(nameof(FosaliLanguageCode), "EN");
 
       FosaliLayouts = GetList<int>(nameof(FosaliLayouts), true);
 
       HttpErrors = GetList<HttpError>(nameof(HttpErrors), true).ToDictionary(s => s.Code);
 
-      ShowErrorDetails = GetValue<bool>(nameof(ShowErrorDetails));
+      ShowErrorDetails = GetValue(nameof(ShowErrorDetails), false);
 
-      UseRequestLogging = GetValue<bool>(nameof(UseRequestLogging));
+      UseRequestLogging = GetValue(nameof(UseRequestLogging), false);
     }
 
     public static CatalogLanguage GetCatalogLanguage(string language)
     {
       if (language != null && CatalogLanguages.TryGetValue(language, out CatalogLanguage catalogLanguage))
-      {
-        return catalogLanguage;
-      }
-
-      if (DefaultCatalogLanguage != null && DefaultCatalogLanguage != language && CatalogLanguages.TryGetValue(DefaultCatalogLanguage, out catalogLanguage))
       {
         return catalogLanguage;
       }
