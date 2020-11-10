@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-// <copyright file="CatalogSection2pict.cs" company="Binaware">
+// <copyright file="ProductPicture.cs" company="Binaware">
 //   Copyright (c) Binaware s.r.o. All rights reserved.
 // </copyright>
 //----------------------------------------------------------------------------
@@ -11,7 +11,7 @@ namespace LedEcoKatalog.Data
   using System.ComponentModel.DataAnnotations;
   using System.ComponentModel.DataAnnotations.Schema;
 
-  public partial class CatalogSection2pict
+  public partial class ProductPicture
   {
     #region Public Properties
 

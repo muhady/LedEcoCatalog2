@@ -23,7 +23,7 @@
     <div class="Content">
       <div class="ContentTitle">@Model.CatalogLanguage?.ContentTitle</div>
       <table class="ContentTable">
-        @foreach (var content in Model.Content)
+        @foreach (var content in Model.ContentItems)
         {
           <tr>
             <td class="ContentName">@content.Name01</td>
@@ -41,7 +41,7 @@
         <div class="LegendDescription">@Model.CatalogLanguage?.LegendDescription</div>
       </div>
       <div class="LegendItems">
-        @foreach (var legend in Model.Section4.Where(o => !o.Val.Contains("::")).GroupBy(o => new { o.StrPropertyNameForCust, o.StrExternalID }).Select(o => o.FirstOrDefault()))
+        @foreach (var legend in Model.LegendItems.Where(o => !o.Val.Contains("::")).GroupBy(o => new { o.StrPropertyNameForCust, o.StrExternalID }).Select(o => o.FirstOrDefault()))
         {
 
           <div class="LegendItem">
@@ -65,11 +65,11 @@
   {
     CatalogList l = new CatalogList();
     l.Sec1 = sec1;
-    l.Products = Model.Sec2.Where(sec2tabl => sec2tabl.Page == sec1.Page).OrderBy(sec2tabl => sec2tabl.Poradie).ToList();
-    l.Section2Picts = Model.Section2Picts.Where(sec2tablpic => sec2tablpic.Page == sec1.Page).ToList();
+    l.Products = Model.Products.Where(sec2tabl => sec2tabl.Page == sec1.Page).OrderBy(sec2tabl => sec2tabl.Poradie).ToList();
+    l.ProductPictures = Model.ProductPictures.Where(sec2tablpic => sec2tablpic.Page == sec1.Page).ToList();
     l.Section2Pic3Rdts = Model.Section2Pic3Rdts.Where(sec2tablpic3rd => sec2tablpic3rd.Page == sec1.Page).ToList();
-    l.Accessories = Model.Section3.Where(sec3a => sec3a.Page == sec1.Page).ToList();
-    l.Legends = Model.Section4.Where(sec4a => sec4a.Page == sec1.Page).ToList();
+    l.Accessories = Model.Accessories.Where(sec3a => sec3a.Page == sec1.Page).ToList();
+    l.LegendItems = Model.LegendItems.Where(sec4a => sec4a.Page == sec1.Page).ToList();
 
     l.Language = Model.Language;
     l.PriceLevel = Model.PriceLevel;

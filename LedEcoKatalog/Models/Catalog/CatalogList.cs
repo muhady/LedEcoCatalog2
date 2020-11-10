@@ -16,15 +16,15 @@ namespace LedEcoKatalog.Models
 
     public CatalogSection1t Sec1 { get; set; }
 
-    public List<CatalogSection2t> Products { get; set; }
+    public List<Product> Products { get; set; }
 
-    public List<CatalogSection2pict> Section2Picts { get; set; }
+    public List<ProductPicture> ProductPictures { get; set; }
 
     public List<CatalogSection2pic3rdt> Section2Pic3Rdts { get; set; }
 
-    public List<CatalogSection3t> Accessories { get; set; }
+    public List<Accessory> Accessories { get; set; }
 
-    public List<CatalogSection4t> Legends { get; set; }
+    public List<LegendItem> LegendItems { get; set; }
 
     public string Language { get; set; }
 

@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-// <copyright file="CatalogSection4t.cs" company="Binaware">
+// <copyright file="LegendItem.cs" company="Binaware">
 //   Copyright (c) Binaware s.r.o. All rights reserved.
 // </copyright>
 //----------------------------------------------------------------------------
@@ -11,7 +11,7 @@ namespace LedEcoKatalog.Data
   using System.ComponentModel.DataAnnotations;
   using System.ComponentModel.DataAnnotations.Schema;
 
-  public partial class CatalogSection4t
+  public partial class LegendItem
   {
     #region Public Properties
 

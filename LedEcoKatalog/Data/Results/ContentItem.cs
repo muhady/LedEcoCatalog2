@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------
-// <copyright file="CatalogContentt.cs" company="Binaware">
+// <copyright file="ContentItem.cs" company="Binaware">
 //   Copyright (c) Binaware s.r.o. All rights reserved.
 // </copyright>
 //----------------------------------------------------------------------------
@@ -11,7 +11,7 @@ namespace LedEcoKatalog.Data
   using System.ComponentModel.DataAnnotations;
   using System.ComponentModel.DataAnnotations.Schema;
 
-  public partial class CatalogContentt
+  public partial class ContentItem
   {
     #region Public Properties
 

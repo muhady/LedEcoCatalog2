@@ -6,15 +6,12 @@
 
 namespace LedEcoKatalog.Models
 {
-  using System;
   using System.Collections.Generic;
   using System.Linq;
-  using System.Reflection.Metadata;
   using System.Threading.Tasks;
 
   using LedEcoKatalog.Data;
 
-  using Microsoft.AspNetCore.Mvc.Rendering;
   using Microsoft.EntityFrameworkCore;
 
   public class CatalogModel : AppDataModel
@@ -41,21 +38,21 @@ namespace LedEcoKatalog.Models
 
     public string CatalogName { get; set; }
 
-    public List<CatalogContentt> Content { get; set; }
+    public List<ContentItem> ContentItems { get; set; }
 
-    public List<CatalogSection4t> Section4 { get; set; }
+    public List<LegendItem> LegendItems { get; set; }
 
     public string LegendContent { get; set; }
 
     public List<CatalogSection1t> Sec1 { get; set; }
 
-    public List<CatalogSection2t> Sec2 { get; set; }
+    public List<Product> Products { get; set; }
 
-    public List<CatalogSection2pict> Section2Picts { get; set; }
+    public List<ProductPicture> ProductPictures { get; set; }
 
     public List<CatalogSection2pic3rdt> Section2Pic3Rdts { get; set; }
 
-    public List<CatalogSection3t> Section3 { get; set; }
+    public List<Accessory> Accessories { get; set; }
 
     public string[] FosaliLevels { get; set; }
 
@@ -66,14 +63,6 @@ namespace LedEcoKatalog.Models
     #endregion
 
     #region Public Properties
-
-    /*
-    public string ContentTitle { get; set; }
-
-    public string LegendTitle { get; set; }
-
-    public string LegendDescription { get; set; }
-    */
 
     public CatalogLanguage CatalogLanguage { get; set; }
 
@@ -110,13 +99,13 @@ namespace LedEcoKatalog.Models
         PriceLevelText = DataContext.PriceLevel.First(e => e.IntIdpriceList == priceLevel).StrTextId.ToString();
       }
 
-      Content = await DataContext.CatalogContentt
+      ContentItems = await DataContext.ContentItems
           .FromSqlRaw($"catalogcontent {scope}, {language}")
           .ToListAsync();
 
       if (nameOfCatalog == null)
       {
-        CatalogName = Content.OrderBy(e => e.Page).First().CategoryName;
+        CatalogName = ContentItems.OrderBy(e => e.Page).First().CategoryName;
       }
       else
       {
@@ -127,11 +116,11 @@ namespace LedEcoKatalog.Models
           .FromSqlRaw($"catalogsection1 {scope}, {language}")
           .ToListAsync();
 
-      Sec2 = await DataContext.CatalogSection2t
+      Products = await DataContext.Products
         .FromSqlRaw($"catalogsection2 {scope}, {language}, {priceLevel}")
         .ToListAsync();
 
-      Section2Picts = await DataContext.CatalogSection2pict
+      ProductPictures = await DataContext.ProductPictures
         .FromSqlRaw($"catalogsection2pic {scope}, {language}")
         .ToListAsync();
 
@@ -139,7 +128,7 @@ namespace LedEcoKatalog.Models
         .FromSqlRaw($"catalogsection2pic3rd {scope}, {language}")
         .ToListAsync();
 
-      Section3 = await DataContext.CatalogSection3t
+      Accessories = await DataContext.Accessories
         .FromSqlRaw($"catalogsection3 {scope}, {language}, {priceLevel}")
         .ToListAsync();
 
@@ -153,7 +142,7 @@ namespace LedEcoKatalog.Models
         fosaliENproperties = 0;
       }
 
-      Section4 = await DataContext.CatalogSection4t
+      LegendItems = await DataContext.LegendItem
         .FromSqlRaw($"catalogsection4 {scope}, {language},{fosaliENproperties} ")
         .ToListAsync();
 

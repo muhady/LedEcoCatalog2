@@ -31,14 +31,14 @@
 
   </div>
 
-  @if (Model.Legends.Count() > 0)
+  @if (Model.LegendItems.Count() > 0)
   {
     <div class="PageSection PageLegend section421Fosali">
-      @foreach (var sec4 in Model.Legends.Where(sec4 => (!sec4.Val.Contains("::") && (sec4.StrExternalID != "ID104.png"))))
+      @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::") && (l.StrExternalID != "ID104.png"))))
       {
         <div class="PART-Item">
-          <img class="Image" src="~/images/parameters/@sec4.StrExternalID" onError='ImgErrorVideo(this);' />
-          <span class="Text">@sec4.Val</span>
+          <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ImgErrorVideo(this);' />
+          <span class="Text">@legendItem.Val</span>
         </div>
       }
     </div>
@@ -49,18 +49,18 @@
     <div style="width: 30%">
 
       <div class="PageSection PageImages section3">
-        @foreach (var sec2p in Model.Section2Picts)
+        @foreach (var productPicture in Model.ProductPictures)
         {
           <div class="PageImage">
-            @if (sec2p.BlobData2 != null)
+            @if (productPicture.BlobData2 != null)
             {
-              <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(sec2p.BlobData2)}")" />
+              <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(productPicture.BlobData2)}")" />
             }
           </div>
           <div class="PageImage">
-            @if (sec2p.Img != null)
+            @if (productPicture.Img != null)
             {
-              <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(sec2p.Img)}")" />
+              <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(productPicture.Img)}")" />
             }
           </div>
         }
@@ -70,7 +70,7 @@
 
     <div style="width: 70%">
 
-      <div class="PageSection PageProducts section2Fosali">
+      <div class="PageSection PageProducts">
 
         <table class="PART-Table">
           <tr>
@@ -121,17 +121,17 @@
 
       @if (Model.Accessories.Count() > 0)
       {
-        <div class="PageSection PageAccessories section4">
-          <div class="PART-Title section41Header">
+        <div class="PageSection PageAccessories">
+          <div class="PART-Title">
             @Model.CatalogLanguage?.AccessoriesSectionTitle
           </div>
 
           <table class="PART-Table">
-            @foreach (var sec3 in Model.Accessories)
+            @foreach (var accessory in Model.Accessories)
             {
               <tr>
-                <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + sec3.Kod + ">") target="_blank">@sec3.Kod</a></td>
-                <td class="PART-Cell-Description">@sec3.Popis</td>
+                <td class="PART-Cell-Code"><a href=@("https://shop.ledeco.sk/<" + accessory.Kod + ">") target="_blank">@accessory.Kod</a></td>
+                <td class="PART-Cell-Description">@accessory.Popis</td>
               </tr>
             }
           </table>

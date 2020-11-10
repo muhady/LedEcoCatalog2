@@ -47,19 +47,19 @@ namespace LedEcoKatalog.Data
 
     #region Public Properties (Stored Procedures)
 
-    public virtual DbSet<CatalogContentt> CatalogContentt { get; set; }
+    public virtual DbSet<ContentItem> ContentItems { get; set; }
 
     public virtual DbSet<CatalogSection1t> CatalogSection1t { get; set; }
 
-    public virtual DbSet<CatalogSection2t> CatalogSection2t { get; set; }
+    public virtual DbSet<Product> Products { get; set; }
 
-    public virtual DbSet<CatalogSection2pict> CatalogSection2pict { get; set; }
+    public virtual DbSet<ProductPicture> ProductPictures { get; set; }
 
     public virtual DbSet<CatalogSection2pic3rdt> CatalogSection2pic3rdt { get; set; }
 
-    public virtual DbSet<CatalogSection3t> CatalogSection3t { get; set; }
+    public virtual DbSet<Accessory> Accessories { get; set; }
 
-    public virtual DbSet<CatalogSection4t> CatalogSection4t { get; set; }
+    public virtual DbSet<LegendItem> LegendItem { get; set; }
 
     #endregion
 
@@ -161,7 +161,7 @@ namespace LedEcoKatalog.Data
 
     private void ConfigureResults(ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<CatalogContentt>(entity =>
+      modelBuilder.Entity<ContentItem>(entity =>
       {
         entity.HasNoKey();
         entity.Property(e => e.PathToCategory).IsUnicode(false);
@@ -178,14 +178,14 @@ namespace LedEcoKatalog.Data
         entity.Property(e => e.PopisProduktuParent).HasColumnType("ntext");
       });
 
-      modelBuilder.Entity<CatalogSection2t>(entity =>
+      modelBuilder.Entity<Product>(entity =>
       {
         entity.HasNoKey();
         entity.Property(e => e.PopisDlhý1).HasColumnType("ntext");
         entity.Property(e => e.PopisDlhý2).HasColumnType("ntext");
       });
 
-      modelBuilder.Entity<CatalogSection2pict>(entity =>
+      modelBuilder.Entity<ProductPicture>(entity =>
       {
         entity.HasNoKey();
         entity.Property(e => e.Img).HasColumnType("image");
@@ -199,13 +199,13 @@ namespace LedEcoKatalog.Data
         entity.Property(e => e.BlobData2).HasColumnType("image");
       });
 
-      modelBuilder.Entity<CatalogSection3t>(entity =>
+      modelBuilder.Entity<Accessory>(entity =>
       {
         entity.HasNoKey();
         entity.Property(e => e.Img).HasColumnType("image");
       });
 
-      modelBuilder.Entity<CatalogSection4t>(entity =>
+      modelBuilder.Entity<LegendItem>(entity =>
       {
         entity.HasNoKey();
       });
