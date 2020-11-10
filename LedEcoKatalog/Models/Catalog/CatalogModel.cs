@@ -87,7 +87,7 @@ namespace LedEcoKatalog.Models
       var pages = await DataContext.GetPageInfos(scope, language).ToListAsync();
       var products = await DataContext.GetProducts(scope, language, priceLevel).ToListAsync();
       var productPictures = await DataContext.GetProductPictures(scope, language).ToListAsync();
-      var section2Pic3Rdts = await DataContext.GetProductPictures2(scope, language).ToListAsync();
+      var productPictures2 = await DataContext.GetProductPictures2(scope, language).ToListAsync();
       var accessories = await DataContext.GetAccessories(scope, language, priceLevel).ToListAsync();
 
       Pages = pages.Select(page => new PageModel
@@ -95,7 +95,7 @@ namespace LedEcoKatalog.Models
         PageInfo = page,
         Products = products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
         ProductPictures = productPictures.Where(e => e.Page == page.Number).ToList(),
-        Section2Pic3Rdts = section2Pic3Rdts.Where(e => e.Page == page.Number).ToList(),
+        ProductPictures2 = productPictures2.Where(e => e.Page == page.Number).ToList(),
         Accessories = accessories.Where(e => e.Page == page.Number).ToList(),
         LegendItems = LegendItems.Where(e => e.Page == page.Number).ToList(),
 

@@ -20,7 +20,7 @@ namespace LedEcoKatalog.Models
 
     public List<ProductPicture> ProductPictures { get; set; }
 
-    public List<CatalogSection2pic3rdt> Section2Pic3Rdts { get; set; }
+    public List<ProductPicture> ProductPictures2 { get; set; }
 
     public List<Accessory> Accessories { get; set; }
 

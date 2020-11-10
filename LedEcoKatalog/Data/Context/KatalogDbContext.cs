@@ -59,7 +59,7 @@ namespace LedEcoKatalog.Data
 
     public virtual DbSet<ProductPicture> ProductPictures { get; set; }
 
-    public virtual DbSet<CatalogSection2pic3rdt> CatalogSection2pic3rdt { get; set; }
+    public virtual DbSet<ProductPicture> ProductPictures2 { get; set; }
 
     public virtual DbSet<Accessory> Accessories { get; set; }
 
@@ -92,9 +92,9 @@ namespace LedEcoKatalog.Data
       return ProductPictures.FromSqlRaw($"catalogsection2pic {scope}, {language}");
     }
 
-    public IQueryable<CatalogSection2pic3rdt> GetProductPictures2(int scope, string language)
+    public IQueryable<ProductPicture> GetProductPictures2(int scope, string language)
     {
-      return CatalogSection2pic3rdt.FromSqlRaw($"catalogsection2pic3rd {scope}, {language}");
+      return ProductPictures2.FromSqlRaw($"catalogsection2pic3rd {scope}, {language}");
     }
 
     public IQueryable<Accessory> GetAccessories(int scope, string language, int priceLevel)
@@ -227,13 +227,6 @@ namespace LedEcoKatalog.Data
       });
 
       modelBuilder.Entity<ProductPicture>(entity =>
-      {
-        entity.HasNoKey();
-        entity.Property(e => e.Img).HasColumnType("image");
-        entity.Property(e => e.BlobData2).HasColumnType("image");
-      });
-
-      modelBuilder.Entity<CatalogSection2pic3rdt>(entity =>
       {
         entity.HasNoKey();
         entity.Property(e => e.Img).HasColumnType("image");

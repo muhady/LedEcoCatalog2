@@ -23,11 +23,11 @@
     <div class="Content">
       <div class="ContentTitle">@Model.CatalogLanguage?.ContentTitle</div>
       <table class="ContentTable">
-        @foreach (var content in Model.ContentItems)
+        @foreach (var contentItem in Model.ContentItems)
         {
           <tr>
-            <td class="ContentName">@content.Name01</td>
-            <td class="ContentPage">@content.Page</td>
+            <td class="ContentName">@contentItem.Name01</td>
+            <td class="ContentPage">@contentItem.Page</td>
           </tr>
         }
       </table>
@@ -41,16 +41,16 @@
         <div class="LegendDescription">@Model.CatalogLanguage?.LegendDescription</div>
       </div>
       <div class="LegendItems">
-        @foreach (var legend in Model.LegendItems.Where(o => !o.Val.Contains("::")).GroupBy(o => new { o.StrPropertyNameForCust, o.StrExternalID }).Select(o => o.FirstOrDefault()))
+        @foreach (var legendItem in Model.LegendItems.Where(o => !o.Val.Contains("::")).GroupBy(o => new { o.StrPropertyNameForCust, o.StrExternalID }).Select(o => o.FirstOrDefault()))
         {
 
           <div class="LegendItem">
             <div class="LegendIcon">
-              <img class="Image" src="~/images/parameters/@legend.StrExternalID" onError='ImgErrorVideo(this);' />
+              <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ImgErrorVideo(this);' />
             </div>
             <div class="LegendText">
-              <div class="Caption">@legend.StrName</div>
-              @legend.StrDescription
+              <div class="Caption">@legendItem.StrName</div>
+              @legendItem.StrDescription
             </div>
           </div>
         }

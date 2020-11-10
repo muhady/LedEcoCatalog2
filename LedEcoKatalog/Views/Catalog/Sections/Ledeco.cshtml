@@ -41,11 +41,11 @@
   @if (Model.LegendItems.Count > 0)
   {
     <div class="PageSection PageLegend">
-      @foreach (var legend in Model.LegendItems.Where(l => (!l.Val.Contains("::"))))
+      @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::"))))
       {
         <div class="PART-Item">
-          <img class="Image" src="~/images/parameters/@legend.StrExternalID" onError='ImgErrorVideo(this);' />
-          <span class="Text">@legend.Val</span>
+          <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ImgErrorVideo(this);' />
+          <span class="Text">@legendItem.Val</span>
         </div>
       }
     </div>
@@ -107,11 +107,11 @@
       </div>
     }
 
-    @foreach (var sec2p3rd in Model.Section2Pic3Rdts)
+    @foreach (var productPicture in Model.ProductPictures2)
     {
       <div class="PageImage">
         @{
-          var base64 = sec2p3rd.Img == null ? "" : Convert.ToBase64String(sec2p3rd.Img);
+          var base64 = productPicture.Img == null ? "" : Convert.ToBase64String(productPicture.Img);
           var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
         }
         <img class="Image" src="@imgSrc" />
