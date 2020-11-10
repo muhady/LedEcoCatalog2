@@ -4,6 +4,9 @@
 
 @import 'Variables';
 
+$Table-Header-border-bottom: 3px solid silver;
+$Table-Cell-border-bottom: 1px solid silver;
+
 // --- Catalog ----------------------------------------------------------------
 
 .Catalog
@@ -25,7 +28,30 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: $Page-padding;
+  // padding: $Page-padding;
+}
+
+.PageHeader
+{
+  flex-shrink: 0;
+  min-height: $Page-padding-top;
+}
+
+.PageContent
+{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 $Page-padding-right 0 $Page-padding-left;
+}
+
+.PageFooter
+{
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  min-height: $Page-padding-bottom;
+  padding: 0 $Page-padding-right 0 $Page-padding-left;
 }
 
 .PageSection
@@ -197,137 +223,106 @@
 
 // --- Page -------------------------------------------------------------------
 
-.PageHeader
+.PageBanner
 {
-  .PART-Banner
-  {
-    margin-bottom: 3px;
-    margin-top: -$Page-padding-top;
-    margin-left: -$Page-padding-left;
-    // width: 100%;
-    width: $Page-width;
-  }
+  margin-bottom: 3px;
+  width: 100%;
+}
 
-  .PART-Title
-  {
-    border-bottom: 3px solid #666666;
-    font-size: 24pt;
-    font-weight: bold;
-  }
+.PageTitle
+{
+  font-size: 24pt;
+  font-weight: bold;
+}
 
-  .PART-Text
-  {
-    font-size: 8pt;
-    margin-top: 2mm;
-  }
+.TextSection
+{
+  font-size: 8pt;
+}
+
+.PageParagraph
+{
+  margin-top: 2mm;
 }
 
 .PageLegend
 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 5mm;
-
-  .PART-Item
-  {
-    width: 51px;
-    height: 31px;
-    position: relative;
-    text-align: center;
-    margin: 2px;
-
-    .Image
-    {
-      max-width: 100%;
-      object-fit: scale-down;
-      border: 1px solid #666666;
-      border-radius: 5px;
-    }
-
-    .Text
-    {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      font-size: 8pt;
-      font-weight: bold;
-      white-space: nowrap;
-      transform: translate(-50%, -50%);
-    }
-  }
 }
 
-.PageProducts
+.PageLegendItem
 {
-  margin-top: 5mm;
+  width: 51px;
+  height: 31px;
+  position: relative;
+  text-align: center;
+  margin: 2px;
 
-  .PART-Table
+  .Image
   {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 8pt;
-    line-height: 1.5em;
-    text-align: left;
-    white-space: nowrap;
-
-    tr
-    {
-      line-height: 1.5em;
-    }
-
-    th
-    {
-      border-bottom: 3px solid silver;
-      font-weight: bold;
-    }
-
-    .PART-Cell-Code
-    {
-      width: 22%;
-    }
-
-    .PART-Cell-Name
-    {
-      width: 35%;
-    }
-
-    .PART-Cell-Version
-    {
-      width: 25%;
-    }
-
-    .PART-Cell-Dimension
-    {
-      text-align: right;
-      width: 6%;
-    }
-
-    .PART-Cell-Price
-    {
-      text-align: right;
-      width: 10%;
-    }
+    max-width: 100%;
+    object-fit: scale-down;
+    border: 1px solid #666666;
+    border-radius: 5px;
   }
 
-  .PART-Parameters
+  .Text
   {
-    margin-top: 3mm;
-
-    .PART-Item
-    {
-      display: flex;
-      font-size: 7pt;
-
-      .PART-Label
-      {
-        font-weight: bold;
-      }
-    }
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    font-size: 8pt;
+    font-weight: bold;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
   }
 }
 
-.PageImages
+.ProductSection
+{
+  // margin-top: 5mm;
+}
+
+.ProductTable
+{
+  width: 100%;
+  border-collapse: collapse;
+  // font-size: 8pt;
+  font-weight: bold;
+  line-height: 1.5em;
+  text-align: left;
+  white-space: nowrap;
+
+  tr
+  {
+    line-height: 1.5em;
+  }
+
+  th
+  {
+    border-bottom: $Table-Header-border-bottom;
+    font-weight: bold;
+  }
+}
+
+.ProductParameters
+{
+  margin-top: 3mm;
+}
+
+.ProductParameter
+{
+  display: flex;
+  font-size: 7pt;
+
+  .Label
+  {
+    font-weight: bold;
+  }
+}
+
+.ImagesSection
 {
   display: flex;
   height: 5cm;
@@ -349,91 +344,157 @@
   }
 }
 
-.PageAccessories
+.AccessoriesSection
 {
-  font-size: 8pt;
+  // font-size: 8pt;
   margin-top: auto;
+}
 
-  .PART-Title
-  {
-    border-bottom: 2px solid #666666;
-    font-weight: bold;
-    margin-bottom: 2mm;
-  }
+.AccessoriesSectionTitle
+{
+  border-bottom: 2px solid #666666;
+  font-weight: bold;
+}
 
-  .PART-Table
-  {
-    border-collapse: collapse;
-    text-align: left;
-    white-space: nowrap;
-    width: 100%;
-
-    .PART-Cell-Image
-    {
-      width: 10%;
-
-      .Image
-      {
-        // width: 40px;
-        // height: 40px;
-        // max-width: 100%;
-        // max-height: 100%;
-        max-width: 40px;
-        max-height: 40px;
-      }
-    }
-
-    .PART-Cell-Code
-    {
-      width: 25%;
-    }
-
-    .PART-Cell-Name
-    {
-      width: 55%;
-    }
-
-    .PART-Cell-Price
-    {
-      text-align: right;
-      width: 10%;
-    }
-
-    .PART-Cell-Image,
-    .PART-Cell-Description,
-    .PART-Cell-Price
-    {
-      border-bottom: 1px solid silver;
-    }
-  }
+.AccessoryTable
+{
+  border-collapse: collapse;
+  font-weight: bold;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .PageNumber
 {
+  // font-size: 8pt;
+  //position: absolute;
+  // bottom: 5mm;
+  // right: $Page-padding-right;
   font-size: 8pt;
-  position: absolute;
-  bottom: 5mm;
-  right: $Page-padding-right;
+  margin-left: auto;
 }
 
+// --- Ledeco -----------------------------------------------------------------
+
+.LedecoPage
+{
+  .PageTitle
+  {
+    border-bottom: 3px solid #666666;
+  }
+
+  .PageLegend
+  {
+    justify-content: center;
+    margin-top: 5mm;
+  }
+
+  .ProductSection
+  {
+    margin-top: 5mm;
+  }
+
+  .ProductTable
+  {
+    font-size: 8pt;
+  }
+
+  .ProductCode
+  {
+    width: 22%;
+  }
+
+  .ProductName
+  {
+    width: 35%;
+  }
+
+  .ProductVersion
+  {
+    width: 25%;
+  }
+
+  .ProductDimension
+  {
+    text-align: right;
+    width: 6%;
+  }
+
+  .ProductPrice
+  {
+    text-align: right;
+    width: 10%;
+  }
+
+  .AccessoriesSection
+  {
+    font-size: 8pt;
+  }
+
+  .AccessoriesSectionTitle
+  {
+    margin-bottom: 2mm;
+  }
+
+  .AccessoryImage
+  {
+    border-bottom: $Table-Cell-border-bottom;
+    width: 10%;
+
+    .Image
+    {
+      // width: 40px;
+      // height: 40px;
+      // max-width: 100%;
+      // max-height: 100%;
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+
+  .AccessoryCode
+  {
+    width: 25%;
+  }
+
+  .AccessoryName
+  {
+    width: 55%;
+  }
+
+  .AccessoryPrice
+  {
+    border-bottom: $Table-Cell-border-bottom;
+    text-align: right;
+    width: 10%;
+  }
+
+  .AccessoryDescription
+  {
+    border-bottom: $Table-Cell-border-bottom;
+    font-weight: normal;
+  }
+}
 // --- Fosali -----------------------------------------------------------------
 
 .FosaliPage
 {
-  .PageHeader
+  .PageTitle
   {
-    .PART-Title
-    {
-      border-bottom: none;
-      background-color: #fff;
-      padding: 10px;
-      position: absolute;
-      left: 8mm;
-      bottom: 8mm;
-    }
+    background-color: #fff;
+    padding: 10px;
+    position: absolute;
+    left: 8mm;
+    bottom: 8mm;
   }
 
-  .PageImages
+  .PageLegend
+  {
+    margin-bottom: 5mm;
+  }
+
+  .ImagesSection
   {
     flex-direction: column;
     margin-top: 0;
@@ -452,6 +513,59 @@
         display: block;
       }
     }
+  }
+
+  .ProductSection
+  {
+  }
+
+  .ProductTable
+  {
+    font-size: 7pt;
+  }
+
+  .ProductName
+  {
+    width: 28%;
+  }
+
+  .ProductVersion
+  {
+    width: 38%;
+  }
+
+  .ProductDimension
+  {
+    text-align: right;
+    width: 6%;
+  }
+
+  .ProductPrice
+  {
+    text-align: right;
+    width: 10%;
+  }
+
+  .AccessoriesSection
+  {
+    font-size: 7pt;
+  }
+
+  .AccessoryTable
+  {
+    line-height: 1;
+  }
+
+  .AccessoryCode
+  {
+    border-bottom: $Table-Cell-border-bottom;
+    width: 28%;
+  }
+
+  .AccessoryDescription
+  {
+    border-bottom: $Table-Cell-border-bottom;
+    width: 72%;
   }
 }
 
