@@ -10,9 +10,19 @@
 internal static partial class AssemblyInfo
 {
   /// <summary>
+  /// The company name information.
+  /// </summary>
+  public const string Company = "Binaware";
+
+  /// <summary>
+  /// The copyright information.
+  /// </summary>
+  public const string Copyright = "© Binaware s.r.o. All rights reserved.";
+
+  /// <summary>
   /// The product name information.
   /// </summary>
-  public const string Product = "Binaware CIS";
+  public const string Product = "LEDeco Katalóg";
 
   /// <summary>
   /// The assembly version information.
