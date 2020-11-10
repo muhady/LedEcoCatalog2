@@ -64,6 +64,8 @@ namespace LedEcoKatalog.Models
 
     #region Public Properties
 
+    public List<PageModel> Pages { get; set; }
+
     public CatalogLanguage CatalogLanguage { get; set; }
 
     #endregion
@@ -152,11 +154,48 @@ namespace LedEcoKatalog.Models
       }
 
       CatalogLanguage = Settings.GetCatalogLanguage(language);
+
+      Pages = PageInfos.Select(page => new PageModel
+      {
+        PageInfo = page,
+        Products = Products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
+        ProductPictures = ProductPictures.Where(e => e.Page == page.Number).ToList(),
+        Section2Pic3Rdts = Section2Pic3Rdts.Where(e => e.Page == page.Number).ToList(),
+        Accessories = Accessories.Where(e => e.Page == page.Number).ToList(),
+        LegendItems = LegendItems.Where(e => e.Page == page.Number).ToList(),
+
+        Language = Language,
+        PriceLevel = PriceLevel,
+        CatalogLanguage = CatalogLanguage,
+        Style = FosaliLevels.Contains(page.Level.ToString()) ? "Fosali" : "Ledeco",
+      })
+        .ToList();
     }
 
     /*
     public override async Task OnCreatingViewResultAsync()
     {
+    }
+    */
+
+    #endregion
+
+    #region Private Methods
+
+    /*
+    private List<PageModel> Pages()
+    {
+      PageModel l = new PageModel();
+      l.PageInfo = page;
+      l.Products = Model.Products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList();
+      l.ProductPictures = Model.ProductPictures.Where(e => e.Page == page.Number).ToList();
+      l.Section2Pic3Rdts = Model.Section2Pic3Rdts.Where(e => e.Page == page.Number).ToList();
+      l.Accessories = Model.Accessories.Where(e => e.Page == page.Number).ToList();
+      l.LegendItems = Model.LegendItems.Where(e => e.Page == page.Number).ToList();
+
+      l.Language = Model.Language;
+      l.PriceLevel = Model.PriceLevel;
+      l.CatalogLanguage = Model.CatalogLanguage;
     }
     */
 

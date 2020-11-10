@@ -32,6 +32,8 @@ namespace LedEcoKatalog.Models
 
     public CatalogLanguage CatalogLanguage { get; set; }
 
+    public string Style { get; set; }
+
     #endregion
   }
 }

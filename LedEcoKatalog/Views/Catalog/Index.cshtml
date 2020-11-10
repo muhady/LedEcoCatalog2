@@ -61,6 +61,7 @@
     </div>
   </div>
 
+  @*
   @foreach (var page in Model.PageInfos)
   {
     PageModel l = new PageModel();
@@ -86,6 +87,22 @@
 
     <div class="Page@(partialName)">
       <partial name="Sections/@partialName" model="l" />
+    </div>
+  }
+  *@
+  @foreach (var page in Model.Pages)
+  {
+    //var partialName = Model.FosaliLevels.Contains(page.Level.ToString()) ? "Fosali" : "Ledeco";
+
+    @if (page.PageInfo.PictureImage != null)
+    {
+      <div class="CatalogPage">
+        <img class="CoverImage" src="@($"data:image/gif;base64,{Convert.ToBase64String(page.PageInfo.PictureImage)}")" />
+      </div>
+    }
+
+    <div class="Page@(page.Style)">
+      <partial name="Sections/@(page.Style)" model="page" />
     </div>
   }
 
