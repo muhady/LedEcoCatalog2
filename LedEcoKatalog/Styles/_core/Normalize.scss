@@ -372,10 +372,9 @@ html
 }
 
 div,
-button:not(.BinaButton),
+// button:not(.BinaButton),
 // .BinaButton,
-.BinaItemsControl > .PART-Items,
-.BinaFormControl .PART-Display, .PART-Input
+.FormControl
 {
   outline: none;
 }

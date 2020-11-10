@@ -4,9 +4,16 @@
 
 @import 'variables';
 
-.FormLabel .Required
+.FormLabel
 {
-  color: $Theme-Color-Error;
+  display: inline-block;
+  font-size: $Theme-Font-Size-Medium - 1px;
+  margin-bottom: 2px;
+
+  .Required
+  {
+    color: $Theme-Color-Error;
+  }
 }
 
 .FormControl
@@ -16,8 +23,85 @@
   color: $Theme-Input-color;
   // line-height: $Theme-Input-min-height;
   min-height: $Theme-Input-min-height;
+}
+
+input[type=text].FormControl
+{
   padding: 0 8px;
 }
+
+select.FormControl
+{
+  padding: 0 4px;
+}
+
+input[type=text].FormControl,
+select.FormControl
+{
+  &:hover
+  {
+    border-color: $Theme-Color-NeutralTertiary;
+  }
+
+  &:focus
+  {
+    border-color: $Theme-Color-ThemePrimary;
+  }
+}
+
+button.FormControl
+{
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+  button.FormControl:not(.IS-Primary)
+  {
+    &:hover
+    {
+      background-color: $Theme-Color-NeutralLighter;
+    }
+
+    &:focus
+    {
+      border-color: $Theme-Color-ThemePrimary;
+    }
+
+    &:active
+    {
+      background-color: $Theme-Color-NeutralLight;
+    }
+  }
+
+  button.FormControl.IS-Primary
+  {
+    background-color: $Theme-Color-PrimaryColor;
+    border-color: $Theme-Color-PrimaryColor;
+    color: $Theme-Color-White;
+
+    &:hover
+    {
+      background-color: $Theme-Color-ThemeDarkAlt;
+    }
+
+    &:focus
+    {
+      border-color: $Theme-Color-ThemeDark;
+    }
+
+    &:active
+    {
+      background-color: $Theme-Color-ThemeDark;
+    }
+  }
+
+.field-validation-error
+{
+  color: $Theme-Color-Error;
+  font-size: $Theme-Font-Size-Medium - 1px;
+  padding-top: 1px;
+}
+
 
 [class^="col-span-"],
 [class*=" col-span-"]
@@ -34,11 +118,6 @@
       margin-bottom: $Theme-Grid-Gutter-Width / 2;
     }
   }
-}
-
-.field-validation-error
-{
-  color: $Theme-Color-Error;
 }
 
 // ----------------------------------------------------------------------------
