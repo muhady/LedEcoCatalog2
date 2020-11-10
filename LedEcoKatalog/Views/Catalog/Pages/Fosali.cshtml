@@ -41,7 +41,7 @@
         @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::") && (l.StrExternalID != "ID104.png"))))
         {
           <div class="PageLegendItem">
-            <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ImgErrorVideo(this);' />
+            <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ParameterImageError(this);' />
             <span class="Text">@legendItem.Val</span>
           </div>
         }
@@ -74,7 +74,7 @@
 
       <div class="SectionColumn">
 
-        <div class="PageSection ProductSection">
+        <div class="PageSection ProductsSection">
 
           <table class="ProductTable">
             <tr>
@@ -121,7 +121,7 @@
               @foreach (var accessory in Model.Accessories)
               {
                 <tr>
-                  <td class="AccessoryCode"><a href=@("https://shop.ledeco.sk/<" + accessory.Kod + ">") target="_blank">@accessory.Kod</a></td>
+                  <td class="AccessoryCode">@accessory.Kod</td>
                   <td class="AccessoryDescription">@accessory.Popis</td>
                 </tr>
               }

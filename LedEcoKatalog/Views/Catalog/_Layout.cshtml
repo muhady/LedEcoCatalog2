@@ -16,10 +16,10 @@
   </environment>
   @RenderSection("Styles", required: false)
   <script>
-    function ImgErrorVideo(source)
+    function ParameterImageError(img)
     {
-      source.src = "/images/parameters/error.png";
-      source.onerror = "";
+      img.src = "/images/parameters/error.png";
+      img.onerror = "";
       return true;
     }
   </script>

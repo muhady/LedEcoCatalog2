@@ -41,7 +41,7 @@
         @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::"))))
         {
           <div class="PageLegendItem">
-            <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ImgErrorVideo(this);' />
+            <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ParameterImageError(this);' />
             <span class="Text">@legendItem.Val</span>
           </div>
         }

@@ -28,7 +28,6 @@ $Table-Cell-border-bottom: 1px solid silver;
   position: relative;
   display: flex;
   flex-direction: column;
-  // padding: $Page-padding;
 }
 
 .PageSection
@@ -279,7 +278,7 @@ $Table-Cell-border-bottom: 1px solid silver;
   }
 }
 
-.ProductSection
+.ProductsSection
 {
   // margin-top: 5mm;
 }
@@ -390,7 +389,7 @@ $Table-Cell-border-bottom: 1px solid silver;
     margin-top: 5mm;
   }
 
-  .ProductSection
+  .ProductsSection
   {
     margin-top: 5mm;
   }
@@ -530,7 +529,7 @@ $Table-Cell-border-bottom: 1px solid silver;
     }
   }
 
-  .ProductSection
+  .ProductsSection
   {
   }
 
