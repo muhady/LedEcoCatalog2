@@ -19,13 +19,13 @@ namespace LedEcoKatalog.Models
     #region Public Properties
 
     [Required]
-    public int Scope { get; set; }
+    public int ScopeId { get; set; }
 
-    public int PriceLevel { get; set; }
+    public int PriceLevelId { get; set; }
 
-    public string Language { get; set; }
+    public string LanguageCode { get; set; }
 
-    public string Layout { get; set; }
+    public string LayoutCode { get; set; }
 
     public string Name { get; set; }
 
@@ -43,8 +43,8 @@ namespace LedEcoKatalog.Models
 
     public override void Execute()
     {
-      Language = Settings.CatalogLanguages.Values.FirstOrDefault()?.Code;
-      Layout = Settings.CatalogLayouts.Values.FirstOrDefault()?.Code;
+      LanguageCode = Settings.CatalogLanguages.Values.FirstOrDefault()?.Code;
+      LayoutCode = Settings.CatalogLayouts.Values.FirstOrDefault()?.Code;
     }
 
     public override async Task OnCreatingViewResultAsync()

@@ -3,13 +3,13 @@
   ViewData["Title"] = Model.Name;
 }
 
-<div class="Catalog Cat@(Model.Layout)">
+<div class="Catalog Cat@(Model.LayoutCode)">
 
-  @for (int i = 0; i < Model.FrontPageCount; i++)
+  @for (int i = 0; i < Model.Layout.FrontPageCount; i++)
   {
     var className = i == 0 ? "FrontCover" : "FrontPage";
     <div class="CatalogPage @className">
-      <img class="CoverImage" src="~/images/coverpages/frontpage/@Model.Layout/@Model.Language-@Model.Layout-predna-obalka-@(i).jpg" />
+      <img class="CoverImage" src="~/images/coverpages/frontpage/@Model.LayoutCode/@Model.LanguageCode-@Model.LayoutCode-predna-obalka-@(i).jpg" />
       @if (i == 0)
       {
         <div class="CoverName">@Model.Name</div>
@@ -21,7 +21,7 @@
 
   <div class="CatalogPage FrontPage IS-Content">
     <div class="Content">
-      <div class="ContentTitle">@Model.CatalogLanguage?.ContentTitle</div>
+      <div class="ContentTitle">@Model.Language?.ContentTitle</div>
       <table class="ContentTable">
         @foreach (var contentItem in Model.ContentItems)
         {
@@ -37,8 +37,8 @@
   <div class="CatalogPage FrontPage IS-Legend">
     <div class="Legend">
       <div class="LegendHeader">
-        <div class="LegendTitle">@Model.CatalogLanguage?.LegendTitle</div>
-        <div class="LegendDescription">@Model.CatalogLanguage?.LegendDescription</div>
+        <div class="LegendTitle">@Model.Language?.LegendTitle</div>
+        <div class="LegendDescription">@Model.Language?.LegendDescription</div>
       </div>
       <div class="LegendItems">
         @foreach (var legendItem in Model.LegendItems.Where(o => !o.Val.Contains("::")).GroupBy(o => new { o.StrPropertyNameForCust, o.StrExternalID }).Select(o => o.FirstOrDefault()))
@@ -75,17 +75,17 @@
     </div>
   }
 
-  @for (int i = 0; i < Model.BackPageCount; i++)
+  @for (int i = 0; i < Model.Layout.BackPageCount; i++)
   {
-    var className = i == Model.BackPageCount - 1 ? "BackCover" : "BackMatter";
-    if (i == Model.BackPageCount - 1 && Model.PriceLevel != -1)
+    var className = i == Model.Layout.BackPageCount - 1 ? "BackCover" : "BackMatter";
+    if (i == Model.Layout.BackPageCount - 1 && Model.PriceLevelId != -1)
     {
       <div class="CatalogPage BackMatter IS-Disclaimer">
         @Html.Raw(@Model.Disclaimer)
       </div>
     }
     <div class="CatalogPage @className">
-      <img class="CoverImage" src="~/images/coverpages/lastpage/@Model.Layout/@Model.Language-@Model.Layout-zadna-obalka-@(i).jpg" />
+      <img class="CoverImage" src="~/images/coverpages/lastpage/@Model.LayoutCode/@Model.LanguageCode-@Model.LayoutCode-zadna-obalka-@(i).jpg" />
     </div>
   }
 

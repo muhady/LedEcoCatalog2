@@ -19,13 +19,13 @@ namespace LedEcoKatalog.Models
   {
     #region Public Properties
 
-    public int Scope { get; set; }
+    public int ScopeId { get; set; }
 
-    public int PriceLevel { get; set; }
+    public int PriceLevelId { get; set; }
 
-    public string Language { get; set; }
+    public string LanguageCode { get; set; }
 
-    public string Layout { get; set; }
+    public string LayoutCode { get; set; }
 
     public string Name { get; set; }
 
@@ -33,9 +33,9 @@ namespace LedEcoKatalog.Models
 
     #region Public Properties
 
-    public CatalogLanguage CatalogLanguage { get; set; }
+    public CatalogLayout Layout { get; set; }
 
-    public int FrontPageCount { get; set; }
+    public CatalogLanguage Language { get; set; }
 
     public string PriceLevelText { get; set; }
 
@@ -47,8 +47,6 @@ namespace LedEcoKatalog.Models
 
     public List<PageModel> Pages { get; set; }
 
-    public int BackPageCount { get; set; }
-
     public string Disclaimer { get; set; }
 
     #endregion
@@ -57,20 +55,15 @@ namespace LedEcoKatalog.Models
 
     public async override Task ExecuteAsync()
     {
-      var scope = Scope;
-      var priceLevel = PriceLevel;
-      var language = Language;
-      var layout = Layout;
+      var scope = ScopeId;
+      var priceLevel = PriceLevelId;
+      var language = LanguageCode;
+      var layout = LayoutCode;
 
       var isFosali = string.Equals(layout, "Fosali", StringComparison.OrdinalIgnoreCase);
 
-      CatalogLanguage = Settings.GetCatalogLanguage(isFosali ? Settings.FosaliLanguageCode : language);
-
-      if (Settings.CatalogLayouts.TryGetValue(layout, out CatalogLayout catalogLayout))
-      {
-        FrontPageCount = catalogLayout.FrontPageCount;
-        BackPageCount = catalogLayout.BackPageCount;
-      }
+      Layout = Settings.CatalogLayouts.TryGetValue(layout, out CatalogLayout catalogLayout) ? catalogLayout : new CatalogLayout();
+      Language = Settings.GetCatalogLanguage(isFosali ? Settings.FosaliLanguageCode : language) ?? new CatalogLanguage();
 
       ContentItems = await DataContext.GetContentItems(scope, language).ToListAsync();
 
@@ -79,7 +72,7 @@ namespace LedEcoKatalog.Models
         Name = ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName;
       }
 
-      PriceLevelText = priceLevel == -1 ? CatalogLanguage?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevel)?.StrTextId?.ToString();
+      PriceLevelText = priceLevel == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevel)?.StrTextId?.ToString();
 
       LegendItems = await DataContext.GetLegendItems(scope, language, isFosali).ToListAsync();
       LegendContent = ResourceHelper.GetLegend(layout, language);
@@ -92,7 +85,7 @@ namespace LedEcoKatalog.Models
 
       Pages = pages.Select(page => new PageModel
       {
-        CatalogLanguage = CatalogLanguage,
+        CatalogLanguage = Language,
 
         Page = page,
         Products = products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
@@ -102,7 +95,7 @@ namespace LedEcoKatalog.Models
         LegendItems = LegendItems.Where(e => e.Page == page.Number).ToList(),
 
         Style = Settings.FosaliLayouts.Contains(page.Level) ? "Fosali" : "Ledeco",
-        HasPrices = PriceLevel != -1,
+        HasPrices = PriceLevelId != -1,
       })
         .ToList();
 

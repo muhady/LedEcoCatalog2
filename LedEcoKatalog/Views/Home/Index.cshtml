@@ -7,28 +7,28 @@
     <div class="row">
 
       <div class="col-span-f">
-        <label class="FormLabel" asp-for="Scope">Rozsah generovaného katalogu <span class="Required">*</span></label>
-        <select class="FormControl" asp-for="Scope" asp-items="Model.Scopes" data-val-required="Toto pole je povinné">
+        <label class="FormLabel" asp-for="ScopeId">Rozsah generovaného katalogu <span class="Required">*</span></label>
+        <select class="FormControl" asp-for="ScopeId" asp-items="Model.Scopes" data-val-required="Toto pole je povinné">
           <option value="">- vyber rozsah katalógu -</option>
         </select>
-        <span asp-validation-for="Scope"></span>
+        <span asp-validation-for="ScopeId"></span>
       </div>
 
       <div class="col-span-h">
-        <label class="FormLabel" asp-for="PriceLevel">Cenník</label>
-        <select class="FormControl" asp-for="PriceLevel" asp-items="Model.PriceLevels">
+        <label class="FormLabel" asp-for="PriceLevelId">Cenník</label>
+        <select class="FormControl" asp-for="PriceLevelId" asp-items="Model.PriceLevels">
         </select>
       </div>
 
       <div class="col-span-1q">
-        <label class="FormLabel" asp-for="Language">Jazyk</label>
-        <select class="FormControl" asp-for="Language" asp-items="Model.Languages">
+        <label class="FormLabel" asp-for="LanguageCode">Jazyk</label>
+        <select class="FormControl" asp-for="LanguageCode" asp-items="Model.Languages">
         </select>
       </div>
 
       <div class="col-span-1q">
-        <label class="FormLabel" asp-for="Layout">Vzhľad</label>
-        <select class="FormControl" asp-for="Layout" asp-items="Model.Layouts">
+        <label class="FormLabel" asp-for="LayoutCode">Vzhľad</label>
+        <select class="FormControl" asp-for="LayoutCode" asp-items="Model.Layouts">
         </select>
       </div>
 
