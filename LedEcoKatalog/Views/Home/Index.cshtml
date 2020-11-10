@@ -14,32 +14,34 @@
         <span asp-validation-for="Scope"></span>
       </div>
 
-      <div class="col-span-5">
+      <div class="col-span-h">
         <label class="FormLabel" asp-for="PriceLevel">Cenník</label>
         <select class="FormControl" asp-for="PriceLevel" asp-items="Model.PriceLevels">
         </select>
       </div>
 
-      <div class="col-span-2">
+      <div class="col-span-1q">
         <label class="FormLabel" asp-for="Language">Jazyk</label>
         <select class="FormControl" asp-for="Language" asp-items="Model.Languages">
         </select>
       </div>
 
-      <div class="col-span-2">
+      <div class="col-span-1q">
         <label class="FormLabel" asp-for="Layout">Vzhľad</label>
         <select class="FormControl" asp-for="Layout" asp-items="Model.Layouts">
         </select>
       </div>
 
-      <div class="col-span-3">
-        <label class="FormLabel">&nbsp;</label>
-        <button class="FormControl IS-Primary" type="submit" formtarget="_blank">Generuj katalóg</button>
-      </div>
-
       <div class="col-span-f">
         <label class="FormLabel" asp-for="Name">Názov katalógu (ak ho neuvediete, použije sa názov podľa výberu v rozsahu)</label>
         <input class="FormControl" asp-for="Name" />
+      </div>
+
+      <div class="col-span-3q"></div>
+
+      <div class="col-span-1q">
+        <label class="FormLabel">&nbsp;</label>
+        <button class="FormControl IS-Primary" type="submit" formtarget="_blank">Generovať katalóg</button>
       </div>
 
     </div>
