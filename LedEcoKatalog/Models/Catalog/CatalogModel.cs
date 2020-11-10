@@ -26,17 +26,15 @@ namespace LedEcoKatalog.Models
 
     public string Layout { get; set; }
 
-    public string NameOfCatalog { get; set; }
+    public string Name { get; set; }
 
     #endregion
 
     #region Public Properties
 
-    public int InitialPages { get; set; }
+    public int FrontPageCount { get; set; }
 
     public string PriceLevelText { get; set; }
-
-    public string CatalogName { get; set; }
 
     public List<ContentItem> ContentItems { get; set; }
 
@@ -44,19 +42,7 @@ namespace LedEcoKatalog.Models
 
     public string LegendContent { get; set; }
 
-    public List<PageInfo> PageInfos { get; set; }
-
-    public List<Product> Products { get; set; }
-
-    public List<ProductPicture> ProductPictures { get; set; }
-
-    public List<CatalogSection2pic3rdt> Section2Pic3Rdts { get; set; }
-
-    public List<Accessory> Accessories { get; set; }
-
-    public string[] FosaliLevels { get; set; }
-
-    public int EndPages { get; set; }
+    public int BackPageCount { get; set; }
 
     public string DisclaimerContent { get; set; }
 
@@ -77,20 +63,18 @@ namespace LedEcoKatalog.Models
       var scope = Scope;
       var priceLevel = PriceLevel;
       var language = Language;
-      var visual = Layout;
-      var nameOfCatalog = NameOfCatalog;
+      var layout = Layout;
+      var nameOfCatalog = Name;
 
-      if (Settings.CatalogSettings.TryGetValue(visual, out CatalogSettings catalogSettings))
+      if (Settings.CatalogSettings.TryGetValue(layout, out CatalogSettings catalogSettings))
       {
-        InitialPages = catalogSettings.InitialPages;
-        EndPages = catalogSettings.FinalPages;
+        FrontPageCount = catalogSettings.FrontPageCount;
+        BackPageCount = catalogSettings.BackPageCount;
       }
 
-      LegendContent = ResourceHelper.GetLegend(visual, language);
+      LegendContent = ResourceHelper.GetLegend(layout, language);
 
-      DisclaimerContent = ResourceHelper.GetDisclaimer(visual, language);
-
-      FosaliLevels = Settings.FosaliLayouts.Select(i => i.ToString()).ToArray();
+      DisclaimerContent = ResourceHelper.GetDisclaimer(layout, language);
 
       if (priceLevel == -1)
       {
@@ -105,37 +89,33 @@ namespace LedEcoKatalog.Models
           .FromSqlRaw($"catalogcontent {scope}, {language}")
           .ToListAsync();
 
-      if (nameOfCatalog == null)
+      if (string.IsNullOrEmpty(Name))
       {
-        CatalogName = ContentItems.OrderBy(e => e.Page).First().CategoryName;
-      }
-      else
-      {
-        CatalogName = nameOfCatalog;
+        Name = ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName;
       }
 
-      PageInfos = await DataContext.PageInfos
+      var pages = await DataContext.PageInfos
           .FromSqlRaw($"catalogsection1 {scope}, {language}")
           .ToListAsync();
 
-      Products = await DataContext.Products
+      var products = await DataContext.Products
         .FromSqlRaw($"catalogsection2 {scope}, {language}, {priceLevel}")
         .ToListAsync();
 
-      ProductPictures = await DataContext.ProductPictures
+      var productPictures = await DataContext.ProductPictures
         .FromSqlRaw($"catalogsection2pic {scope}, {language}")
         .ToListAsync();
 
-      Section2Pic3Rdts = await DataContext.CatalogSection2pic3rdt
+      var section2Pic3Rdts = await DataContext.CatalogSection2pic3rdt
         .FromSqlRaw($"catalogsection2pic3rd {scope}, {language}")
         .ToListAsync();
 
-      Accessories = await DataContext.Accessories
+      var accessories = await DataContext.Accessories
         .FromSqlRaw($"catalogsection3 {scope}, {language}, {priceLevel}")
         .ToListAsync();
 
       var fosaliENproperties = 0;
-      if (visual == "Fosali")
+      if (layout == "Fosali")
       {
         fosaliENproperties = 1;
       }
@@ -148,56 +128,31 @@ namespace LedEcoKatalog.Models
         .FromSqlRaw($"catalogsection4 {scope}, {language},{fosaliENproperties} ")
         .ToListAsync();
 
-      if (visual == "Fosali")
+      if (layout == "Fosali")
       {
         language = Settings.DefaultCatalogLanguage;
       }
 
+      var fosaliLevels = Settings.FosaliLayouts.Select(i => i.ToString()).ToArray();
+
       CatalogLanguage = Settings.GetCatalogLanguage(language);
 
-      Pages = PageInfos.Select(page => new PageModel
+      Pages = pages.Select(page => new PageModel
       {
         PageInfo = page,
-        Products = Products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
-        ProductPictures = ProductPictures.Where(e => e.Page == page.Number).ToList(),
-        Section2Pic3Rdts = Section2Pic3Rdts.Where(e => e.Page == page.Number).ToList(),
-        Accessories = Accessories.Where(e => e.Page == page.Number).ToList(),
+        Products = products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
+        ProductPictures = productPictures.Where(e => e.Page == page.Number).ToList(),
+        Section2Pic3Rdts = section2Pic3Rdts.Where(e => e.Page == page.Number).ToList(),
+        Accessories = accessories.Where(e => e.Page == page.Number).ToList(),
         LegendItems = LegendItems.Where(e => e.Page == page.Number).ToList(),
 
         Language = Language,
         PriceLevel = PriceLevel,
         CatalogLanguage = CatalogLanguage,
-        Style = FosaliLevels.Contains(page.Level.ToString()) ? "Fosali" : "Ledeco",
+        Style = fosaliLevels.Contains(page.Level.ToString()) ? "Fosali" : "Ledeco",
       })
         .ToList();
     }
-
-    /*
-    public override async Task OnCreatingViewResultAsync()
-    {
-    }
-    */
-
-    #endregion
-
-    #region Private Methods
-
-    /*
-    private List<PageModel> Pages()
-    {
-      PageModel l = new PageModel();
-      l.PageInfo = page;
-      l.Products = Model.Products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList();
-      l.ProductPictures = Model.ProductPictures.Where(e => e.Page == page.Number).ToList();
-      l.Section2Pic3Rdts = Model.Section2Pic3Rdts.Where(e => e.Page == page.Number).ToList();
-      l.Accessories = Model.Accessories.Where(e => e.Page == page.Number).ToList();
-      l.LegendItems = Model.LegendItems.Where(e => e.Page == page.Number).ToList();
-
-      l.Language = Model.Language;
-      l.PriceLevel = Model.PriceLevel;
-      l.CatalogLanguage = Model.CatalogLanguage;
-    }
-    */
 
     #endregion
   }
