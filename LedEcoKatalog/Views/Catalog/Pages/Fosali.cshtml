@@ -92,7 +92,7 @@
             @foreach (var product in Model.Products)
             {
               <tr>
-                <td class="ProductName"><a href=@("https://www.fosali.com/_/search?query=" + Model.Page.CategoryName + "&scope=site&showTabs=false") target="_blank">@product.Názov</a></td>
+                <td class="ProductName"><a href="@string.Format(Settings.FosaliSearchUrlFormat ?? "{0}", Model.Page.CategoryName)" target="_blank">@product.Názov</a></td>
                 <td class="ProductVersion">@Html.DisplayFor(modelItem => product.CctK)</td>
                 <td class="ProductDimension">@product.Dĺžka</td>
                 <td class="ProductDimension">@product.Šírka</td>
@@ -101,7 +101,7 @@
                 @if (Model.HasPrices)
                 {
                   var price = product.NumValue;
-                  <td class="ProductPrice">@(price.HasValue && price.Value != 0.0 ? $"{price} €" : Model.Language.ProductPriceInfo)</td>
+                  <td class="ProductPrice">@(price.HasValue && price.Value != 0.0 ? $"{price:f2} €" : Model.Language.ProductPriceInfo)</td>
                 }
               </tr>
             }

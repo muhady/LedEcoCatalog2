@@ -25,6 +25,10 @@ namespace LedEcoKatalog
 
     public static string FosaliLanguageCode { get; private set; }
 
+    public static string SearchUrlFormat { get; private set; }
+
+    public static string FosaliSearchUrlFormat { get; private set; }
+
     public static List<int> FosaliLayouts { get; private set; }
 
     public static Dictionary<int, HttpError> HttpErrors { get; private set; }
@@ -54,6 +58,10 @@ namespace LedEcoKatalog
       AppLanguageCode = GetValue(nameof(AppLanguageCode), "SK");
 
       FosaliLanguageCode = GetValue(nameof(FosaliLanguageCode), "EN");
+
+      SearchUrlFormat = GetValue(nameof(SearchUrlFormat), "https://shop.ledeco.sk/<{0}>");
+
+      FosaliSearchUrlFormat = GetValue(nameof(FosaliSearchUrlFormat), "https://www.fosali.com/_/search?query={0}&scope=site&showTabs=false");
 
       FosaliLayouts = GetList<int>(nameof(FosaliLayouts), true);
 

@@ -85,7 +85,6 @@ namespace LedEcoKatalog.Models
 
       Pages = pages.Select(page => new PageModel
       {
-        Layout = Layout,
         Language = Language,
 
         Page = page,

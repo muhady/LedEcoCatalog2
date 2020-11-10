@@ -18,6 +18,8 @@ namespace LedEcoKatalog
 
     public int BackPageCount { get; set; }
 
+    public string CoverPageExtension { get; set; }
+
     #endregion
   }
 }

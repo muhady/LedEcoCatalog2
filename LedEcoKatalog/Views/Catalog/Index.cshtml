@@ -9,7 +9,7 @@
   {
     var className = i == 0 ? "FrontCover" : "FrontPage";
     <div class="CatalogPage @className">
-      <img class="CoverImage" src="~/images/coverpages/frontpages/@Model.LayoutCode/@Model.LanguageCode-@Model.LayoutCode-predna-obalka-@(i).jpg" />
+      <img class="CoverImage" src="~/images/coverpages/frontpages/@Model.LayoutCode/@Model.LanguageCode-@Model.LayoutCode-predna-obalka-@(i)@Model.Layout.CoverPageExtension" />
       @if (i == 0)
       {
         <div class="CoverName">@Model.Name</div>
@@ -83,7 +83,7 @@
       </div>
     }
     <div class="CatalogPage @className">
-      <img class="CoverImage" src="~/images/coverpages/backpages/@Model.LayoutCode/@Model.LanguageCode-@Model.LayoutCode-zadna-obalka-@(i).jpg" />
+      <img class="CoverImage" src="~/images/coverpages/backpages/@Model.LayoutCode/@Model.LanguageCode-@Model.LayoutCode-zadna-obalka-@(i)@Model.Layout.CoverPageExtension" />
     </div>
   }
 

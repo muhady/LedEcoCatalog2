@@ -14,8 +14,6 @@ namespace LedEcoKatalog.Models
   {
     #region Public Properties
 
-    public CatalogLayout Layout { get; set; }
-
     public CatalogLanguage Language { get; set; }
 
     public Page Page { get; set; }
