@@ -4,27 +4,6 @@
 
 // Colors
 
-// $Theme-Color-R: 0 !default;
-// $Theme-Color-G: 120 !default;
-// $Theme-Color-B: 212 !default; // 215 !default;
-
-// $Theme-Color: rgb($Theme-Color-R, $Theme-Color-G, $Theme-Color-B) !default; // #0078d4 !default; // #0078d7 !default;
-
-// $Theme-Color-Black: #000 !default;
-// $Theme-Color-White: #fff !default;
-
-// $Theme-Color-Neutral-R: 80 !default;
-// $Theme-Color-Neutral-G: 80 !default;
-// $Theme-Color-Neutral-B: 80 !default;
-
-// $Theme-Color-Neutral-Darkest: #212121 !default;
-// $Theme-Color-Neutral-Darker: #333 !default;
-// $Theme-Color-Neutral-Dark: #666 !default;
-// $Theme-Color-Neutral: #808080 !default;
-// $Theme-Color-Neutral-Light: #a6a6a6 !default;
-// $Theme-Color-Neutral-Lighter: #e0e0e0 !default;
-// $Theme-Color-Neutral-Lightest: #f8f8f8 !default; // #f4f4f4 !default;
-
 $Theme-Color-PrimaryColor: #0078d4 !default;
 $Theme-Color-BackgroundColor: #ffffff !default;
 $Theme-Color-ForegroundColor: #323130 !default;
@@ -104,45 +83,6 @@ $Theme-font-family-fallbacks: Helvetica, Arial, sans-serif !default;
 
 $Theme-Font-Size: 16px !default;
 
-
-// $Theme-font-size-xx-small: $Theme-Font-Size / 2 !default;
-// $Theme-font-size-x-small: round($Theme-Font-Size * 0.67) !default;
-// $Theme-font-size-small: round($Theme-Font-Size * 0.83) !default;
-// $Theme-font-size-medium: $Theme-Font-Size !default;
-// $Theme-font-size-large: round($Theme-Font-Size * 1.17) !default;
-// $Theme-font-size-x-large: round($Theme-Font-Size * 1.5) !default;
-// $Theme-font-size-xx-large: $Theme-Font-Size * 2 !default;
-
-// $Theme-Font-Size-Mini: 10px;
-// $Theme-Font-Size-xSmall: 10px;
-// $Theme-Font-Size-small: 12px;
-// $Theme-Font-Size-smallPlus: 12px;
-// $Theme-Font-Size-medium: 14px;
-// $Theme-Font-Size-mediumPlus: 16px;
-// $Theme-Font-Size-icon: 16px;
-// $Theme-Font-Size-large: 18px;
-// $Theme-Font-Size-xLarge: 20px;
-// $Theme-Font-Size-xLargePlus: 24px;
-// $Theme-Font-Size-xxLarge: 28px;
-// $Theme-Font-Size-xxLargePlus: 32px;
-// $Theme-Font-Size-superLarge: 42px;
-// $Theme-Font-Size-mega: 68px;
-
-// export const mini: string = '10px';
-// export const xSmall: string = '11px';
-// export const small: string = '12px';
-// export const smallPlus: string = '13px';
-// export const medium: string = '14px';
-// export const mediumPlus: string = '15px';
-// export const icon: string = '16px';
-// export const large: string = '17px';
-// export const xLarge: string = '21px';
-// export const xLargePlus: string = '21px';
-// export const xxLarge: string = '28px';
-// export const xxLargePlus: string = '28px';
-// export const superLarge: string = '42px';
-// export const mega: string = '72px';
-
 $Theme-Font-Size-Mini: 10px !default;
 $Theme-Font-Size-XSmall: 10px !default;
 $Theme-Font-Size-Small: 12px !default;
@@ -163,25 +103,10 @@ $Theme-Font-Style-Italic: italic !default;
 
 $Theme-Font-Styles: $Theme-Font-Style-Normal $Theme-Font-Style-Italic !default;
 
-// $Theme-font-weight-thin: 100 !default;
-// $Theme-font-weight-extra-light: 200 !default;
-// $Theme-font-weight-light: 300 !default;
-// $Theme-font-weight-regular: 400 !default;
-// $Theme-font-weight-medium: 500 !default;
-// $Theme-font-weight-semi-bold: 600 !default;
-// $Theme-font-weight-bold: 700 !default;
-// $Theme-font-weight-extra-bold: 800 !default;
-// $Theme-font-weight-black: 900 !default;
-
-// $Theme-Font-Weight-Light: 100;
 $Theme-Font-Weight-Semilight: 300;
 $Theme-Font-Weight-Regular: 400;
 $Theme-Font-Weight-Semibold: 600;
 $Theme-Font-Weight-Bold: 700;
-
-
-// $Theme-font-weight-lighter: $Theme-font-weight-light !default;
-// $Theme-font-weight-bolder: $Theme-Font-Weight-Semibold !default;
 
 $Theme-Font-Weights: $Theme-Font-Weight-Semilight $Theme-Font-Weight-Regular $Theme-Font-Weight-Semibold $Theme-Font-Weight-Bold !default;
 

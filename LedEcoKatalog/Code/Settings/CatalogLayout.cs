@@ -14,6 +14,10 @@ namespace LedEcoKatalog
 
     public string Name { get; set; }
 
+    public int FrontPageCount { get; set; }
+
+    public int BackPageCount { get; set; }
+
     #endregion
   }
 }

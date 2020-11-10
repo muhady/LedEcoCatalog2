@@ -66,10 +66,10 @@ namespace LedEcoKatalog.Models
 
       CatalogLanguage = Settings.GetCatalogLanguage(isFosali ? Settings.FosaliLanguageCode : language);
 
-      if (Settings.CatalogSettings.TryGetValue(layout, out CatalogSettings catalogSettings))
+      if (Settings.CatalogLayouts.TryGetValue(layout, out CatalogLayout catalogLayout))
       {
-        FrontPageCount = catalogSettings.FrontPageCount;
-        BackPageCount = catalogSettings.BackPageCount;
+        FrontPageCount = catalogLayout.FrontPageCount;
+        BackPageCount = catalogLayout.BackPageCount;
       }
 
       ContentItems = await DataContext.GetContentItems(scope, language).ToListAsync();

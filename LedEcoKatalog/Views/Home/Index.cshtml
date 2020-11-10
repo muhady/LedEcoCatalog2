@@ -1,6 +1,6 @@
 ﻿@model HomeModel
 
-<div class="AppView" style="padding: 30px 0">
+<div class="AppView">
 
   <form asp-controller="@CatalogController.Name" asp-action="@nameof(CatalogController.Index)" method="post">
 
@@ -34,7 +34,7 @@
 
       <div class="col-span-3">
         <label class="FormLabel">&nbsp;</label>
-        <button class="FormControl btn btn-primary" type="submit" formtarget="_blank">Generuj katalóg</button>
+        <button class="FormControl IS-Primary" type="submit" formtarget="_blank">Generuj katalóg</button>
       </div>
 
       <div class="col-span-f">

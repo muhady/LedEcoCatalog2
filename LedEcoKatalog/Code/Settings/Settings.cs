@@ -17,8 +17,6 @@ namespace LedEcoKatalog
   {
     #region Public Properties (Settings)
 
-    public static Dictionary<string, CatalogSettings> CatalogSettings { get; private set; }
-
     public static Dictionary<string, CatalogLayout> CatalogLayouts { get; private set; }
 
     public static Dictionary<string, CatalogLanguage> CatalogLanguages { get; private set; }
@@ -49,13 +47,9 @@ namespace LedEcoKatalog
     {
       AppSettings.Initialize(configuration, application, environment);
 
-      //// AppSettings
-
-      CatalogSettings = GetList<CatalogSettings>(nameof(CatalogSettings), true).ToDictionary(s => s.Name);
-
       CatalogLayouts = GetList<CatalogLayout>(nameof(CatalogLayouts), true).ToDictionary(s => s.Code);
 
-      CatalogLanguages = GetList<CatalogLanguage>(nameof(CatalogLanguages), true).ToDictionary(s => s.Name);
+      CatalogLanguages = GetList<CatalogLanguage>(nameof(CatalogLanguages), true).ToDictionary(s => s.Code);
 
       AppLanguageCode = GetValue(nameof(AppLanguageCode), "SK");
 

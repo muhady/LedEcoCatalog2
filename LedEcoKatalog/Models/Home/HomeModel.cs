@@ -62,7 +62,7 @@ namespace LedEcoKatalog.Models
         Selected = e.IntIdpriceList == 1,
       }).ToListAsync();
 
-      PriceLevels.Add(new SelectListItem(Settings.GetCatalogLanguage(Settings.AppLanguageCode)?.NoPrices ?? string.Empty, "-1"));
+      PriceLevels.Add(new SelectListItem(Settings.GetCatalogLanguage(Settings.AppLanguageCode)?.NoPrices, "-1"));
 
       Languages = Settings.CatalogLanguages.Values.Select(i => new SelectListItem
       {
