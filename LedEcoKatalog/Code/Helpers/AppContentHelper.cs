@@ -1,5 +1,5 @@
 ﻿//----------------------------------------------------------------------------
-// <copyright file="ResourceHelper.cs" company="Binaware">
+// <copyright file="AppContentHelper.cs" company="Binaware">
 //   Copyright (c) Binaware s.r.o. All rights reserved.
 // </copyright>
 //----------------------------------------------------------------------------
@@ -8,16 +8,17 @@ namespace LedEcoKatalog
 {
   using System.IO;
 
-  public static class ResourceHelper
+  public static class AppContentHelper
   {
     #region Public Fields
 
     private const string DisclaimerFileName = "disclaimer.html";
     private const string LegendFileName = "legend.html";
 
-    private static readonly string ResourcesDirectory = Path.Combine(AppSettings.ContentRootPath, "Resources");
-    private static readonly string DisclaimersPath = Path.Combine(ResourcesDirectory, "Disclaimers");
-    private static readonly string LegendsPath = Path.Combine(ResourcesDirectory, "Legends");
+    private static readonly string RootPath = AppSettings.ContentRootPath;
+    private static readonly string ResourcesPath = Path.Combine(RootPath, Settings.ContentFolderName);
+    private static readonly string DisclaimersPath = Path.Combine(ResourcesPath, "Disclaimers");
+    private static readonly string LegendsPath = Path.Combine(ResourcesPath, "Legends");
 
     #endregion
 

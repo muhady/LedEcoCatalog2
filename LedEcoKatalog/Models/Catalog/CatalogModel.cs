@@ -37,7 +37,11 @@ namespace LedEcoKatalog.Models
 
     public CatalogLanguage Language { get; set; }
 
-    public string PriceLevelText { get; set; }
+    public int Year { get; set; }
+
+    public string PriceLevel { get; set; }
+
+    public string FrontCoverContent { get; set; }
 
     public List<ContentItem> ContentItems { get; set; }
 
@@ -55,33 +59,36 @@ namespace LedEcoKatalog.Models
 
     public async override Task ExecuteAsync()
     {
-      var scope = ScopeId;
-      var priceLevel = PriceLevelId;
-      var language = LanguageCode;
-      var layout = LayoutCode;
+      var scopeId = ScopeId;
+      var priceLevelId = PriceLevelId;
+      var languageCode = LanguageCode;
+      var layoutCode = LayoutCode;
 
-      var isFosali = string.Equals(layout, "Fosali", StringComparison.OrdinalIgnoreCase);
+      var isFosali = string.Equals(layoutCode, "Fosali", StringComparison.OrdinalIgnoreCase);
 
-      Layout = Settings.CatalogLayouts.TryGetValue(layout, out CatalogLayout catalogLayout) ? catalogLayout : new CatalogLayout();
-      Language = Settings.GetCatalogLanguage(isFosali ? Settings.FosaliLanguageCode : language) ?? new CatalogLanguage();
+      Layout = Settings.CatalogLayouts.TryGetValue(layoutCode, out CatalogLayout catalogLayout) ? catalogLayout : new CatalogLayout();
+      Language = Settings.GetCatalogLanguage(isFosali ? Settings.FosaliLanguageCode : languageCode) ?? new CatalogLanguage();
 
-      ContentItems = await DataContext.GetContentItems(scope, language).ToListAsync();
+      ContentItems = await DataContext.GetContentItems(scopeId, languageCode).ToListAsync();
 
-      if (string.IsNullOrEmpty(Name))
+      Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName : Name;
+      Year = DateTime.Today.Year + 1;
+      PriceLevel = priceLevelId == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevelId)?.StrTextId?.ToString();
+
+      var frontCoverContent = WebContentHelper.GetFrontCoverContent(layoutCode, languageCode);
+      if (frontCoverContent != null)
       {
-        Name = ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName;
+        FrontCoverContent = frontCoverContent.Replace("{{name}}", Name).Replace("{{year}}", Year.ToString()).Replace("{{price-level}}", PriceLevel);
       }
 
-      PriceLevelText = priceLevel == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevel)?.StrTextId?.ToString();
+      LegendItems = await DataContext.GetLegendItems(scopeId, languageCode, isFosali).ToListAsync();
+      LegendContent = AppContentHelper.GetLegend(layoutCode, languageCode);
 
-      LegendItems = await DataContext.GetLegendItems(scope, language, isFosali).ToListAsync();
-      LegendContent = ResourceHelper.GetLegend(layout, language);
-
-      var pages = await DataContext.GetPages(scope, language).ToListAsync();
-      var products = await DataContext.GetProducts(scope, language, priceLevel).ToListAsync();
-      var productPictures = await DataContext.GetProductPictures(scope, language).ToListAsync();
-      var productPictures2 = await DataContext.GetProductPictures2(scope, language).ToListAsync();
-      var accessories = await DataContext.GetAccessories(scope, language, priceLevel).ToListAsync();
+      var pages = await DataContext.GetPages(scopeId, languageCode).ToListAsync();
+      var products = await DataContext.GetProducts(scopeId, languageCode, priceLevelId).ToListAsync();
+      var productPictures = await DataContext.GetProductPictures(scopeId, languageCode).ToListAsync();
+      var productPictures2 = await DataContext.GetProductPictures2(scopeId, languageCode).ToListAsync();
+      var accessories = await DataContext.GetAccessories(scopeId, languageCode, priceLevelId).ToListAsync();
 
       Pages = pages.Select(page => new PageModel
       {
@@ -99,7 +106,7 @@ namespace LedEcoKatalog.Models
       })
         .ToList();
 
-      Disclaimer = ResourceHelper.GetDisclaimer(layout, language);
+      Disclaimer = AppContentHelper.GetDisclaimer(layoutCode, languageCode);
     }
 
     #endregion

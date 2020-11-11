@@ -12,9 +12,18 @@
       <img class="CoverImage" src="~/images/coverpages/frontpages/@Model.LayoutCode/@Model.LanguageCode-@Model.LayoutCode-predna-obalka-@(i)@Model.Layout.CoverPageExtension" />
       @if (i == 0)
       {
-        <div class="CoverName">@Model.Name</div>
-        <div class="CoverYear">@(DateTime.Today.Year + 1)</div>
-        <div class="CoverPrice">@Model.PriceLevelText</div>
+        <div class="CoverLayer">
+          @if (string.IsNullOrEmpty(Model.FrontCoverContent))
+          {
+            <div class="CoverName">@Model.Name</div>
+            <div class="CoverYear">@(DateTime.Today.Year + 1)</div>
+            <div class="CoverPrice">@Model.PriceLevel</div>
+          }
+          else
+          {
+            @Html.Raw(Model.FrontCoverContent);
+          }
+        </div>
       }
     </div>
   }

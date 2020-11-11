@@ -25,6 +25,10 @@ namespace LedEcoKatalog
 
     public static string FosaliLanguageCode { get; private set; }
 
+    public static string ContentFolderName { get; private set; }
+
+    public static string CoverPagesFolderPath { get; private set; }
+
     public static string SearchUrlFormat { get; private set; }
 
     public static string FosaliSearchUrlFormat { get; private set; }
@@ -58,6 +62,10 @@ namespace LedEcoKatalog
       AppLanguageCode = GetValue(nameof(AppLanguageCode), "SK");
 
       FosaliLanguageCode = GetValue(nameof(FosaliLanguageCode), "EN");
+
+      ContentFolderName = GetValue(nameof(ContentFolderName), "Content");
+
+      CoverPagesFolderPath = GetValue(nameof(CoverPagesFolderPath), "images/coverpages");
 
       SearchUrlFormat = GetValue(nameof(SearchUrlFormat), "https://shop.ledeco.sk/<{0}>");
 

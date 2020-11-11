@@ -67,13 +67,22 @@ $Table-Cell-border-bottom: 1px solid silver;
   max-height: $Page-heigth;
 }
 
+.CoverLayer
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
 // --- Cover ------------------------------------------------------------------
 
 .CoverName
 {
   font-size: 50pt;
   position: absolute;
-  right: 1.5cm;
+  right: 14mm;
   top: 50%;
 }
 
@@ -81,16 +90,16 @@ $Table-Cell-border-bottom: 1px solid silver;
 {
   font-size: 70pt;
   position: absolute;
-  right: 1.5cm;
-  bottom: 1cm;
+  right: 14mm;
+  bottom: 7mm;
 }
 
 .CoverPrice
 {
   font-size: 8pt;
   position: absolute;
-  left: 1.5cm;
-  bottom: 1cm;
+  left: 14mm;
+  bottom: 7mm;
 }
 
 .FosaliCatalog
