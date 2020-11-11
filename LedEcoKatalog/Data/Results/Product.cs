@@ -16,31 +16,31 @@ namespace LedEcoKatalog.Data
     #region Public Properties
 
     [Column("numValue")]
-    public double? NumValue { get; set; }
+    public double? Price { get; set; }
 
     [Column("intIDProductBase")]
     public int IntIdproductBase { get; set; }
 
     [Column("Kód")]
     [StringLength(255)]
-    public string Kód { get; set; }
+    public string Code { get; set; }
 
     [Column("Názov")]
     [StringLength(4000)]
-    public string Názov { get; set; }
+    public string Name { get; set; }
 
     [Column("CCT (K)")]
     [StringLength(4000)]
     public string CctK { get; set; }
 
     [Column("Šírka")]
-    public double? Šírka { get; set; }
+    public double? Width { get; set; }
 
     [Column("Dĺžka")]
-    public double? Dĺžka { get; set; }
+    public double? Length { get; set; }
 
     [Column("Výška")]
-    public double? Výška { get; set; }
+    public double? Height { get; set; }
 
     [Column("Poradie")]
     public double? Poradie { get; set; }

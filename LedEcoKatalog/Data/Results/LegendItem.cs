@@ -21,25 +21,25 @@ namespace LedEcoKatalog.Data
 
     [Column("val")]
     [StringLength(1000)]
-    public string Val { get; set; }
+    public string Value { get; set; }
 
     [Column("intIDProperty")]
     public int? IntIdproperty { get; set; }
 
     [Column("strExternalID")]
     [StringLength(200)]
-    public string StrExternalID { get; set; }
+    public string ImageFileName { get; set; }
 
     [Column("Page")]
     public long? Page { get; set; }
 
     [Column("strName")]
     [StringLength(100)]
-    public string StrName { get; set; }
+    public string Name { get; set; }
 
     [Column("strDescription")]
     [StringLength(1000)]
-    public string StrDescription { get; set; }
+    public string Description { get; set; }
 
     #endregion
   }

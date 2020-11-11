@@ -38,11 +38,11 @@
     @if (Model.LegendItems.Count > 0)
     {
       <div class="PageSection LegendSection">
-        @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::") && (l.StrExternalID != "ID104.png"))))
+        @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Value.Contains("::") && (l.ImageFileName != "ID104.png"))))
         {
           <div class="PageLegendItem">
-            <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ParameterImageError(this);' />
-            <span class="Text">@legendItem.Val</span>
+            <img class="Image" src="~/images/parameters/@legendItem.ImageFileName" onError='ParameterImageError(this);' />
+            <span class="Text">@legendItem.Value</span>
           </div>
         }
       </div>
@@ -92,15 +92,15 @@
             @foreach (var product in Model.Products)
             {
               <tr>
-                <td class="ProductName"><a href="@string.Format(Settings.FosaliSearchUrlFormat ?? "{0}", Model.Page.CategoryName)" target="_blank">@product.Názov</a></td>
+                <td class="ProductName"><a href="@string.Format(Settings.FosaliSearchUrlFormat ?? "{0}", Model.Page.CategoryName)" target="_blank">@product.Name</a></td>
                 <td class="ProductVersion">@Html.DisplayFor(modelItem => product.CctK)</td>
-                <td class="ProductDimension">@product.Dĺžka</td>
-                <td class="ProductDimension">@product.Šírka</td>
-                <td class="ProductDimension">@product.Výška</td>
+                <td class="ProductDimension">@product.Length</td>
+                <td class="ProductDimension">@product.Width</td>
+                <td class="ProductDimension">@product.Height</td>
                 <td class="ProductDimension">@product.StrText1</td>
                 @if (Model.HasPrices)
                 {
-                  var price = product.NumValue;
+                  var price = product.Price;
                   <td class="ProductPrice">@(price.HasValue && price.Value != 0.0 ? $"{price:f2} €" : Model.Language.ProductPriceInfo)</td>
                 }
               </tr>

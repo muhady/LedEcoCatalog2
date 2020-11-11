@@ -39,6 +39,7 @@ $Table-Cell-border-bottom: 1px solid silver;
 {
   flex-shrink: 0;
   min-height: $Page-padding-top;
+  overflow: hidden;
 }
 
 .ContentSection
@@ -46,6 +47,7 @@ $Table-Cell-border-bottom: 1px solid silver;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  overflow: hidden;
   padding: 0 $Page-padding-right 0 $Page-padding-left;
 }
 
@@ -55,6 +57,7 @@ $Table-Cell-border-bottom: 1px solid silver;
   display: flex;
   flex-shrink: 0;
   min-height: $Page-padding-bottom;
+  overflow: hidden;
   padding: 0 $Page-padding-right 0 $Page-padding-left;
 }
 
@@ -96,7 +99,7 @@ $Table-Cell-border-bottom: 1px solid silver;
   bottom: 7mm;
 }
 
-.CoverPrice
+.CoverPriceLevel
 {
   font-size: 8pt;
   position: absolute;

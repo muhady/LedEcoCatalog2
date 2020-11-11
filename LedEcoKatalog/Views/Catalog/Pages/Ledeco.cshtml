@@ -38,11 +38,11 @@
     @if (Model.LegendItems.Count > 0)
     {
       <div class="PageSection LegendSection">
-        @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Val.Contains("::"))))
+        @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Value.Contains("::"))))
         {
           <div class="PageLegendItem">
-            <img class="Image" src="~/images/parameters/@legendItem.StrExternalID" onError='ParameterImageError(this);' />
-            <span class="Text">@legendItem.Val</span>
+            <img class="Image" src="~/images/parameters/@legendItem.ImageFileName" onError='ParameterImageError(this);' />
+            <span class="Text">@legendItem.Value</span>
           </div>
         }
       </div>
@@ -63,12 +63,12 @@
         @foreach (var product in Model.Products)
         {
           <tr>
-            <td class="ProductCode"><a href="@string.Format(Settings.SearchUrlFormat ?? "{0}", product.Kód)" target="_blank">@product.Kód</a></td>
-            <td class="ProductName">@product.Názov</td>
+            <td class="ProductCode"><a href="@string.Format(Settings.SearchUrlFormat ?? "{0}", product.Code)" target="_blank">@product.Code</a></td>
+            <td class="ProductName">@product.Name</td>
             <td class="ProductVersion">@product.CctK</td>
             @if (Model.HasPrices)
             {
-              var price = product.NumValue;
+              var price = product.Price;
               <td class="ProductPrice">@(price.HasValue && price.Value != 0.0 ? $"{price:f2} €" : Model.Language.ProductPriceInfo)</td>
             }
           </tr>
@@ -78,11 +78,11 @@
       @if (Model.LegendItems.Count > 0)
       {
         <div class="ProductParameters">
-          @foreach (var legendItem in Model.LegendItems.Where(l => l.Val.Contains("::")))
+          @foreach (var legendItem in Model.LegendItems.Where(l => l.Value.Contains("::")))
           {
             <div class="ProductParameter">
               <span class="Label">@legendItem.StrPropertyNameForCust: &nbsp</span>
-              <span>@legendItem.Val.Replace("::", ", ")</span>
+              <span>@legendItem.Value.Replace("::", ", ")</span>
             </div>
           }
         </div>
