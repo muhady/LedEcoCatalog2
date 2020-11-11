@@ -28,46 +28,52 @@
     </div>
   }
 
-  <div class="CatalogPage FrontPage IS-Content">
-    <div class="Content">
-      <div class="ContentTitle">@Model.Language?.ContentTitle</div>
-      <table class="ContentTable">
-        @foreach (var contentItem in Model.ContentItems)
-        {
-          <tr>
-            <td class="ContentName">@contentItem.Name01</td>
-            <td class="ContentPage">@contentItem.Page</td>
-          </tr>
-        }
-      </table>
+  @if (Model.ContentItems.Count > 0)
+  {
+    <div class="CatalogPage FrontPage TYPE-Content">
+      <div class="Content">
+        <div class="ContentTitle">@Model.Language?.ContentTitle</div>
+        <table class="ContentTable">
+          @foreach (var contentItem in Model.ContentItems)
+          {
+            <tr>
+              <td class="ContentName">@contentItem.Name01</td>
+              <td class="ContentPage">@contentItem.Page</td>
+            </tr>
+          }
+        </table>
+      </div>
     </div>
-  </div>
+  }
 
-  <div class="CatalogPage FrontPage IS-Legend">
-    <div class="Legend">
-      <div class="LegendHeader">
-        <div class="LegendTitle">@Model.Language?.LegendTitle</div>
-        <div class="LegendDescription">@Model.Language?.LegendDescription</div>
+  @if (Model.LegendItems.Count > 0)
+  {
+    <div class="CatalogPage FrontPage TYPE-Legend">
+      <div class="Legend">
+        <div class="LegendHeader">
+          <div class="LegendTitle">@Model.Language?.LegendTitle</div>
+          <div class="LegendDescription">@Model.Language?.LegendDescription</div>
+        </div>
+        <div class="LegendItems">
+          @foreach (var legendItem in Model.LegendItems)
+          {
+            <div class="LegendItem">
+              <div class="LegendIcon">
+                <img class="Image" src="~/images/parameters/@legendItem.ImageFileName" onError='ParameterImageError(this);' />
+              </div>
+              <div class="LegendText">
+                <div class="Caption">@legendItem.Name</div>
+                @legendItem.Description
+              </div>
+            </div>
+          }
+        </div>
       </div>
-      <div class="LegendItems">
-        @foreach (var legendItem in Model.LegendItems.Where(o => !o.Value.Contains("::")).GroupBy(o => new { o.StrPropertyNameForCust, o.ImageFileName }).Select(o => o.FirstOrDefault()))
-        {
-          <div class="LegendItem">
-            <div class="LegendIcon">
-              <img class="Image" src="~/images/parameters/@legendItem.ImageFileName" onError='ParameterImageError(this);' />
-            </div>
-            <div class="LegendText">
-              <div class="Caption">@legendItem.Name</div>
-              @legendItem.Description
-            </div>
-          </div>
-        }
+      <div class="LegendContent">
+        @Html.Raw(Model.LegendContent)
       </div>
     </div>
-    <div class="LegendContent">
-      @Html.Raw(Model.LegendContent)
-    </div>
-  </div>
+  }
 
   @foreach (var page in Model.Pages)
   {
@@ -86,7 +92,7 @@
     var className = i == Model.Layout.BackPageCount - 1 ? "BackCover" : "BackPage";
     if (i == Model.Layout.BackPageCount - 1 && Model.PriceLevelId != -1)
     {
-      <div class="CatalogPage BackPage IS-Disclaimer">
+      <div class="CatalogPage BackPage TYPE-Disclaimer">
         @Html.Raw(@Model.Disclaimer)
       </div>
     }

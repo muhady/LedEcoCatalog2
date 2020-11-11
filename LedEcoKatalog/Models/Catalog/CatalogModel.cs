@@ -81,7 +81,8 @@ namespace LedEcoKatalog.Models
         FrontCoverContent = frontCoverContent.Replace("{{name}}", Name).Replace("{{year}}", Year.ToString()).Replace("{{price-level}}", PriceLevel);
       }
 
-      LegendItems = await DataContext.GetLegendItems(scopeId, languageCode, isFosali).ToListAsync();
+      var legendItems = await DataContext.GetLegendItems(scopeId, languageCode, isFosali).ToListAsync();
+      LegendItems = legendItems.Where(e => !e.Value.Contains("::")).GroupBy(e => new { e.StrPropertyNameForCust, e.ImageFileName }).Select(e => e.FirstOrDefault()).ToList();
       LegendContent = AppContentHelper.GetLegend(layoutCode, languageCode);
 
       var pages = await DataContext.GetPages(scopeId, languageCode).ToListAsync();
@@ -90,21 +91,27 @@ namespace LedEcoKatalog.Models
       var productPictures2 = await DataContext.GetProductPictures2(scopeId, languageCode).ToListAsync();
       var accessories = await DataContext.GetAccessories(scopeId, languageCode, priceLevelId).ToListAsync();
 
-      Pages = pages.Select(page => new PageModel
+      Pages = pages.Select(page =>
       {
-        Language = Language,
+        var pageLegendItems = legendItems.Where(e => e.Page == page.Number).ToList();
+        var isFosaliPage = Settings.FosaliLayouts.Contains(page.Level);
 
-        Page = page,
-        Products = products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
-        ProductPictures = productPictures.Where(e => e.Page == page.Number).ToList(),
-        ProductPictures2 = productPictures2.Where(e => e.Page == page.Number).ToList(),
-        Accessories = accessories.Where(e => e.Page == page.Number).ToList(),
-        LegendItems = LegendItems.Where(e => e.Page == page.Number).ToList(),
+        return new PageModel
+        {
+          Language = Language,
 
-        IsFosali = Settings.FosaliLayouts.Contains(page.Level),
-        HasPrices = PriceLevelId != -1,
-      })
-        .ToList();
+          Page = page,
+          LegendItems = pageLegendItems.Where(e => (!e.Value.Contains("::"))).ToList(),
+          MultivaluedLegendItems = pageLegendItems.Where(l => l.Value.Contains("::")).ToList(),
+          Products = products.Where(e => e.Page == page.Number).OrderBy(e => e.Poradie).ToList(),
+          ProductPictures = productPictures.Where(e => e.Page == page.Number).ToList(),
+          ProductPictures2 = productPictures2.Where(e => e.Page == page.Number).ToList(),
+          Accessories = accessories.Where(e => e.Page == page.Number).ToList(),
+
+          IsFosali = isFosaliPage,
+          HasPrices = PriceLevelId != -1,
+        };
+      }).ToList();
 
       Disclaimer = AppContentHelper.GetDisclaimer(layoutCode, languageCode);
     }

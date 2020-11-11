@@ -38,7 +38,7 @@
     @if (Model.LegendItems.Count > 0)
     {
       <div class="PageSection LegendSection">
-        @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Value.Contains("::") && (l.ImageFileName != "ID104.png"))))
+        @foreach (var legendItem in Model.LegendItems.Where(l => l.ImageFileName != "ID104.png"))
         {
           <div class="PageLegendItem">
             <img class="Image" src="~/images/parameters/@legendItem.ImageFileName" onError='ParameterImageError(this);' />
@@ -93,7 +93,7 @@
             {
               <tr>
                 <td class="ProductName"><a href="@string.Format(Settings.FosaliSearchUrlFormat ?? "{0}", Model.Page.CategoryName)" target="_blank">@product.Name</a></td>
-                <td class="ProductVersion">@Html.DisplayFor(modelItem => product.CctK)</td>
+                <td class="ProductVersion">@Html.DisplayFor(modelItem => product.Version)</td>
                 <td class="ProductDimension">@product.Length</td>
                 <td class="ProductDimension">@product.Width</td>
                 <td class="ProductDimension">@product.Height</td>

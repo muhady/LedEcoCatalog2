@@ -38,7 +38,7 @@
     @if (Model.LegendItems.Count > 0)
     {
       <div class="PageSection LegendSection">
-        @foreach (var legendItem in Model.LegendItems.Where(l => (!l.Value.Contains("::"))))
+        @foreach (var legendItem in Model.LegendItems)
         {
           <div class="PageLegendItem">
             <img class="Image" src="~/images/parameters/@legendItem.ImageFileName" onError='ParameterImageError(this);' />
@@ -65,7 +65,7 @@
           <tr>
             <td class="ProductCode"><a href="@string.Format(Settings.SearchUrlFormat ?? "{0}", product.Code)" target="_blank">@product.Code</a></td>
             <td class="ProductName">@product.Name</td>
-            <td class="ProductVersion">@product.CctK</td>
+            <td class="ProductVersion">@product.Version</td>
             @if (Model.HasPrices)
             {
               var price = product.Price;
@@ -75,10 +75,10 @@
         }
       </table>
 
-      @if (Model.LegendItems.Count > 0)
+      @if (Model.MultivaluedLegendItems.Count > 0)
       {
         <div class="ProductParameters">
-          @foreach (var legendItem in Model.LegendItems.Where(l => l.Value.Contains("::")))
+          @foreach (var legendItem in Model.MultivaluedLegendItems)
           {
             <div class="ProductParameter">
               <span class="Label">@legendItem.StrPropertyNameForCust: &nbsp</span>

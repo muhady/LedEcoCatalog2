@@ -20,6 +20,8 @@ namespace LedEcoKatalog.Models
 
     public List<LegendItem> LegendItems { get; set; }
 
+    public List<LegendItem> MultivaluedLegendItems { get; set; }
+
     public List<Product> Products { get; set; }
 
     public List<ProductPicture> ProductPictures { get; set; }

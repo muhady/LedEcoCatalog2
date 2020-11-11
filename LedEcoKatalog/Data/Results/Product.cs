@@ -31,7 +31,7 @@ namespace LedEcoKatalog.Data
 
     [Column("CCT (K)")]
     [StringLength(4000)]
-    public string CctK { get; set; }
+    public string Version { get; set; }
 
     [Column("Šírka")]
     public double? Width { get; set; }
