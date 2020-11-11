@@ -4,3 +4,6 @@ obsah + vylistovanie produktov
 zadna0, zadna1, zadna2....zadna N
 
 cize predna0 a zadnaN su obalky vonkajsie VZDY. 
+
+CoverPage.html pre vsetky jazyky pripadne CoiverPage.EN.html, ....
+
