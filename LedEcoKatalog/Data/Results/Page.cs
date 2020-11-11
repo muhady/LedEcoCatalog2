@@ -38,7 +38,7 @@ namespace LedEcoKatalog.Data
     public long? Number { get; set; }
 
     [Column("Kratky popis kategorie")]
-    public string KratkyPopisKategorie { get; set; }
+    public string ShortCategoryDescription { get; set; }
 
     [Column("BannerImage")]
     public byte[] BannerImage { get; set; }
@@ -47,7 +47,7 @@ namespace LedEcoKatalog.Data
     public byte[] PictureImage { get; set; }
 
     [Column("Popis produktu Parent")]
-    public string PopisProduktuParent { get; set; }
+    public string ParentProductDescription { get; set; }
 
     [Column("strText9")]
     [StringLength(4000)]

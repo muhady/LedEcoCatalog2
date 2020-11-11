@@ -35,6 +35,8 @@ namespace LedEcoKatalog
 
     public static List<int> FosaliLayouts { get; private set; }
 
+    public static List<string> ExcludedLegendImages { get; private set; }
+
     public static Dictionary<int, HttpError> HttpErrors { get; private set; }
 
     public static bool ShowErrorDetails { get; private set; }
@@ -72,6 +74,8 @@ namespace LedEcoKatalog
       FosaliSearchUrlFormat = GetValue(nameof(FosaliSearchUrlFormat), "https://www.fosali.com/_/search?query={0}&scope=site&showTabs=false");
 
       FosaliLayouts = GetList<int>(nameof(FosaliLayouts), true);
+
+      ExcludedLegendImages = GetList<string>(nameof(ExcludedLegendImages), true);
 
       HttpErrors = GetList<HttpError>(nameof(HttpErrors), true).ToDictionary(s => s.Code);
 

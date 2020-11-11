@@ -17,7 +17,7 @@ namespace LedEcoKatalog.Data
 
     [Column("strPropertyNameForCust")]
     [StringLength(255)]
-    public string StrPropertyNameForCust { get; set; }
+    public string GroupName { get; set; }
 
     [Column("val")]
     [StringLength(1000)]

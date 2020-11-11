@@ -71,7 +71,7 @@ namespace LedEcoKatalog.Data
 
     [Column("strText1")]
     [StringLength(4000)]
-    public string StrText1 { get; set; }
+    public string Diameter { get; set; }
 
     [Column("strText2")]
     [StringLength(4000)]

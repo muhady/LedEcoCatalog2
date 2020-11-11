@@ -17,7 +17,7 @@
 
     <div class="PageSection TextSection">
 
-      <div class="PageParagraph">@Model.Page.KratkyPopisKategorie</div>
+      <div class="PageParagraph">@Model.Page.ShortCategoryDescription</div>
 
       @if (Model.Page.StrText9 != null)
       {
@@ -25,7 +25,7 @@
       }
       else
       {
-        <div class="PageParagraph">@Model.Page.PopisProduktuParent</div>
+        <div class="PageParagraph">@Model.Page.ParentProductDescription</div>
       }
 
       @if (Model.Page.StrText10 != null)
@@ -81,7 +81,7 @@
           @foreach (var legendItem in Model.MultivaluedLegendItems)
           {
             <div class="ProductParameter">
-              <span class="Label">@legendItem.StrPropertyNameForCust: &nbsp</span>
+              <span class="Label">@legendItem.Name: &nbsp</span>
               <span>@legendItem.Value.Replace("::", ", ")</span>
             </div>
           }

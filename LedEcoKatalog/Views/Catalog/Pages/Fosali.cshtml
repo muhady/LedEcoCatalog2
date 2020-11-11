@@ -17,7 +17,7 @@
 
     <div class="PageSection TextSection">
 
-      <div class="PageParagraph">@Model.Page.KratkyPopisKategorie</div>
+      <div class="PageParagraph">@Model.Page.ShortCategoryDescription</div>
 
       @if (Model.Page.StrText9 != null)
       {
@@ -25,7 +25,7 @@
       }
       else
       {
-        <div class="PageParagraph">@Model.Page.PopisProduktuParent</div>
+        <div class="PageParagraph">@Model.Page.ParentProductDescription</div>
       }
 
       @if (Model.Page.StrText10 != null)
@@ -38,7 +38,7 @@
     @if (Model.LegendItems.Count > 0)
     {
       <div class="PageSection LegendSection">
-        @foreach (var legendItem in Model.LegendItems.Where(l => l.ImageFileName != "ID104.png"))
+        @foreach (var legendItem in Model.LegendItems)
         {
           <div class="PageLegendItem">
             <img class="Image" src="~/images/parameters/@legendItem.ImageFileName" onError='ParameterImageError(this);' />
@@ -97,7 +97,7 @@
                 <td class="ProductDimension">@product.Length</td>
                 <td class="ProductDimension">@product.Width</td>
                 <td class="ProductDimension">@product.Height</td>
-                <td class="ProductDimension">@product.StrText1</td>
+                <td class="ProductDimension">@product.Diameter</td>
                 @if (Model.HasPrices)
                 {
                   var price = product.Price;

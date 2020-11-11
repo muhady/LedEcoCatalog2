@@ -218,10 +218,10 @@ namespace LedEcoKatalog.Data
       {
         entity.HasNoKey();
         entity.Property(e => e.PathToCategory).IsUnicode(false);
-        entity.Property(e => e.KratkyPopisKategorie).HasColumnType("ntext");
+        entity.Property(e => e.ShortCategoryDescription).HasColumnType("ntext");
         entity.Property(e => e.BannerImage).HasColumnType("image");
         entity.Property(e => e.PictureImage).HasColumnType("image");
-        entity.Property(e => e.PopisProduktuParent).HasColumnType("ntext");
+        entity.Property(e => e.ParentProductDescription).HasColumnType("ntext");
       });
 
       modelBuilder.Entity<Product>(entity =>
