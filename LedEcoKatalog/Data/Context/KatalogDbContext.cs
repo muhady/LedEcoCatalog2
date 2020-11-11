@@ -241,7 +241,7 @@ namespace LedEcoKatalog.Data
       modelBuilder.Entity<Accessory>(entity =>
       {
         entity.HasNoKey();
-        entity.Property(e => e.Img).HasColumnType("image");
+        entity.Property(e => e.Image).HasColumnType("image");
       });
     }
 

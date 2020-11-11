@@ -36,24 +36,24 @@ namespace LedEcoKatalog.Data
 
     [Column("Kod")]
     [StringLength(255)]
-    public string Kod { get; set; }
+    public string Code { get; set; }
 
     [Column("intIDCoupledProduct")]
     public int IntIdcoupledProduct { get; set; }
 
     [Column("Popis")]
     [StringLength(255)]
-    public string Popis { get; set; }
+    public string Description { get; set; }
 
     [Column("Nazov")]
     [StringLength(4000)]
-    public string Nazov { get; set; }
+    public string Name { get; set; }
 
     [Column("numValue")]
-    public double? NumValue { get; set; }
+    public double? Price { get; set; }
 
     [Column("img")]
-    public byte[] Img { get; set; }
+    public byte[] Image { get; set; }
 
     #endregion
   }

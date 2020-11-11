@@ -132,21 +132,21 @@
           {
             <tr>
               <td rowspan="2" class="AccessoryImage">
-                @if (accessory.Img != null)
+                @if (accessory.Image != null)
                 {
-                  <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(accessory.Img)}")" />
+                  <img class="Image" src="@($"data:image/gif;base64,{Convert.ToBase64String(accessory.Image)}")" />
                 }
               </td>
-              <td class="AccessoryCode"><a href="@string.Format(Settings.SearchUrlFormat ?? "{0}", accessory.Kod)" target="_blank">@accessory.Kod</a></td>
-              <td class="AccessoryName">@accessory.Nazov</td>
+              <td class="AccessoryCode"><a href="@string.Format(Settings.SearchUrlFormat ?? "{0}", accessory.Code)" target="_blank">@accessory.Code</a></td>
+              <td class="AccessoryName">@accessory.Name</td>
               @if (Model.HasPrices)
               {
-                var price = accessory.NumValue;
+                var price = accessory.Price;
                 <td rowspan="2" class="AccessoryPrice">@(price.HasValue && price.Value != 0.0 ? $"{price:f2} €" : Model.Language.ProductPriceInfo)</td>
               }
             </tr>
             <tr>
-              <td colspan="2" class="AccessoryDescription">@accessory.Popis</td>
+              <td colspan="2" class="AccessoryDescription">@accessory.Description</td>
             </tr>
           }
         </table>
