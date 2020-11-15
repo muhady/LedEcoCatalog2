@@ -31,7 +31,7 @@ namespace LedEcoKatalog.Models
 
     public List<SelectListItem> Scopes { get; set; }
 
-    public List<SelectListItem> PriceLevels { get; set; }
+    public List<SelectListItem> PriceLevelPrimary { get; set; }
 
     public List<SelectListItem> Languages { get; set; }
 
@@ -55,14 +55,14 @@ namespace LedEcoKatalog.Models
         Value = e.Idlevel.ToString(),
       }).ToListAsync();
 
-      PriceLevels = await DataContext.PriceLevel.OrderBy(e => e.IntIdpriceList).Select(e => new SelectListItem
+      PriceLevelPrimary = await DataContext.PriceLevel.OrderBy(e => e.IntIdpriceList).Select(e => new SelectListItem
       {
         Text = e.StrTextId,
         Value = e.IntIdpriceList.ToString(),
         Selected = e.IntIdpriceList == 1,
       }).ToListAsync();
 
-      PriceLevels.Add(new SelectListItem(Settings.GetCatalogLanguage(Settings.AppLanguageCode)?.NoPrices, "-1"));
+      PriceLevelPrimary.Add(new SelectListItem(Settings.GetCatalogLanguage(Settings.AppLanguageCode)?.NoPrices, "-1"));
 
       Languages = Settings.CatalogLanguages.Values.Select(i => new SelectListItem
       {
