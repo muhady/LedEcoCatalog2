@@ -21,7 +21,9 @@ namespace LedEcoKatalog.Models
     [Required]
     public int ScopeId { get; set; }
 
-    public int PriceLevelId { get; set; }
+    public int PriceLevelPrimaryID { get; set; }
+
+    public int PriceLevelSecondaryID { get; set; }
 
     public string LanguageCode { get; set; }
 
@@ -32,6 +34,8 @@ namespace LedEcoKatalog.Models
     public List<SelectListItem> Scopes { get; set; }
 
     public List<SelectListItem> PriceLevelPrimary { get; set; }
+
+    public List<SelectListItem> PriceLevelSecondary { get; set; }
 
     public List<SelectListItem> Languages { get; set; }
 
@@ -63,6 +67,15 @@ namespace LedEcoKatalog.Models
       }).ToListAsync();
 
       PriceLevelPrimary.Add(new SelectListItem(Settings.GetCatalogLanguage(Settings.AppLanguageCode)?.NoPrices, "-1"));
+
+      PriceLevelSecondary = await DataContext.PriceLevel.OrderBy(e => e.IntIdpriceList).Select(e => new SelectListItem
+      {
+        Text = e.StrTextId,
+        Value = e.IntIdpriceList.ToString(),
+      }).ToListAsync();
+
+      PriceLevelSecondary.Add(new SelectListItem(Settings.GetCatalogLanguage(Settings.AppLanguageCode)?.NoPrices, "-1"));
+      PriceLevelSecondary.First(e => e.Value == "-1").Selected = true;
 
       Languages = Settings.CatalogLanguages.Values.Select(i => new SelectListItem
       {

@@ -82,9 +82,9 @@ namespace LedEcoKatalog.Data
       return Pages.FromSqlRaw($"catalogsection1 {scope}, {language}");
     }
 
-    public IQueryable<Product> GetProducts(int scope, string language, int priceLevel)
+    public IQueryable<Product> GetProducts(int scope, string language, int priceLevelPrimary, int priceLevelSecondary)
     {
-      return Products.FromSqlRaw($"catalogsection2 {scope}, {language}, {priceLevel}");
+      return Products.FromSqlRaw($"catalogsection2 {scope}, {language}, {priceLevelPrimary}, {priceLevelSecondary}");
     }
 
     public IQueryable<ProductPicture> GetProductPictures(int scope, string language)
@@ -97,9 +97,9 @@ namespace LedEcoKatalog.Data
       return ProductPictures2.FromSqlRaw($"catalogsection2pic3rd {scope}, {language}");
     }
 
-    public IQueryable<Accessory> GetAccessories(int scope, string language, int priceLevel)
+    public IQueryable<Accessory> GetAccessories(int scope, string language, int priceLevelPrimary, int priceLevelSecondary)
     {
-      return Accessories.FromSqlRaw($"catalogsection3 {scope}, {language}, {priceLevel}");
+      return Accessories.FromSqlRaw($"catalogsection3 {scope}, {language}, {priceLevelPrimary}, {priceLevelSecondary}");
     }
 
     #endregion

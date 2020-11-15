@@ -21,7 +21,9 @@ namespace LedEcoKatalog.Models
 
     public int ScopeId { get; set; }
 
-    public int PriceLevelId { get; set; }
+    public int PriceLevelPrimaryId { get; set; }
+
+    public int PriceLevelSecondaryId { get; set; }
 
     public string LanguageCode { get; set; }
 
@@ -39,7 +41,9 @@ namespace LedEcoKatalog.Models
 
     public int Year { get; set; }
 
-    public string PriceLevel { get; set; }
+    public string PriceLevelPrimary { get; set; }
+
+    public string PriceLevelSecondary { get; set; }
 
     public string FrontCoverContent { get; set; }
 
@@ -60,7 +64,8 @@ namespace LedEcoKatalog.Models
     public async override Task ExecuteAsync()
     {
       var scopeId = ScopeId;
-      var priceLevelId = PriceLevelId;
+      var priceLevelPrimaryId = PriceLevelPrimaryId;
+      var priceLevelSecondaryId = PriceLevelSecondaryId;
       var languageCode = LanguageCode;
       var layoutCode = LayoutCode;
 
@@ -73,12 +78,14 @@ namespace LedEcoKatalog.Models
 
       Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName : Name;
       Year = DateTime.Today.Year + 1;
-      PriceLevel = priceLevelId == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevelId)?.StrTextId?.ToString();
+      PriceLevelPrimary = priceLevelPrimaryId == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevelPrimaryId)?.StrTextId?.ToString();
+      PriceLevelSecondary = priceLevelSecondaryId == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevelSecondaryId)?.StrTextId?.ToString();
+
 
       var frontCoverContent = WebContentHelper.GetFrontCoverContent(layoutCode, languageCode);
       if (frontCoverContent != null)
       {
-        FrontCoverContent = frontCoverContent.Replace("{{name}}", Name).Replace("{{year}}", Year.ToString()).Replace("{{price-level}}", PriceLevel);
+        FrontCoverContent = frontCoverContent.Replace("{{name}}", Name).Replace("{{year}}", Year.ToString()).Replace("{{price-level}}", PriceLevelPrimary);
       }
 
       var excludedLegendImages = Settings.ExcludedLegendImages;
@@ -90,10 +97,10 @@ namespace LedEcoKatalog.Models
       LegendContent = AppContentHelper.GetLegend(layoutCode, languageCode);
 
       var pages = await DataContext.GetPages(scopeId, languageCode).ToListAsync();
-      var products = await DataContext.GetProducts(scopeId, languageCode, priceLevelId).ToListAsync();
+      var products = await DataContext.GetProducts(scopeId, languageCode, priceLevelPrimaryId, priceLevelSecondaryId).ToListAsync();
       var productPictures = await DataContext.GetProductPictures(scopeId, languageCode).ToListAsync();
       var productPictures2 = await DataContext.GetProductPictures2(scopeId, languageCode).ToListAsync();
-      var accessories = await DataContext.GetAccessories(scopeId, languageCode, priceLevelId).ToListAsync();
+      var accessories = await DataContext.GetAccessories(scopeId, languageCode, priceLevelPrimaryId, priceLevelSecondaryId).ToListAsync();
 
 
       Pages = pages.Select(page =>
@@ -113,7 +120,8 @@ namespace LedEcoKatalog.Models
           Accessories = accessories.Where(e => e.Page == page.Number).ToList(),
 
           IsFosali = Settings.FosaliLayouts.Contains(page.Level),
-          HasPrices = PriceLevelId != -1,
+          HasPrimaryPrices = PriceLevelPrimaryId != -1,
+          HasSecondaryPrices = PriceLevelSecondaryId != -1,
         };
       }).ToList();
 

@@ -84,7 +84,7 @@
               <th class="ProductDimension">@Model.Language.ProductWidth</th>
               <th class="ProductDimension">@Model.Language.ProductHeight</th>
               <th class="ProductDimension">@Model.Language.ProductDiameter</th>
-              @if (Model.HasPrices)
+              @if (Model.HasPrimaryPrices)
               {
                 <th class="ProductPrice">@Model.Language.ProductPrice</th>
               }
@@ -98,9 +98,9 @@
                 <td class="ProductDimension">@product.Width</td>
                 <td class="ProductDimension">@product.Height</td>
                 <td class="ProductDimension">@product.Diameter</td>
-                @if (Model.HasPrices)
+                @if (Model.HasPrimaryPrices)
                 {
-                  var price = product.Price;
+                  var price = product.PricePrimary;
                   <td class="ProductPrice">@(price.HasValue && price.Value != 0.0 ? $"{price:f2} €" : Model.Language.ProductPriceInfo)</td>
                 }
               </tr>

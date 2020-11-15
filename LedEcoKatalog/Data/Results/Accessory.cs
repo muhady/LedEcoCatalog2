@@ -50,7 +50,10 @@ namespace LedEcoKatalog.Data
     public string Name { get; set; }
 
     [Column("numValue")]
-    public double? Price { get; set; }
+    public double? PrimaryPrice { get; set; }
+
+    [Column("numValue2")]
+    public double? SecondaryPrice { get; set; }
 
     [Column("img")]
     public byte[] Image { get; set; }

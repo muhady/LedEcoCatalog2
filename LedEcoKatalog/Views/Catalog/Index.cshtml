@@ -17,7 +17,7 @@
           {
             <div class="CoverName">@Model.Name</div>
             <div class="CoverYear">@Model.Year</div>
-            <div class="CoverPriceLevel">@Model.PriceLevel</div>
+            <div class="CoverPriceLevel">@Model.PriceLevelPrimary</div>
           }
           else
           {
@@ -90,7 +90,7 @@
   @for (int i = 0; i < Model.Layout.BackPageCount; i++)
   {
     var className = i == Model.Layout.BackPageCount - 1 ? "BackCover" : "BackPage";
-    if (i == Model.Layout.BackPageCount - 1 && Model.PriceLevelId != -1)
+    if (i == Model.Layout.BackPageCount - 1 && Model.PriceLevelPrimaryId != -1)
     {
       <div class="CatalogPage BackPage TYPE-Disclaimer">
         @Html.Raw(@Model.Disclaimer)

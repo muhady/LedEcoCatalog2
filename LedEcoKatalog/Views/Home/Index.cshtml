@@ -4,47 +4,53 @@
 
   <form asp-controller="@CatalogController.Name" asp-action="@nameof(CatalogController.Index)" method="post">
 
-    <div class="row">
+      <div class="row">
 
-      <div class="col-span-f">
-        <label class="FormLabel" asp-for="ScopeId">Rozsah generovaného katalogu <span class="Required">*</span></label>
-        <select class="FormControl" asp-for="ScopeId" asp-items="Model.Scopes" data-val-required="Toto pole je povinné">
-          <option value="">- vyber rozsah katalógu -</option>
-        </select>
-        <span asp-validation-for="ScopeId"></span>
+          <div class="col-span-f">
+              <label class="FormLabel" asp-for="ScopeId">Rozsah generovaného katalogu <span class="Required">*</span></label>
+              <select class="FormControl" asp-for="ScopeId" asp-items="Model.Scopes" data-val-required="Toto pole je povinné">
+                  <option value="">- vyber rozsah katalógu -</option>
+              </select>
+              <span asp-validation-for="ScopeId"></span>
+          </div>
+
+          <div class="col-span-1q">
+              <label class="FormLabel" asp-for="PriceLevelPrimaryID">Primárny Cenník</label>
+              <select class="FormControl" asp-for="PriceLevelPrimaryID" asp-items="Model.PriceLevelPrimary">
+              </select>
+          </div>
+
+          <div class="col-span-1q">
+              <label class="FormLabel" asp-for="PriceLevelSecondaryID">Sekundárny cenník</label>
+              <select class="FormControl" asp-for="PriceLevelSecondaryID" asp-items="Model.PriceLevelSecondary">
+              </select>
+          </div>
+
+          <div class="col-span-1q">
+              <label class="FormLabel" asp-for="LanguageCode">Jazyk</label>
+              <select class="FormControl" asp-for="LanguageCode" asp-items="Model.Languages">
+              </select>
+          </div>
+
+          <div class="col-span-1q">
+              <label class="FormLabel" asp-for="LayoutCode">Vzhľad</label>
+              <select class="FormControl" asp-for="LayoutCode" asp-items="Model.Layouts">
+              </select>
+          </div>
+
+          <div class="col-span-f">
+              <label class="FormLabel" asp-for="Name">Názov katalógu (ak ho neuvediete, použije sa názov podľa výberu v rozsahu)</label>
+              <input class="FormControl" asp-for="Name" />
+          </div>
+
+          <div class="col-span-3q"></div>
+
+          <div class="col-span-1q">
+              <label class="FormLabel">&nbsp;</label>
+              <button class="FormControl IS-Primary" type="submit" formtarget="_blank">Generovať katalóg</button>
+          </div>
+
       </div>
-
-      <div class="col-span-h">
-        <label class="FormLabel" asp-for="PriceLevelId">Cenník</label>
-        <select class="FormControl" asp-for="PriceLevelId" asp-items="Model.PriceLevelPrimary">
-        </select>
-      </div>
-
-      <div class="col-span-1q">
-        <label class="FormLabel" asp-for="LanguageCode">Jazyk</label>
-        <select class="FormControl" asp-for="LanguageCode" asp-items="Model.Languages">
-        </select>
-      </div>
-
-      <div class="col-span-1q">
-        <label class="FormLabel" asp-for="LayoutCode">Vzhľad</label>
-        <select class="FormControl" asp-for="LayoutCode" asp-items="Model.Layouts">
-        </select>
-      </div>
-
-      <div class="col-span-f">
-        <label class="FormLabel" asp-for="Name">Názov katalógu (ak ho neuvediete, použije sa názov podľa výberu v rozsahu)</label>
-        <input class="FormControl" asp-for="Name" />
-      </div>
-
-      <div class="col-span-3q"></div>
-
-      <div class="col-span-1q">
-        <label class="FormLabel">&nbsp;</label>
-        <button class="FormControl IS-Primary" type="submit" formtarget="_blank">Generovať katalóg</button>
-      </div>
-
-    </div>
 
   </form>
 

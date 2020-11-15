@@ -32,7 +32,9 @@ namespace LedEcoKatalog.Models
 
     public bool IsFosali { get; set; }
 
-    public bool HasPrices { get; set; }
+    public bool HasPrimaryPrices { get; set; }
+
+    public bool HasSecondaryPrices { get; set; }
 
     #endregion
   }

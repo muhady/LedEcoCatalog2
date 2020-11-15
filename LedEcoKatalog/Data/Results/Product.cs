@@ -16,7 +16,10 @@ namespace LedEcoKatalog.Data
     #region Public Properties
 
     [Column("numValue")]
-    public double? Price { get; set; }
+    public double? PricePrimary { get; set; }
+
+    [Column("numValue2")]
+    public double? PriceSecondary { get; set; }
 
     [Column("intIDProductBase")]
     public int IntIdproductBase { get; set; }

@@ -38,6 +38,8 @@ namespace LedEcoKatalog
 
     public string ProductPrice { get; set; }
 
+    public string ProductDoublePrice { get; set; }
+
     public string ProductPriceInfo { get; set; }
 
     public string AccessoriesSectionTitle { get; set; }
