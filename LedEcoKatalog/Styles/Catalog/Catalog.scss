@@ -9,585 +9,507 @@ $Table-Cell-border-bottom: 1px solid silver;
 
 // --- Catalog ----------------------------------------------------------------
 
-.Catalog
-{
-  margin: 0 auto;
-  width: $Page-width;
+.Catalog {
+    margin: 0 auto;
+    width: $Page-width;
 }
 
 // --- Page -------------------------------------------------------------------
 
-.CatalogPage
-{
-  background-color: #fff;
-  box-shadow: $Page-box-shadow;
-  min-height: $Page-heigth;
-  overflow: hidden;
-  margin: $Theme-Grid-Gutter-Width 0;
-  page-break-before: always;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.CatalogPage {
+    background-color: #fff;
+    box-shadow: $Page-box-shadow;
+    min-height: $Page-heigth;
+    overflow: hidden;
+    margin: $Theme-Grid-Gutter-Width 0;
+    page-break-before: always;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.PageSection
-{
-  position: relative;
+.PageSection {
+    position: relative;
 }
 
-.HeaderSection
-{
-  flex-shrink: 0;
-  min-height: $Page-padding-top;
-  overflow: hidden;
+.HeaderSection {
+    flex-shrink: 0;
+    min-height: $Page-padding-top;
+    overflow: hidden;
 }
 
-.ContentSection
-{
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  overflow: hidden;
-  padding: 0 $Page-padding-right 0 $Page-padding-left;
+.ContentSection {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0 $Page-padding-right 0 $Page-padding-left;
 }
 
-.FooterSection
-{
-  align-items: center;
-  display: flex;
-  flex-shrink: 0;
-  min-height: $Page-padding-bottom;
-  overflow: hidden;
-  padding: 0 $Page-padding-right 0 $Page-padding-left;
+.FooterSection {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    min-height: $Page-padding-bottom;
+    overflow: hidden;
+    padding: 0 $Page-padding-right 0 $Page-padding-left;
 }
 
-.CoverImage
-{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  max-height: $Page-heigth;
+.CoverImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-height: $Page-heigth;
 }
 
-.CoverLayer
-{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+.CoverLayer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 // --- Cover ------------------------------------------------------------------
 
-.CoverName
-{
-  font-size: 50pt;
-  position: absolute;
-  right: 14mm;
-  top: 50%;
-  max-width: 182mm;
-  text-align: right;
+.CoverName {
+    font-size: 50pt;
+    position: absolute;
+    right: 14mm;
+    top: 50%;
+    max-width: 182mm;
+    text-align: right;
 }
 
-.CoverYear
-{
-  font-size: 70pt;
-  position: absolute;
-  right: 14mm;
-  bottom: 7mm;
+.CoverYear {
+    font-size: 70pt;
+    position: absolute;
+    right: 14mm;
+    bottom: 7mm;
 }
 
-.CoverPriceLevel
-{
-  font-size: 8pt;
-  position: absolute;
-  left: 14mm;
-  bottom: 7mm;
+.CoverPriceLevel {
+    font-size: 8pt;
+    position: absolute;
+    left: 14mm;
+    bottom: 7mm;
 }
 
-.FosaliCatalog
-{
-  .FrontCover
-  {
-    color: white;
-  }
+.FosaliCatalog {
+    .FrontCover {
+        color: white;
+    }
 }
 
 // --- Content ------------------------------------------------------------------
 
-.Content
-{
-  padding: $Page-padding;
+.Content {
+    padding: $Page-padding;
 }
 
-.ContentTitle
-{
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: .5rem;
+.ContentTitle {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: .5rem;
 }
 
-.ContentTable
-{
-  font-size: 12pt;
-  font-weight: bold;
-  margin-top: 2cm;
-  width: 100%;
+.ContentTable {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 2cm;
+    width: 100%;
 }
 
-.ContentName
-{
-  width: 95%;
+.ContentName {
+    width: 95%;
 }
 
-.ContentPage
-{
-  text-align: right;
-  width: 5%;
+.ContentPage {
+    text-align: right;
+    width: 5%;
 }
 
 // --- Legend -----------------------------------------------------------------
 
-.Legend
-{
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  padding: $Page-padding;
+.Legend {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: $Page-padding;
 }
 
-.LegendHeader
-{
-  align-items: baseline;
-  display: flex;
+.LegendHeader {
+    align-items: baseline;
+    display: flex;
 }
 
-.LegendTitle
-{
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: .5rem;
+.LegendTitle {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: .5rem;
 }
 
-.LegendDescription
-{
-  padding-left: $Page-padding-left;
+.LegendDescription {
+    padding-left: $Page-padding-left;
 }
 
-.LegendItems
-{
-  display: flex;
-  flex-wrap: wrap;
+.LegendItems {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.LegendItem
-{
-  display: flex;
-  margin-top: 3px;
-  width: 50%;
+.LegendItem {
+    display: flex;
+    margin-top: 3px;
+    width: 50%;
 }
 
-.LegendIcon
-{
-  width: 12%;
+.LegendIcon {
+    width: 12%;
 
-  .Image
-  {
-    border: 1px solid #666666;
-    border-radius: 5px;
-    object-fit: scale-down;
-    max-width: 100%;
-  }
+    .Image {
+        border: 1px solid #666666;
+        border-radius: 5px;
+        object-fit: scale-down;
+        max-width: 100%;
+    }
 }
 
-.LegendText
-{
-  align-items: baseline;
-  display: flex;
-  font-size: 8pt;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 88%;
+.LegendText {
+    align-items: baseline;
+    display: flex;
+    font-size: 8pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 88%;
 
-  .Caption
-  {
-    font-weight: bold;
-    display: contents;
-  }
+    .Caption {
+        font-weight: bold;
+        display: contents;
+    }
 }
 
-.LegendContent
-{
-  margin-top: auto;
+.LegendContent {
+    margin-top: auto;
 }
 
 // --- Page -------------------------------------------------------------------
 
-.PageBanner
-{
-  margin-bottom: 3px;
-  width: 100%;
+.PageBanner {
+    margin-bottom: 3px;
+    width: 100%;
 }
 
-.PageTitle
-{
-  font-size: 24pt;
-  font-weight: bold;
+.PageTitle {
+    font-size: 24pt;
+    font-weight: bold;
 }
 
-.TextSection
-{
-  font-size: 8pt;
-}
-
-.PageParagraph
-{
-  margin-top: 2mm;
-}
-
-.LegendSection
-{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.PageLegendItem
-{
-  height: 31px;
-  position: relative;
-  margin: 2px;
-  text-align: center;
-  width: 51px;
-
-  .Image
-  {
-    border: 1px solid #666666;
-    border-radius: 5px;
-    max-width: 100%;
-    object-fit: scale-down;
-  }
-
-  .Text
-  {
+.TextSection {
     font-size: 8pt;
-    font-weight: bold;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-  }
 }
 
-.ProductsSection
-{
+.PageParagraph {
+    margin-top: 2mm;
 }
 
-.ProductTable
-{
-  border-collapse: collapse;
-  font-weight: bold;
-  line-height: 1.5em;
-  text-align: left;
-  white-space: nowrap;
-  width: 100%;
-
-  tr
-  {
-    line-height: 1.5em;
-  }
-
-  th
-  {
-    border-bottom: $Table-Header-border-bottom;
-    font-weight: bold;
-  }
-}
-
-.ProductParameters
-{
-  margin-top: 3mm;
-}
-
-.ProductParameter
-{
-  display: flex;
-  font-size: 7pt;
-
-  .Label
-  {
-    font-weight: bold;
-  }
-}
-
-.ImagesSection
-{
-  display: flex;
-  height: 5cm;
-  margin-top: 10mm;
-
-  .PageImage
-  {
-    width: 33.33%;
-    height: 100%;
+.LegendSection {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+}
 
-    .Image
-    {
-      max-width: 100%;
-      max-height: 100%
+.PageLegendItem {
+    height: 31px;
+    position: relative;
+    margin: 2px;
+    text-align: center;
+    width: 51px;
+
+    .Image {
+        border: 1px solid #666666;
+        border-radius: 5px;
+        max-width: 100%;
+        object-fit: scale-down;
     }
-  }
+
+    .Text {
+        font-size: 8pt;
+        font-weight: bold;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+    }
 }
 
-.AccessoriesSection
-{
-  margin-top: auto;
+.ProductsSection {
 }
 
-.AccessoriesSectionTitle
-{
-  border-bottom: 2px solid #666666;
-  font-weight: bold;
+.ProductTable {
+    border-collapse: collapse;
+    font-weight: bold;
+    line-height: 1.5em;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+
+    tr {
+        line-height: 1.5em;
+    }
+
+    th {
+        border-bottom: $Table-Header-border-bottom;
+        font-weight: bold;
+    }
 }
 
-.AccessoryTable
-{
-  border-collapse: collapse;
-  font-weight: bold;
-  text-align: left;
-  white-space: nowrap;
-  width: 100%;
+.ProductParameters {
+    margin-top: 3mm;
 }
 
-.PageNumber
-{
-  font-size: 8pt;
-  margin-left: auto;
+.ProductParameter {
+    display: flex;
+    font-size: 7pt;
+
+    .Label {
+        font-weight: bold;
+    }
+}
+
+.ImagesSection {
+    display: flex;
+    max-height: 5cm;
+    margin-top: 5mm;
+    align-items: center;
+
+    .PageImage {
+        width: 33.33%;
+        height: 100%;
+        display: flex;
+        align-items: center; //je toto potrebne ked som to presunul do ImageSection?
+        justify-content: center;
+
+        .Image {
+            max-width: 100%;
+            max-height: 100%
+        }
+    }
+}
+
+.AccessoriesSection {
+    margin-top: auto;
+}
+
+.AccessoriesSectionTitle {
+    border-bottom: 2px solid #666666;
+    font-weight: bold;
+}
+
+.AccessoryTable {
+    border-collapse: collapse;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.PageNumber {
+    font-size: 8pt;
+    margin-left: auto;
 }
 
 // --- Ledeco -----------------------------------------------------------------
 
-.LedecoPage
-{
-  .PageTitle
-  {
-    border-bottom: 3px solid #666666;
-  }
-
-  .LegendSection
-  {
-    justify-content: center;
-    margin-top: 5mm;
-  }
-
-  .ProductsSection
-  {
-    margin-top: 5mm;
-  }
-
-  .ProductTable
-  {
-    font-size: 8pt;
-  }
-
-  .ProductCode
-  {
-    width: 22%;
-  }
-
-  .ProductName
-  {
-    width: 35%;
-  }
-
-  .ProductVersion
-  {
-    width: 25%;
-  }
-
-  .ProductDimension
-  {
-    text-align: right;
-    width: 6%;
-  }
-
-  .ProductPrice
-  {
-    text-align: right;
-    width: 10%;
-  }
-
-  .AccessoriesSection
-  {
-    font-size: 8pt;
-  }
-
-  .AccessoriesSectionTitle
-  {
-    margin-bottom: 2mm;
-  }
-
-  .AccessoryImage
-  {
-    border-bottom: $Table-Cell-border-bottom;
-    width: 10%;
-
-    .Image
-    {
-      max-width: 40px;
-      max-height: 40px;
+.LedecoPage {
+    .PageTitle {
+        border-bottom: 3px solid #666666;
     }
-  }
 
-  .AccessoryCode
-  {
-    width: 25%;
-  }
+    .LegendSection {
+        justify-content: center;
+        margin-top: 2mm;
+    }
 
-  .AccessoryName
-  {
-    width: 55%;
-  }
+    .ProductsSection {
+        margin-top: 5mm;
+    }
 
-  .AccessoryPrice
-  {
-    border-bottom: $Table-Cell-border-bottom;
-    text-align: right;
-    width: 10%;
-  }
+    .ProductTable {
+        font-size: 8pt;
+    }
 
-  .AccessoryDescription
-  {
-    border-bottom: $Table-Cell-border-bottom;
-    font-weight: normal;
-  }
+    .ProductCode {
+        width: 22%;
+    }
+
+    .ProductName {
+        width: 35%;
+    }
+
+    .ProductVersion {
+        width: 25%;
+    }
+
+    .ProductDimension {
+        text-align: right;
+        width: 6%;
+    }
+
+    .ProductPrice {
+        text-align: right;
+        width: 10%;
+    }
+
+    .AccessoriesSection {
+        font-size: 8pt;
+    }
+
+    .AccessoriesSectionTitle {
+        margin-bottom: 2mm;
+        display: flex;
+    }
+
+    .AccessoriesSectionFirstPrice {
+        margin-left: auto;
+    }
+
+    .AccessoriesSectionSecondPrice {
+        margin-right: inherit;
+        padding-left: 10px;
+    }
+
+    .AccessoryImage {
+        border-bottom: $Table-Cell-border-bottom;
+        width: 10%;
+
+        .Image {
+            max-width: 40px;
+            max-height: 40px;
+        }
+    }
+
+    .AccessoryCode {
+        width: 25%;
+    }
+
+    .AccessoryName {
+        width: 55%;
+    }
+
+    .AccessoryPrice {
+        border-bottom: $Table-Cell-border-bottom;
+        text-align: right;
+        padding-left: 35px;
+        width: 10%;
+    }
+
+    .AccessoryDescription {
+        border-bottom: $Table-Cell-border-bottom;
+        font-weight: normal;
+    }
 }
 
 // --- Fosali -----------------------------------------------------------------
 
-.FosaliPage
-{
-  .PageTitle
-  {
-    background-color: #fff;
-    padding: 10px;
-    position: absolute;
-    left: 8mm;
-    bottom: 8mm;
-  }
-
-  .LegendSection
-  {
-    margin-bottom: 3mm;
-    margin-top: 2mm;
-  }
-
-  .ColumnsSection
-  {
-    display: flex;
-
-    .SectionColumn:first-child
-    {
-      width: 30%;
+.FosaliPage {
+    .PageTitle {
+        background-color: #fff;
+        padding: 10px;
+        position: absolute;
+        left: 8mm;
+        bottom: 8mm;
     }
 
-    .SectionColumn:last-child
-    {
-      width: 70%;
+    .LegendSection {
+        margin-bottom: 3mm;
+        margin-top: 2mm;
     }
-  }
 
-  .ImagesSection
-  {
-    flex-direction: column;
-    margin-top: 0;
+    .ColumnsSection {
+        display: flex;
 
-    .PageImage
-    {
-      height: auto;
-      width: 100%;
+        .SectionColumn:first-child {
+            width: 30%;
+        }
 
-      .Image
-      {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-height: 4.4cm;
-        max-width: 100%;
-      }
+        .SectionColumn:last-child {
+            width: 70%;
+        }
     }
-  }
 
-  .ProductsSection
-  {
-  }
+    .ImagesSection {
+        flex-direction: column;
+        margin-top: 0;
 
-  .ProductTable
-  {
-    font-size: 7pt;
-  }
+        .PageImage {
+            height: auto;
+            width: 100%;
 
-  .ProductName
-  {
-    width: 28%;
-  }
+            .Image {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-height: 4.4cm;
+                max-width: 100%;
+            }
+        }
+    }
 
-  .ProductVersion
-  {
-    width: 38%;
-  }
+    .ProductsSection {
+    }
 
-  .ProductDimension
-  {
-    text-align: right;
-    width: 6%;
-  }
+    .ProductTable {
+        font-size: 7pt;
+    }
 
-  .ProductPrice
-  {
-    text-align: right;
-    width: 10%;
-  }
+    .ProductName {
+        width: 28%;
+    }
 
-  .AccessoriesSection
-  {
-    font-size: 7pt;
-  }
+    .ProductVersion {
+        width: 38%;
+    }
 
-  .AccessoryTable
-  {
-    line-height: 1;
-  }
+    .ProductDimension {
+        text-align: right;
+        width: 6%;
+    }
 
-  .AccessoryCode
-  {
-    border-bottom: $Table-Cell-border-bottom;
-    width: 28%;
-  }
+    .ProductPrice {
+        text-align: right;
+        width: 10%;
+    }
 
-  .AccessoryDescription
-  {
-    border-bottom: $Table-Cell-border-bottom;
-    width: 72%;
-  }
+    .AccessoriesSection {
+        font-size: 7pt;
+    }
+
+    .AccessoryTable {
+        line-height: 1;
+    }
+
+    .AccessoryCode {
+        border-bottom: $Table-Cell-border-bottom;
+        width: 28%;
+    }
+
+    .AccessoryDescription {
+        border-bottom: $Table-Cell-border-bottom;
+        width: 72%;
+    }
 }
 
 // --- Media ------------------------------------------------------------------
 
-@media print
-{
-  .CatalogPage
-  {
-    box-shadow: 0;
-    margin: 0;
-  }
+@media print {
+    .CatalogPage {
+        box-shadow: 0;
+        margin: 0;
+    }
 }
 
 // ----------------------------------------------------------------------------

@@ -76,7 +76,29 @@ namespace LedEcoKatalog.Models
 
       ContentItems = await DataContext.GetContentItems(scopeId, languageCode).ToListAsync();
 
-      Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName : Name;
+      //Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.CategoryName : Name;
+      //upravene kedze katalog ma mat nazov podla vybranej hierarchie
+      if (scopeId == ContentItems[0].Id01)
+      {
+        Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.Name01 : Name;
+      }
+
+      if (scopeId == ContentItems[0].Id02)
+      {
+        Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.Name02 : Name;
+      }
+
+      if (scopeId == ContentItems[0].Id03)
+      {
+        Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.Name03 : Name;
+      }
+
+      if (scopeId == ContentItems[0].Id04)
+      {
+        Name = string.IsNullOrEmpty(Name) ? ContentItems.OrderBy(e => e.Page).FirstOrDefault()?.Name04 : Name;
+      }
+
+      
       Year = DateTime.Today.Year + 1;
       PriceLevelPrimary = priceLevelPrimaryId == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevelPrimaryId)?.StrTextId?.ToString();
       PriceLevelSecondary = priceLevelSecondaryId == -1 ? Language?.NoPrices : DataContext.PriceLevel.FirstOrDefault(e => e.IntIdpriceList == priceLevelSecondaryId)?.StrTextId?.ToString();
@@ -85,7 +107,7 @@ namespace LedEcoKatalog.Models
       var frontCoverContent = WebContentHelper.GetFrontCoverContent(layoutCode, languageCode);
       if (frontCoverContent != null)
       {
-        FrontCoverContent = frontCoverContent.Replace("{{name}}", Name).Replace("{{year}}", Year.ToString()).Replace("{{price-level}}", PriceLevelPrimary);
+        FrontCoverContent = frontCoverContent.Replace("{{name}}", Name).Replace("{{year}}", Year.ToString()).Replace("{{price-level}}", PriceLevelSecondaryId != -1 ? PriceLevelPrimary + " / " + PriceLevelSecondary : PriceLevelPrimary);
       }
 
       var excludedLegendImages = Settings.ExcludedLegendImages;

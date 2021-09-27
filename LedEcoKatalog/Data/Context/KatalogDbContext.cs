@@ -21,6 +21,7 @@ namespace LedEcoKatalog.Data
     public KatalogDbContext(DbContextOptions<KatalogDbContext> options)
         : base(options)
     {
+        this.Database.SetCommandTimeout(new System.TimeSpan(0, 20, 0));
     }
 
     #endregion

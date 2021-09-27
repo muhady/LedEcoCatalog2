@@ -58,15 +58,13 @@
                     @if (Model.HasPrimaryPrices)
                     {
 
-                        @if (Model.HasSecondaryPrices)
-                        {
-                            <th class="ProductPrice">@Model.Language.ProductDoublePrice</th>
-                        }
-                        else
-                        {
-                            <th class="ProductPrice">@Model.Language.ProductPrice</th>
-                        }
+                        <th class="ProductPrice">@Model.Language.ProductPrice</th>
 
+
+                    }
+                    @if (Model.HasSecondaryPrices)
+                    {
+                        <th class="ProductPrice">@Model.Language.ProductDoublePrice</th>
                     }
                 </tr>
                 @foreach (var product in Model.Products)
@@ -79,12 +77,15 @@
                         {
                             var price = product.PricePrimary;
                             <td class="ProductPrice">
-                                @(price.HasValue && price.Value != 0.0 ? $"{price:f2} €" : Model.Language.ProductPriceInfo)
-                                @if (Model.HasSecondaryPrices)
-                                {
-                                    var price2 = product.PriceSecondary;
-                                    @(price2.HasValue && price2.Value != 0.0 ? $" ({price2:f2} €)" : Model.Language.ProductPriceInfo)
-                                }
+                                @(price.HasValue && price.Value != 0.0 ? $"{price:f2}" : Model.Language.ProductPriceInfo)
+
+                            </td>
+                        }
+                        @if (Model.HasSecondaryPrices)
+                        {
+                            var price2 = product.PriceSecondary;
+                            <td class="ProductPrice">
+                                @(price2.HasValue && price2.Value != 0.0 ? $"{price2:f2}" : Model.Language.ProductPriceInfo)
                             </td>
                         }
                     </tr>
@@ -141,7 +142,24 @@
 
                 <div class="AccessoriesSectionTitle">
                     @Model.Language.AccessoriesSectionTitle
+                    @if (Model.HasPrimaryPrices)
+                    {
+                        <div class="AccessoriesSectionFirstPrice">
+
+                            @Model.Language.ProductPrice
+
+                        </div>
+                    }
+                    @if (Model.HasSecondaryPrices)
+                    {
+                        <div class="AccessoriesSectionSecondPrice">
+
+                            @Model.Language.ProductDoublePrice
+
+                        </div>
+                    }
                 </div>
+
 
                 <table class="AccessoryTable">
                     @foreach (var accessory in Model.Accessories)
@@ -159,12 +177,15 @@
                             {
                                 var price = accessory.PrimaryPrice;
                                 <td rowspan="2" class="AccessoryPrice">
-                                    @(price.HasValue && price.Value != 0.0 ? $"{price:f2} €" : Model.Language.ProductPriceInfo)
-                                    @if (Model.HasSecondaryPrices)
-                                    {
-                                        var price2 = accessory.SecondaryPrice;
-                                        @(price2.HasValue && price2.Value != 0.0 ? $" ({price2:f2} €)" : Model.Language.ProductPriceInfo)
-                                    }
+                                    @(price.HasValue && price.Value != 0.0 ? $"{price:f2}" : Model.Language.ProductPriceInfo)
+
+                                </td>
+                            }
+                            @if (Model.HasSecondaryPrices)
+                            {
+                                var price2 = accessory.SecondaryPrice;
+                                <td rowspan="2" class="AccessoryPrice">
+                                    @(price2.HasValue && price2.Value != 0.0 ? $"{price2:f2}" : Model.Language.ProductPriceInfo)
                                 </td>
                             }
 

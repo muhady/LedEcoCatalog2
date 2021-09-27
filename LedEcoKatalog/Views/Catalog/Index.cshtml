@@ -17,7 +17,7 @@
           {
             <div class="CoverName">@Model.Name</div>
             <div class="CoverYear">@Model.Year</div>
-            <div class="CoverPriceLevel">@Model.PriceLevelPrimary</div>
+            <div class="CoverPriceLevel">@(Model.PriceLevelSecondaryId != -1 ? $"{Model.PriceLevelPrimary} / {Model.PriceLevelSecondary}" : $"{Model.PriceLevelPrimary}") </div>
           }
           else
           {
